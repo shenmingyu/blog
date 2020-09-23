@@ -128,7 +128,6 @@
       <tags>
         <tag>Hexo</tag>
         <tag>GitHub</tag>
-        <tag>建站</tag>
       </tags>
   </entry>
   <entry>
@@ -647,6 +646,10 @@
 
 <h4 id="大功告成-2"><a class="markdownIt-Anchor" href="#大功告成-2">#</a> 大功告成！</h4>
 ]]></content>
+      <categories>
+        <category>WEB云学习</category>
+        <category>解决方案</category>
+      </categories>
       <tags>
         <tag>Apache</tag>
         <tag>Nginx</tag>
