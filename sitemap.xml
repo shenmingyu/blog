@@ -2,6 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://shenmingyu.github.io/ShenMingyu/26ae02a2/</loc>
+    
+    <lastmod>2020-09-29</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://shenmingyu.github.io/ShenMingyu/5f8623e6/</loc>
+    
+    <lastmod>2020-09-29</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://shenmingyu.github.io/ShenMingyu/62f0a79f/</loc>
+    
+    <lastmod>2020-09-29</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://shenmingyu.github.io/ShenMingyu/69ace0a2/</loc>
+    
+    <lastmod>2020-09-29</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://shenmingyu.github.io/ShenMingyu/90576cc9/</loc>
     
     <lastmod>2020-09-29</lastmod>
@@ -31,13 +59,6 @@
   
   <url>
     <loc>https://shenmingyu.github.io/ShenMingyu/7f199ca9/</loc>
-    
-    <lastmod>2020-09-29</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://shenmingyu.github.io/ShenMingyu/26ae02a2/</loc>
     
     <lastmod>2020-09-29</lastmod>
     
@@ -270,14 +291,14 @@
   </url>
   
   <url>
-    <loc>https://shenmingyu.github.io/tags/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/</loc>
+    <loc>https://shenmingyu.github.io/tags/Database/</loc>
     <lastmod>2020-09-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://shenmingyu.github.io/tags/Database/</loc>
+    <loc>https://shenmingyu.github.io/tags/Ubuntu/</loc>
     <lastmod>2020-09-29</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>

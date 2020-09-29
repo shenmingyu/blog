@@ -822,64 +822,74 @@
 <p>在安装好并进入 Apache 默认网页后，显示为：</p>
 
 <p>此时我们查看这一行：</p>
-<p>这里告诉我们，只需要将该目录下的 index.html 文件修改成你自己的 html 文件就可以直接显示了。</p>
-<h4 id="但以上仅仅是默认情况如果想要自定义目录呢"><a class="markdownIt-Anchor" href="#但以上仅仅是默认情况如果想要自定义目录呢">#</a> 但以上仅仅是默认情况，如果想要自定义目录呢？</h4>
-<h5 id="我们需要更改这两个文件的默认配置"><a class="markdownIt-Anchor" href="#我们需要更改这两个文件的默认配置">#</a> 我们需要更改这两个文件的默认配置：</h5>
+<p>这里告诉我们，只需要将该目录下的  <code>index.html</code>  文件修改成你自己的 html 文件就可以直接显示了。</p>
+<p>但以上仅仅是默认情况，如果想要自定义目录呢？</p>
+<h3 id="自定义目录"><a class="markdownIt-Anchor" href="#自定义目录">#</a> 自定义目录</h3>
+<p>我们需要更改这两个文件的默认配置：</p>
 <ul>
 <li>
-<p>etc/apache2/sites-available/000-default.conf</p>
+<p><code>etc/apache2/sites-available/000-default.conf</code></p>
 </li>
 <li>
-<p>etc/apache2/apache2.conf</p>
+<p><code>etc/apache2/apache2.conf</code></p>
 </li>
 </ul>
 
-<h5 id="1-首先我们修改-000-defaultconf-文件"><a class="markdownIt-Anchor" href="#1-首先我们修改-000-defaultconf-文件">#</a> 1. 首先我们修改 000-default.conf 文件</h5>
+<ol>
+<li>首先我们修改 000-default.conf 文件</li>
+</ol>
 
 <p>​	该文件表示的是要打开的 html 默认文件目录</p>
 <p>​	我们需要添加我们自定义的目录（这个文件目录由你自己修改）</p>
 
-<h5 id="2-然后修改-apache2conf-文件"><a class="markdownIt-Anchor" href="#2-然后修改-apache2conf-文件">#</a> 2. 然后修改 apache2.conf 文件</h5>
+<ol start="2">
+<li>然后修改 apache2.conf 文件</li>
+</ol>
 
 <p>​	我们需要在下面多加一个（这个文件目录由你自己修改）</p>
 
 <p>​	修改完后输入命令，重新启动 Apache</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo systemctl reload apache2</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo systemctl reload apache2</span><br></pre></td></tr></table></figure>
 <p>​	然后进入浏览器打开自己的页面：</p>
 
-<h4 id="大功告成"><a class="markdownIt-Anchor" href="#大功告成">#</a> 大功告成！</h4>
+<p>大功告成！</p>
 <hr>
 <h2 id="nginx篇"><a class="markdownIt-Anchor" href="#nginx篇">#</a> Nginx 篇</h2>
 <p>与 Apache 类似，安装完成 Nginx 后会显示默认页面：</p>
 
-<h5 id="如果我们想自定义文件目录需要更改这个文件的默认配置"><a class="markdownIt-Anchor" href="#如果我们想自定义文件目录需要更改这个文件的默认配置">#</a> 如果我们想自定义文件目录，需要更改这个文件的默认配置：</h5>
+<h3 id="自定义目录-2"><a class="markdownIt-Anchor" href="#自定义目录-2">#</a> 自定义目录</h3>
+<p>如果我们想自定义文件目录，需要更改这个文件的默认配置：</p>
 <ul>
-<li>etc/nginx/sites-available/default</li>
+<li><code>etc/nginx/sites-available/default</code></li>
 </ul>
 
-<h5 id="1-首先我们修改文件中的-root-项"><a class="markdownIt-Anchor" href="#1-首先我们修改文件中的-root-项">#</a> 1. 首先我们修改文件中的 root 项</h5>
+<ol>
+<li>首先我们修改文件中的 root 项</li>
+</ol>
 
 <p>​	该文件表示的是要打开的 html 默认文件目录</p>
 <p>​	我们需要添加我们自定义的目录（这个文件目录由你自己修改）</p>
 
-<h5 id="2-然后修改文件中的-server默认情况下是被注释掉的"><a class="markdownIt-Anchor" href="#2-然后修改文件中的-server默认情况下是被注释掉的">#</a> 2. 然后修改文件中的 server，默认情况下，是被注释掉的</h5>
+<ol start="2">
+<li>然后修改文件中的 server，默认情况下，是被注释掉的</li>
+</ol>
 
 <p>​	将自己的 IP 地址以及文件目录修改进去</p>
 
 <p>修改完成后，重新上传并重新启动 Nginx</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo systemctl reload nginx</span><br><span class="line"></span><br><span class="line">sudo systemctl restart nginx</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo systemctl reload nginx</span><br><span class="line"></span><br><span class="line">sudo systemctl restart nginx</span><br></pre></td></tr></table></figure>
 <p>进入浏览器输入 IP 地址，打开自己的页面：</p>
 
-<h4 id="大功告成-2"><a class="markdownIt-Anchor" href="#大功告成-2">#</a> 大功告成！</h4>
+<p>大功告成！</p>
 ]]></content>
       <categories>
         <category>网站搭建</category>
       </categories>
       <tags>
+        <tag>环境搭建</tag>
         <tag>解决方案</tag>
         <tag>Apache</tag>
         <tag>Nginx</tag>
-        <tag>环境配置</tag>
       </tags>
   </entry>
   <entry>
@@ -1149,6 +1159,153 @@
       </categories>
       <tags>
         <tag>Database</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Ubuntu云服务器下载安装LAMP</title>
+    <url>/blog/ShenMingyu/69ace0a2/</url>
+    <content><![CDATA[<p>LAMP 即：Linux、Apache2、MySQL、PHP (Perl, Python)</p>
+<h2 id="更新apt包"><a class="markdownIt-Anchor" href="#更新apt包">#</a> 更新 apt 包</h2>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line"></span><br><span class="line">sudo apt upgrade</span><br></pre></td></tr></table></figure>
+<h2 id="apache2-的安装"><a class="markdownIt-Anchor" href="#apache2-的安装">#</a> Apache2 的安装</h2>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">apt install apache2 -y</span><br></pre></td></tr></table></figure>
+<p>验证安装的 Apache2 的版本</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">apache2 -v</span><br></pre></td></tr></table></figure>
+
+<p>启动 Apache2 服务</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo systemctl enable apache2</span><br><span class="line"></span><br><span class="line">sudo systemctl start apache2</span><br><span class="line"><span class="meta">#</span><span class="bash"> 我记得之前好像用的是 <span class="built_in">enable</span> httpd 和 start httpd 的命令，暂时不知道为什么命令格式和那时不同了</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 查看 Apache2 服务状态命令</span></span><br><span class="line">sudo systemctl status apache2</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 但使用 status httpd 可以显示 httpd 服务的状态，Active: inactive (dead)</span></span><br></pre></td></tr></table></figure>
+<p>安装成功后，浏览器输入 IP 地址后即可看到默认页面：</p>
+
+<p>此时，根据网页中显示的默认配置情况，可以知道文件的根目录所在是  <code>/var/www</code>  这个是可以进行自定义的，具体的自定义配置方法可以参考我的另一篇博客 <a href="blog/ShenMingyu/26ae02a2/">Ubuntu 云服务器 Apache 与 Nginx 的网页自定义配置</a>。</p>
+
+<h2 id="mysql-的安装"><a class="markdownIt-Anchor" href="#mysql-的安装">#</a> MySQL 的安装</h2>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">apt install mysql-server -y</span><br></pre></td></tr></table></figure>
+<p>期间会出现设置数据库服务器密码的界面</p>
+
+<p>验证查询安装的 MySQL 版本</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">mysql --version</span><br></pre></td></tr></table></figure>
+
+<p>安装完成后，运行以下命令来对数据库进行保护</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">mysql_secure_installation</span><br></pre></td></tr></table></figure>
+<p>然后会进行数据库安全的具体设置</p>
+
+<h2 id="php-的安装"><a class="markdownIt-Anchor" href="#php-的安装">#</a> PHP 的安装</h2>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">apt install php -y</span><br></pre></td></tr></table></figure>
+<p>验证安装的 PHP 的版本</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">php -v</span><br></pre></td></tr></table></figure>
+
+<p>接下来，我们需要告诉 Apache 首先提供 PHP 页面。</p>
+<p>打开  <code>/etc/apache2/mods-enabled/dir.conf</code>  文件并将其更改为首先列出 index.php。</p>
+
+<p>最后，我们需要重新启动 Apache Web 服务器。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">systemctl restart apache2</span><br></pre></td></tr></table></figure>
+<p>至此，LAMP 的安装工作完成。</p>
+]]></content>
+      <categories>
+        <category>网站搭建</category>
+      </categories>
+      <tags>
+        <tag>MySQL</tag>
+        <tag>PHP</tag>
+        <tag>环境搭建</tag>
+        <tag>Apache</tag>
+        <tag>Ubuntu</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Ubuntu云服务器下载安装LNMP</title>
+    <url>/blog/ShenMingyu/62f0a79f/</url>
+    <content><![CDATA[<p>LNMP 即：Linux、Nginx、MySQL、PHP (Perl, Python)</p>
+<h2 id="更新apt包"><a class="markdownIt-Anchor" href="#更新apt包">#</a> 更新 apt 包</h2>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line"></span><br><span class="line">sudo apt upgrade</span><br></pre></td></tr></table></figure>
+<h2 id="nginx-的安装"><a class="markdownIt-Anchor" href="#nginx-的安装">#</a> Nginx 的安装</h2>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo apt install nginx -y</span><br></pre></td></tr></table></figure>
+<p>如果已经安装启动了 Apache2 的服务，会报出如下错误</p>
+
+<p>这是因为端口已经被 Apache2 占用，导致 Nginx 服务无法启动。</p>
+<p>需要将 Apache2 服务关闭</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo systemctl disable httpd</span><br><span class="line"></span><br><span class="line">sudo systemctl close httpd</span><br></pre></td></tr></table></figure>
+<p>启动 Nginx</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo systemctl enable nginx</span><br><span class="line"></span><br><span class="line">sudo systemctl start nginx</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 查看nginx服务状态命令</span></span><br><span class="line">sudo systemctl status nginx</span><br></pre></td></tr></table></figure>
+<p>在浏览器中输入 IP 地址即可看到默认页面：</p>
+
+<h2 id="mysql-的安装"><a class="markdownIt-Anchor" href="#mysql-的安装">#</a> MySQL 的安装</h2>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">apt install mysql-server -y</span><br></pre></td></tr></table></figure>
+<p>期间会出现设置数据库服务器密码的界面</p>
+
+<p>验证查询安装的 MySQL 版本</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">mysql --version</span><br></pre></td></tr></table></figure>
+
+<p>安装完成后，运行以下命令来对数据库进行保护</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">mysql_secure_installation</span><br></pre></td></tr></table></figure>
+<p>然后会进行数据库安全的具体设置</p>
+
+<h2 id="php-的安装"><a class="markdownIt-Anchor" href="#php-的安装">#</a> PHP 的安装</h2>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">apt install php -y</span><br></pre></td></tr></table></figure>
+<p>验证安装的 PHP 的版本</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">php -v</span><br></pre></td></tr></table></figure>
+
+<p>接下来，我们需要告诉 Nginx 首先提供 PHP 页面。</p>
+<p>打开  <code>/etc/nginx/sites-available/default</code>  文件并将其更改为首先列出 index.php。</p>
+
+<p>测试 Nginx 配置</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo nginx -t</span><br></pre></td></tr></table></figure>
+<p>最后，我们需要重新启动 Nginx Web 服务器。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">systemctl restart nginx</span><br></pre></td></tr></table></figure>
+<p>至此，LNMP 的安装工作完成。</p>
+]]></content>
+      <categories>
+        <category>网站搭建</category>
+      </categories>
+      <tags>
+        <tag>MySQL</tag>
+        <tag>PHP</tag>
+        <tag>环境搭建</tag>
+        <tag>Nginx</tag>
+        <tag>Ubuntu</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>云翼计划建站流程</title>
+    <url>/blog/ShenMingyu/5f8623e6/</url>
+    <content><![CDATA[<p>在今年 2 月 3 月份的时候，我通过云翼计划的学生试用，经过考试之后，免费得到了第一台云服务器（半年期，47.113.87.183 很好听的公网 ip 地址嘻嘻，可惜不能以云翼计划学生优惠的价格进行续费，已经过期了），由于当时经验不足，踩了很多坑，浪费了很多时间好不容易搭建好了环境，写好了个人网站主页，部署到服务器上，再加上各种做其他项目上的小问题，兜兜转转地时间也快到期了，于是便在阿里云云翼计划中购买了第一台云服务器，上一次没有描述整体建站流程的想法，这次就把它补起来！</p>
+<h2 id="建站流程"><a class="markdownIt-Anchor" href="#建站流程">#</a> 建站流程</h2>
+<h3 id="购买云服务器"><a class="markdownIt-Anchor" href="#购买云服务器">#</a> 购买云服务器</h3>
+<p>首先，进入<a href="https://promotion.aliyun.com/ntms/act/campus2018.html?spm=5176.12818093.0.0.845916d08qhqZi">阿里云云翼计划首页</a>，向下滑动，找到学生优惠套餐</p>
+
+<p>我购买的是第一个 “云服务器 ECS 学生专享”，然后选择地域、操作系统和购买时长，下方应当会显示价格为 114 元。</p>
+<!-- 要先进行学生认证哦 -->
+
+<p>然后根据流程进行购买，成功交易后很快服务器就开通好了。然后就可以进入云服务器进行具体的环境配置啦。</p>
+<h3 id="云服务器环境配置"><a class="markdownIt-Anchor" href="#云服务器环境配置">#</a> 云服务器环境配置</h3>
+<p>可以参考我之前的博客文章 <a href="/blog/ShenMingyu/">Ubuntu 云服务器下载安装 LAMP</a> 和 <a href="/blog/ShenMingyu/">Ubuntu 云服务器下载安装 LNMP</a> 哦！这里就不再赘述了。</p>
+<h3 id="域名购买及备案"><a class="markdownIt-Anchor" href="#域名购买及备案">#</a> 域名购买及备案</h3>
+<p>我是在 <a href="https://mi.aliyun.com">万网</a> 上购买了两个域名（ myspegale.tech 是之前买的，最近新增并使用 <a href="http://shenmingyu.com">shenmingyu.com</a> 作为主要域名），购买完成后即可在阿里云的域名备案中心进行域名的备案。一般来讲这个过程会有两周左右的时间。</p>
+<ul>
+<li>备案的条件：
+<ul>
+<li>购买了域名</li>
+<li>购买了服务器</li>
+<li>主办单位证件（个人就是身份证）</li>
+</ul>
+</li>
+</ul>
+<p>需要进行实名认证，网站名称在备案时是有要求的，部分要求如下：</p>
+
+<p>更加详细的要求可以去询问客服哦。客服小哥哥小姐姐们还是很耐心的，我之前第一次备案的时候就是因为网站名称的问题，接到了阿里云的电话，经过一番修改定夺之后才最后成功备案的。</p>
+<p>…………… 假装经过了漫长的备案时间 ……………</p>
+<p>备案完成后，需要根据备案的需求，在你的网站底部添加备案的 ICP 号，并且要在 30 天内去进行公安备案，这个详细的可以查阅阿里云的相关文档，里面有很详细的流程阐述。</p>
+<!-- 在备案过程中，你所购买的域名是可以进行 DNS 解析的，但是暂时无法进行国内的 CDN 加速服务。 -->
+<h3 id="域名的-dns-解析"><a class="markdownIt-Anchor" href="#域名的-dns-解析">#</a> 域名的 DNS 解析</h3>
+<h3 id="网站的-cdn-加速"><a class="markdownIt-Anchor" href="#网站的-cdn-加速">#</a> 网站的 CDN 加速</h3>
+]]></content>
+      <categories>
+        <category>网站搭建</category>
+      </categories>
+      <tags>
+        <tag>环境搭建</tag>
+        <tag>Apache</tag>
+        <tag>Nginx</tag>
       </tags>
   </entry>
 </search>
