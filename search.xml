@@ -218,6 +218,126 @@
       </tags>
   </entry>
   <entry>
+    <title>PHP学习笔记</title>
+    <url>/blog/ShenMingyu/55d182ea/</url>
+    <content><![CDATA[<p>学习笔记系列博客仅用于个人的课程学习记录以用于回顾加强学习效果。</p>
+<h2 id="所需环境"><a class="markdownIt-Anchor" href="#所需环境">#</a> 所需环境</h2>
+<p><strong>macOS：</strong> MAMP（虽然 php5.3 以后版本都自带服务器，但是感觉还是使用集成环境更容易上手一些）</p>
+<p><strong>Windows：</strong> WAMP</p>
+<p><strong>使用编辑器：</strong> VScode</p>
+<p><a href="https://www.php.net/manual/zh/">PHP 官方文档</a></p>
+<hr>
+<h2 id="学习过程"><a class="markdownIt-Anchor" href="#学习过程">#</a> 学习过程：</h2>
+<h3 id="数学运算相关函数"><a class="markdownIt-Anchor" href="#数学运算相关函数">#</a> 数学运算相关函数：</h3>
+<ul>
+<li>
+<p><strong>幂运算</strong></p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">number pow(number $base, number $exp)</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong>平方根</strong></p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">float</span> sqrt(<span class="keyword">float</span> $arg)</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong>向上取整</strong></p>
+<ul>
+<li>应用场景：
+<ul>
+<li>计算分页的总页数</li>
+<li>ceil 总记录数 / 每页显示的记录数</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">float</span> ceil(<span class="keyword">float</span> $value)</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong>向下取整</strong></p>
+  <figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">float</span> floor(<span class="keyword">float</span> $value)</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong>随机数</strong></p>
+  <figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> rand(<span class="keyword">void</span>)</span><br><span class="line"><span class="keyword">int</span> rand(<span class="keyword">int</span> $min, <span class="keyword">int</span> $max)</span><br></pre></td></tr></table></figure>
+  <figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> mt_rand(<span class="keyword">void</span>)</span><br><span class="line"><span class="keyword">int</span> mt_void(<span class="keyword">int</span> $min, <span class="keyword">int</span> $max)</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong>四舍五入</strong></p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">float</span> round(<span class="keyword">float</span> $val[, $precision = <span class="number">0</span>])</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong>数字格式化</strong></p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">string</span> numebr_format(<span class="keyword">float</span> $number[, <span class="keyword">int</span> $decimals = <span class="number">0</span>])</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="字符串相关库函数"><a class="markdownIt-Anchor" href="#字符串相关库函数">#</a> 字符串相关库函数：</h3>
+<ul>
+<li>
+<p><strong>截取字符串</strong></p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">string</span> substr(<span class="keyword">string</span> $string, <span class="keyword">int</span> $start [<span class="keyword">int</span> $length])</span><br><span class="line"><span class="comment">// 字符串从0开始编号</span></span><br><span class="line"><span class="comment">// 如果$start为负数，则倒数</span></span><br><span class="line"><span class="comment">// 如果省略$length，则返回整个字符串</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong>大小写相关</strong></p>
+<ul>
+<li><strong>将字符串所有字母小写</strong></li>
+</ul>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">string</span> strtolower(<span class="keyword">string</span> \$string)</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>将字符串所有字母大写</strong></li>
+</ul>
+ <figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">string</span> strtoupper(<span class="keyword">string</span> \$string)</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>将字符串首字母小写</strong></li>
+</ul>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">string</span> lcfirst(<span class="keyword">string</span> \$str)</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>将字符串首字母大写</strong></li>
+</ul>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">string</span> ucfirst(<span class="keyword">string</span> \$str)</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>将字符串每个单词首字母大写</strong></li>
+</ul>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">string</span> ucwords(<span class="keyword">string</span> \$str)</span><br></pre></td></tr></table></figure>
+
+</li>
+<li>
+<p><strong>字符串替换</strong></p>
+<ul>
+<li>
+<p><strong>区分大小写</strong></p>
+  <figure class="highlight php"><table><tr><td class="code"><pre><span class="line">mixed str_replace(mixed $search, mixed $replace, mixed $subject)</span><br></pre></td></tr></table></figure>
+</li>
+<li>
+<p><strong>不区分大小写</strong></p>
+  <figure class="highlight php"><table><tr><td class="code"><pre><span class="line">mixed str_ireplace(mixed $search, mixed $replace, mixed $subject)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+
+<h3 id="md5加密及实际使用"><a class="markdownIt-Anchor" href="#md5加密及实际使用">#</a> md5 加密及实际使用：</h3>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">string</span> md5(<span class="keyword">string</span> $str)</span><br></pre></td></tr></table></figure>
+<p>创建一个 register.html</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">title</span>&gt;</span>登陆、注册<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;container&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h2</span> <span class="attr">class</span>=<span class="string">&quot;title&quot;</span>&gt;</span>用户注册<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">&quot;http://php:8888/md5.php&quot;</span> <span class="attr">method</span>=<span class="string">&quot;POST&quot;</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">table</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">td</span>&gt;</span>用户名<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;username&quot;</span> <span class="attr">id</span>=<span class="string">&quot;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">td</span>&gt;</span>密码<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;password&quot;</span> <span class="attr">name</span>=<span class="string">&quot;password&quot;</span> <span class="attr">id</span>=<span class="string">&quot;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span> <span class="attr">value</span>=<span class="string">&quot;submit&quot;</span>&gt;</span>注册<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>创建一个 md5.php</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="comment">// 获取表单信息</span></span><br><span class="line">$username = $_POST[<span class="string">&#x27;username&#x27;</span>];</span><br><span class="line">$password = md5($_POST[<span class="string">&#x27;password&#x27;</span>]);</span><br><span class="line"><span class="comment">// md5函数的使用</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 判断不是必须的</span></span><br><span class="line"><span class="keyword">if</span> (strlen($username) &gt;= <span class="number">8</span> &amp;&amp; strlen($username) &lt;= <span class="number">12</span>) &#123;</span><br><span class="line">  <span class="comment">// 输出表单提交数据</span></span><br><span class="line">  <span class="keyword">echo</span> <span class="string">&#x27;用户名：&#x27;</span>, $username, <span class="string">&#x27;&lt;hr/&gt;&#x27;</span>;</span><br><span class="line">  <span class="keyword">echo</span> <span class="string">&#x27;密码：&#x27;</span>, $password, <span class="string">&#x27;&lt;hr/&gt;&#x27;</span>;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  <span class="keyword">echo</span> <span class="string">&quot;请输入正确的格式&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<p>当然也可以添加判断条件来限制用户名和密码的格式。</p>
+
+<hr>
+<h2 id="小练习"><a class="markdownIt-Anchor" href="#小练习">#</a> 小练习：</h2>
+
+<p>经典水仙花问题：</p>
+<p>经典百钱百鸡问题：</p>
+]]></content>
+      <categories>
+        <category>计算机语言学习</category>
+        <category>PHP</category>
+      </categories>
+      <tags>
+        <tag>PHP</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Python编写解决Clion CMakeProjects解决方案的脚本</title>
     <url>/blog/ShenMingyu/d176d77e/</url>
     <content><![CDATA[<p>这段时间宅在家躲避疫情，仔细思考了一下，发现即便有了这样的一个教程，很多朋友依然会因为嫌麻烦或者看不懂而不去结局这个小问题，于是乎，我便写了一个 Python 脚本，可以自动生成 Clino 中的 CMakeLists.txt 和自定义生成 *.cpp 文件</p>
@@ -424,126 +544,6 @@
       </tags>
   </entry>
   <entry>
-    <title>PHP学习笔记</title>
-    <url>/blog/ShenMingyu/55d182ea/</url>
-    <content><![CDATA[<p>学习笔记系列博客仅用于个人的课程学习记录以用于回顾加强学习效果。</p>
-<h2 id="所需环境"><a class="markdownIt-Anchor" href="#所需环境">#</a> 所需环境</h2>
-<p><strong>macOS：</strong> MAMP（虽然 php5.3 以后版本都自带服务器，但是感觉还是使用集成环境更容易上手一些）</p>
-<p><strong>Windows：</strong> WAMP</p>
-<p><strong>使用编辑器：</strong> VScode</p>
-<p><a href="https://www.php.net/manual/zh/">PHP 官方文档</a></p>
-<hr>
-<h2 id="学习过程"><a class="markdownIt-Anchor" href="#学习过程">#</a> 学习过程：</h2>
-<h3 id="数学运算相关函数"><a class="markdownIt-Anchor" href="#数学运算相关函数">#</a> 数学运算相关函数：</h3>
-<ul>
-<li>
-<p><strong>幂运算</strong></p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">number pow(number $base, number $exp)</span><br></pre></td></tr></table></figure>
-</li>
-<li>
-<p><strong>平方根</strong></p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">float</span> sqrt(<span class="keyword">float</span> $arg)</span><br></pre></td></tr></table></figure>
-</li>
-<li>
-<p><strong>向上取整</strong></p>
-<ul>
-<li>应用场景：
-<ul>
-<li>计算分页的总页数</li>
-<li>ceil 总记录数 / 每页显示的记录数</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">float</span> ceil(<span class="keyword">float</span> $value)</span><br></pre></td></tr></table></figure>
-</li>
-<li>
-<p><strong>向下取整</strong></p>
-  <figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">float</span> floor(<span class="keyword">float</span> $value)</span><br></pre></td></tr></table></figure>
-</li>
-<li>
-<p><strong>随机数</strong></p>
-  <figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> rand(<span class="keyword">void</span>)</span><br><span class="line"><span class="keyword">int</span> rand(<span class="keyword">int</span> $min, <span class="keyword">int</span> $max)</span><br></pre></td></tr></table></figure>
-  <figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> mt_rand(<span class="keyword">void</span>)</span><br><span class="line"><span class="keyword">int</span> mt_void(<span class="keyword">int</span> $min, <span class="keyword">int</span> $max)</span><br></pre></td></tr></table></figure>
-</li>
-<li>
-<p><strong>四舍五入</strong></p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">float</span> round(<span class="keyword">float</span> $val[, $precision = <span class="number">0</span>])</span><br></pre></td></tr></table></figure>
-</li>
-<li>
-<p><strong>数字格式化</strong></p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">string</span> numebr_format(<span class="keyword">float</span> $number[, <span class="keyword">int</span> $decimals = <span class="number">0</span>])</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="字符串相关库函数"><a class="markdownIt-Anchor" href="#字符串相关库函数">#</a> 字符串相关库函数：</h3>
-<ul>
-<li>
-<p><strong>截取字符串</strong></p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">string</span> substr(<span class="keyword">string</span> $string, <span class="keyword">int</span> $start [<span class="keyword">int</span> $length])</span><br><span class="line"><span class="comment">// 字符串从0开始编号</span></span><br><span class="line"><span class="comment">// 如果$start为负数，则倒数</span></span><br><span class="line"><span class="comment">// 如果省略$length，则返回整个字符串</span></span><br></pre></td></tr></table></figure>
-</li>
-<li>
-<p><strong>大小写相关</strong></p>
-<ul>
-<li><strong>将字符串所有字母小写</strong></li>
-</ul>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">string</span> strtolower(<span class="keyword">string</span> \$string)</span><br></pre></td></tr></table></figure>
-<ul>
-<li><strong>将字符串所有字母大写</strong></li>
-</ul>
- <figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">string</span> strtoupper(<span class="keyword">string</span> \$string)</span><br></pre></td></tr></table></figure>
-<ul>
-<li><strong>将字符串首字母小写</strong></li>
-</ul>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">string</span> lcfirst(<span class="keyword">string</span> \$str)</span><br></pre></td></tr></table></figure>
-<ul>
-<li><strong>将字符串首字母大写</strong></li>
-</ul>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">string</span> ucfirst(<span class="keyword">string</span> \$str)</span><br></pre></td></tr></table></figure>
-<ul>
-<li><strong>将字符串每个单词首字母大写</strong></li>
-</ul>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">string</span> ucwords(<span class="keyword">string</span> \$str)</span><br></pre></td></tr></table></figure>
-
-</li>
-<li>
-<p><strong>字符串替换</strong></p>
-<ul>
-<li>
-<p><strong>区分大小写</strong></p>
-  <figure class="highlight php"><table><tr><td class="code"><pre><span class="line">mixed str_replace(mixed $search, mixed $replace, mixed $subject)</span><br></pre></td></tr></table></figure>
-</li>
-<li>
-<p><strong>不区分大小写</strong></p>
-  <figure class="highlight php"><table><tr><td class="code"><pre><span class="line">mixed str_ireplace(mixed $search, mixed $replace, mixed $subject)</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ul>
-
-<h3 id="md5加密及实际使用"><a class="markdownIt-Anchor" href="#md5加密及实际使用">#</a> md5 加密及实际使用：</h3>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">string</span> md5(<span class="keyword">string</span> $str)</span><br></pre></td></tr></table></figure>
-<p>创建一个 register.html</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">title</span>&gt;</span>登陆、注册<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">&quot;container&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h2</span> <span class="attr">class</span>=<span class="string">&quot;title&quot;</span>&gt;</span>用户注册<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">&quot;http://php:8888/md5.php&quot;</span> <span class="attr">method</span>=<span class="string">&quot;POST&quot;</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">table</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">td</span>&gt;</span>用户名<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;text&quot;</span> <span class="attr">name</span>=<span class="string">&quot;username&quot;</span> <span class="attr">id</span>=<span class="string">&quot;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">td</span>&gt;</span>密码<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">          <span class="tag">&lt;<span class="name">td</span>&gt;</span><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;password&quot;</span> <span class="attr">name</span>=<span class="string">&quot;password&quot;</span> <span class="attr">id</span>=<span class="string">&quot;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">&quot;submit&quot;</span> <span class="attr">value</span>=<span class="string">&quot;submit&quot;</span>&gt;</span>注册<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>创建一个 md5.php</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="comment">// 获取表单信息</span></span><br><span class="line">$username = $_POST[<span class="string">&#x27;username&#x27;</span>];</span><br><span class="line">$password = md5($_POST[<span class="string">&#x27;password&#x27;</span>]);</span><br><span class="line"><span class="comment">// md5函数的使用</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 判断不是必须的</span></span><br><span class="line"><span class="keyword">if</span> (strlen($username) &gt;= <span class="number">8</span> &amp;&amp; strlen($username) &lt;= <span class="number">12</span>) &#123;</span><br><span class="line">  <span class="comment">// 输出表单提交数据</span></span><br><span class="line">  <span class="keyword">echo</span> <span class="string">&#x27;用户名：&#x27;</span>, $username, <span class="string">&#x27;&lt;hr/&gt;&#x27;</span>;</span><br><span class="line">  <span class="keyword">echo</span> <span class="string">&#x27;密码：&#x27;</span>, $password, <span class="string">&#x27;&lt;hr/&gt;&#x27;</span>;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  <span class="keyword">echo</span> <span class="string">&quot;请输入正确的格式&quot;</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-<p>当然也可以添加判断条件来限制用户名和密码的格式。</p>
-
-<hr>
-<h2 id="小练习"><a class="markdownIt-Anchor" href="#小练习">#</a> 小练习：</h2>
-
-<p>经典水仙花问题：</p>
-<p>经典百钱百鸡问题：</p>
-]]></content>
-      <categories>
-        <category>计算机语言学习</category>
-        <category>PHP</category>
-      </categories>
-      <tags>
-        <tag>PHP</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>React环境搭建</title>
     <url>/blog/ShenMingyu/28a0bfec/</url>
     <content><![CDATA[<h1 id="react-环境搭建"><a class="markdownIt-Anchor" href="#react-环境搭建">#</a> React 环境搭建</h1>
@@ -599,6 +599,78 @@
       <tags>
         <tag>React</tag>
         <tag>环境搭建</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>React环境搭建问题及解决方案</title>
+    <url>/blog/ShenMingyu/fa16b3db/</url>
+    <content><![CDATA[<p><strong>问题截图描述：</strong></p>
+
+<h3 id="npm-warn-react100-no-description"><a class="markdownIt-Anchor" href="#npm-warn-react100-no-description">#</a> npm WARN React@1.0.0 No description</h3>
+
+<p>该问题是在执行</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install react --save</span><br></pre></td></tr></table></figure>
+<p>时遇到的问题。</p>
+<h3 id="解决方法"><a class="markdownIt-Anchor" href="#解决方法">#</a> 解决方法：</h3>
+<p>使用 vim 或编辑器打开  <code>package.json</code>  文件，初始界面如下：</p>
+
+<p>在  <code>&quot;description&quot;</code>  中任意添加描述（随便填，非空即可）</p>
+
+<p>此时发现警告少了一个。</p>
+<h3 id="npm-warn-react100-no-repository-field"><a class="markdownIt-Anchor" href="#npm-warn-react100-no-repository-field">#</a> npm WARN React@1.0.0 No repository field.</h3>
+
+<h3 id="解决方法-2"><a class="markdownIt-Anchor" href="#解决方法-2">#</a> 解决方法：</h3>
+<p>问题依然在  <code>package.json</code>  文件中，添加  <code>&quot;private”</code>  字段，并设置为  <code>true</code> 。</p>
+
+<p>再次执行，发现警告已经消除，问题解决。</p>
+
+<h2 id="问题分析"><a class="markdownIt-Anchor" href="#问题分析">#</a> 问题分析：</h2>
+<p>npm 默认自动生成的  <code>package.json</code>  没有自动设置的默认描述和存储库权限，这里需要手动进行设置。</p>
+<p>返回 <a href="/blog/ShenMingyu/28a0bfec/">React 环境搭建</a></p>
+]]></content>
+      <categories>
+        <category>Web前端</category>
+        <category>框架</category>
+        <category>React</category>
+      </categories>
+      <tags>
+        <tag>React</tag>
+        <tag>环境搭建</tag>
+        <tag>npm</tag>
+        <tag>解决方案</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>React资源引用问题及解决方案</title>
+    <url>/blog/ShenMingyu/a0d6d312/</url>
+    <content><![CDATA[<p>问题截图描述：</p>
+<p>在本地安装下载 react 环境后，引用资源，但是在代码编写后 faxing 无法渲染，出现了如下错误：</p>
+
+<p>提示为 ReactDom 函数不是一个函数，这就很奇怪。</p>
+<p>使用</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm info react</span><br><span class="line"></span><br><span class="line">npm info react-dom</span><br><span class="line"></span><br><span class="line">npm info babel-standalone</span><br></pre></td></tr></table></figure>
+<p>查询发现都是最新版本，没有问题。</p>
+<p>进入 babel 官网查询问题，根据 <a href="https://babeljs.io/docs/setup/">这个网址</a> 内容进行创建 babel.config.json 文件并在其中添加下述代码，</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;presets&quot;</span>: [</span><br><span class="line">    <span class="string">&quot;@babel/preset-env&quot;</span></span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>依然没有解决，在浏览器中依然报错并且无法渲染。</p>
+<p>根据网上许多博客内容，更改  <code>ReactDom</code>  为  <code>ReactDOM</code>  依旧没有效果，仍然显示没有该函数。</p>
+<h3 id="解决方法"><a class="markdownIt-Anchor" href="#解决方法">#</a> 解决方法：</h3>
+<p>在 <a href="https://www.runoob.com/react/react-install.html">菜鸟教程 react 教程</a> 中直接引用老版本的  <code>react.development.js</code> ， <code>react-dom.development.js</code>  和  <code>babel.min.js </code>  三个文件，即直接使用其中推荐的 CDN 来使用。发现成功了。</p>
+<p>目前分析看来应该是本地安装的资源和网上使用的资源有一定的不同导致的。</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- Staticfile CDN 的 React CDN 库 --&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;https://cdn.staticfile.org/react/16.4.0/umd/react.development.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 生产环境中不建议使用 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 官方提供的cdn地址 --&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;https://unpkg.com/react@16/umd/react.development.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;https://unpkg.com/react-dom@16/umd/react-dom.development.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 生产环境中不建议使用 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;https://unpkg.com/babel-standalone@6.15.0/babel.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="问题分析"><a class="markdownIt-Anchor" href="#问题分析">#</a> 问题分析：</h3>
+<p>到目前为止（2002/9/27）还没有发现具体问题，对比 cdn 上的文件和安装的本地文件发现其中的区别非常大，在百度中暂时无法找出问题所在，目前个人认为可能是新版本对函数的名称以及使用方法进行了更新，导致无法识别代码。</p>
+]]></content>
+      <categories>
+        <category>Web前端</category>
+        <category>框架</category>
+        <category>React</category>
+      </categories>
+      <tags>
+        <tag>React</tag>
+        <tag>环境搭建</tag>
+        <tag>解决方案</tag>
       </tags>
   </entry>
   <entry>
@@ -740,78 +812,6 @@
       </tags>
   </entry>
   <entry>
-    <title>React环境搭建问题及解决方案</title>
-    <url>/blog/ShenMingyu/fa16b3db/</url>
-    <content><![CDATA[<p><strong>问题截图描述：</strong></p>
-
-<h3 id="npm-warn-react100-no-description"><a class="markdownIt-Anchor" href="#npm-warn-react100-no-description">#</a> npm WARN React@1.0.0 No description</h3>
-
-<p>该问题是在执行</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install react --save</span><br></pre></td></tr></table></figure>
-<p>时遇到的问题。</p>
-<h3 id="解决方法"><a class="markdownIt-Anchor" href="#解决方法">#</a> 解决方法：</h3>
-<p>使用 vim 或编辑器打开  <code>package.json</code>  文件，初始界面如下：</p>
-
-<p>在  <code>&quot;description&quot;</code>  中任意添加描述（随便填，非空即可）</p>
-
-<p>此时发现警告少了一个。</p>
-<h3 id="npm-warn-react100-no-repository-field"><a class="markdownIt-Anchor" href="#npm-warn-react100-no-repository-field">#</a> npm WARN React@1.0.0 No repository field.</h3>
-
-<h3 id="解决方法-2"><a class="markdownIt-Anchor" href="#解决方法-2">#</a> 解决方法：</h3>
-<p>问题依然在  <code>package.json</code>  文件中，添加  <code>&quot;private”</code>  字段，并设置为  <code>true</code> 。</p>
-
-<p>再次执行，发现警告已经消除，问题解决。</p>
-
-<h2 id="问题分析"><a class="markdownIt-Anchor" href="#问题分析">#</a> 问题分析：</h2>
-<p>npm 默认自动生成的  <code>package.json</code>  没有自动设置的默认描述和存储库权限，这里需要手动进行设置。</p>
-<p>返回 <a href="/blog/ShenMingyu/28a0bfec/">React 环境搭建</a></p>
-]]></content>
-      <categories>
-        <category>Web前端</category>
-        <category>框架</category>
-        <category>React</category>
-      </categories>
-      <tags>
-        <tag>React</tag>
-        <tag>环境搭建</tag>
-        <tag>npm</tag>
-        <tag>解决方案</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>React资源引用问题及解决方案</title>
-    <url>/blog/ShenMingyu/a0d6d312/</url>
-    <content><![CDATA[<p>问题截图描述：</p>
-<p>在本地安装下载 react 环境后，引用资源，但是在代码编写后 faxing 无法渲染，出现了如下错误：</p>
-
-<p>提示为 ReactDom 函数不是一个函数，这就很奇怪。</p>
-<p>使用</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm info react</span><br><span class="line"></span><br><span class="line">npm info react-dom</span><br><span class="line"></span><br><span class="line">npm info babel-standalone</span><br></pre></td></tr></table></figure>
-<p>查询发现都是最新版本，没有问题。</p>
-<p>进入 babel 官网查询问题，根据 <a href="https://babeljs.io/docs/setup/">这个网址</a> 内容进行创建 babel.config.json 文件并在其中添加下述代码，</p>
-<figure class="highlight json"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;presets&quot;</span>: [</span><br><span class="line">    <span class="string">&quot;@babel/preset-env&quot;</span></span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>依然没有解决，在浏览器中依然报错并且无法渲染。</p>
-<p>根据网上许多博客内容，更改  <code>ReactDom</code>  为  <code>ReactDOM</code>  依旧没有效果，仍然显示没有该函数。</p>
-<h3 id="解决方法"><a class="markdownIt-Anchor" href="#解决方法">#</a> 解决方法：</h3>
-<p>在 <a href="https://www.runoob.com/react/react-install.html">菜鸟教程 react 教程</a> 中直接引用老版本的  <code>react.development.js</code> ， <code>react-dom.development.js</code>  和  <code>babel.min.js </code>  三个文件，即直接使用其中推荐的 CDN 来使用。发现成功了。</p>
-<p>目前分析看来应该是本地安装的资源和网上使用的资源有一定的不同导致的。</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- Staticfile CDN 的 React CDN 库 --&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;https://cdn.staticfile.org/react/16.4.0/umd/react.development.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 生产环境中不建议使用 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 官方提供的cdn地址 --&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;https://unpkg.com/react@16/umd/react.development.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;https://unpkg.com/react-dom@16/umd/react-dom.development.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- 生产环境中不建议使用 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;https://unpkg.com/babel-standalone@6.15.0/babel.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="问题分析"><a class="markdownIt-Anchor" href="#问题分析">#</a> 问题分析：</h3>
-<p>到目前为止（2002/9/27）还没有发现具体问题，对比 cdn 上的文件和安装的本地文件发现其中的区别非常大，在百度中暂时无法找出问题所在，目前个人认为可能是新版本对函数的名称以及使用方法进行了更新，导致无法识别代码。</p>
-]]></content>
-      <categories>
-        <category>Web前端</category>
-        <category>框架</category>
-        <category>React</category>
-      </categories>
-      <tags>
-        <tag>React</tag>
-        <tag>环境搭建</tag>
-        <tag>解决方案</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Ubuntu云服务器Apache与Nginx的网页自定义配置</title>
     <url>/blog/ShenMingyu/26ae02a2/</url>
     <content><![CDATA[<p>相信有很多朋友们希望能够建立属于自己的网站，在成功买好域名、买好服务器、安装完必要的 LAMP 或者 LEMP、成功进入 Apache/Nginx 的默认页面后，却发现开始一筹莫展 —— 不知道该怎么样将自己写好的页面成功显示出来。本文将就这一问题展示解决方案</p>
@@ -888,6 +888,153 @@
       <tags>
         <tag>环境搭建</tag>
         <tag>解决方案</tag>
+        <tag>Apache</tag>
+        <tag>Nginx</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Ubuntu云服务器下载安装LAMP</title>
+    <url>/blog/ShenMingyu/69ace0a2/</url>
+    <content><![CDATA[<p>LAMP 即：Linux、Apache2、MySQL、PHP (Perl, Python)</p>
+<h2 id="更新apt包"><a class="markdownIt-Anchor" href="#更新apt包">#</a> 更新 apt 包</h2>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line"></span><br><span class="line">sudo apt upgrade</span><br></pre></td></tr></table></figure>
+<h2 id="apache2-的安装"><a class="markdownIt-Anchor" href="#apache2-的安装">#</a> Apache2 的安装</h2>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">apt install apache2 -y</span><br></pre></td></tr></table></figure>
+<p>验证安装的 Apache2 的版本</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">apache2 -v</span><br></pre></td></tr></table></figure>
+
+<p>启动 Apache2 服务</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo systemctl enable apache2</span><br><span class="line"></span><br><span class="line">sudo systemctl start apache2</span><br><span class="line"><span class="meta">#</span><span class="bash"> 我记得之前好像用的是 <span class="built_in">enable</span> httpd 和 start httpd 的命令，暂时不知道为什么命令格式和那时不同了</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 查看 Apache2 服务状态命令</span></span><br><span class="line">sudo systemctl status apache2</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 但使用 status httpd 可以显示 httpd 服务的状态，Active: inactive (dead)</span></span><br></pre></td></tr></table></figure>
+<p>安装成功后，浏览器输入 IP 地址后即可看到默认页面：</p>
+
+<p>此时，根据网页中显示的默认配置情况，可以知道文件的根目录所在是  <code>/var/www</code>  这个是可以进行自定义的，具体的自定义配置方法可以参考我的另一篇博客 <a href="blog/ShenMingyu/26ae02a2/">Ubuntu 云服务器 Apache 与 Nginx 的网页自定义配置</a>。</p>
+
+<h2 id="mysql-的安装"><a class="markdownIt-Anchor" href="#mysql-的安装">#</a> MySQL 的安装</h2>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">apt install mysql-server -y</span><br></pre></td></tr></table></figure>
+<p>期间会出现设置数据库服务器密码的界面</p>
+
+<p>验证查询安装的 MySQL 版本</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">mysql --version</span><br></pre></td></tr></table></figure>
+
+<p>安装完成后，运行以下命令来对数据库进行保护</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">mysql_secure_installation</span><br></pre></td></tr></table></figure>
+<p>然后会进行数据库安全的具体设置</p>
+
+<h2 id="php-的安装"><a class="markdownIt-Anchor" href="#php-的安装">#</a> PHP 的安装</h2>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">apt install php -y</span><br></pre></td></tr></table></figure>
+<p>验证安装的 PHP 的版本</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">php -v</span><br></pre></td></tr></table></figure>
+
+<p>接下来，我们需要告诉 Apache 首先提供 PHP 页面。</p>
+<p>打开  <code>/etc/apache2/mods-enabled/dir.conf</code>  文件并将其更改为首先列出 index.php。</p>
+
+<p>最后，我们需要重新启动 Apache Web 服务器。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">systemctl restart apache2</span><br></pre></td></tr></table></figure>
+<p>至此，LAMP 的安装工作完成。</p>
+]]></content>
+      <categories>
+        <category>网站搭建</category>
+      </categories>
+      <tags>
+        <tag>MySQL</tag>
+        <tag>PHP</tag>
+        <tag>环境搭建</tag>
+        <tag>Apache</tag>
+        <tag>Ubuntu</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Ubuntu云服务器下载安装LNMP</title>
+    <url>/blog/ShenMingyu/62f0a79f/</url>
+    <content><![CDATA[<p>LNMP 即：Linux、Nginx、MySQL、PHP (Perl, Python)</p>
+<h2 id="更新apt包"><a class="markdownIt-Anchor" href="#更新apt包">#</a> 更新 apt 包</h2>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line"></span><br><span class="line">sudo apt upgrade</span><br></pre></td></tr></table></figure>
+<h2 id="nginx-的安装"><a class="markdownIt-Anchor" href="#nginx-的安装">#</a> Nginx 的安装</h2>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo apt install nginx -y</span><br></pre></td></tr></table></figure>
+<p>如果已经安装启动了 Apache2 的服务，会报出如下错误</p>
+
+<p>这是因为端口已经被 Apache2 占用，导致 Nginx 服务无法启动。</p>
+<p>需要将 Apache2 服务关闭</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo systemctl disable httpd</span><br><span class="line"></span><br><span class="line">sudo systemctl close httpd</span><br></pre></td></tr></table></figure>
+<p>启动 Nginx</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo systemctl enable nginx</span><br><span class="line"></span><br><span class="line">sudo systemctl start nginx</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 查看nginx服务状态命令</span></span><br><span class="line">sudo systemctl status nginx</span><br></pre></td></tr></table></figure>
+<p>在浏览器中输入 IP 地址即可看到默认页面：</p>
+
+<h2 id="mysql-的安装"><a class="markdownIt-Anchor" href="#mysql-的安装">#</a> MySQL 的安装</h2>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">apt install mysql-server -y</span><br></pre></td></tr></table></figure>
+<p>期间会出现设置数据库服务器密码的界面</p>
+
+<p>验证查询安装的 MySQL 版本</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">mysql --version</span><br></pre></td></tr></table></figure>
+
+<p>安装完成后，运行以下命令来对数据库进行保护</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">mysql_secure_installation</span><br></pre></td></tr></table></figure>
+<p>然后会进行数据库安全的具体设置</p>
+
+<h2 id="php-的安装"><a class="markdownIt-Anchor" href="#php-的安装">#</a> PHP 的安装</h2>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">apt install php -y</span><br></pre></td></tr></table></figure>
+<p>验证安装的 PHP 的版本</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">php -v</span><br></pre></td></tr></table></figure>
+
+<p>接下来，我们需要告诉 Nginx 首先提供 PHP 页面。</p>
+<p>打开  <code>/etc/nginx/sites-available/default</code>  文件并将其更改为首先列出 index.php。</p>
+
+<p>测试 Nginx 配置</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo nginx -t</span><br></pre></td></tr></table></figure>
+<p>最后，我们需要重新启动 Nginx Web 服务器。</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">systemctl restart nginx</span><br></pre></td></tr></table></figure>
+<p>至此，LNMP 的安装工作完成。</p>
+]]></content>
+      <categories>
+        <category>网站搭建</category>
+      </categories>
+      <tags>
+        <tag>MySQL</tag>
+        <tag>PHP</tag>
+        <tag>环境搭建</tag>
+        <tag>Nginx</tag>
+        <tag>Ubuntu</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>云翼计划建站流程</title>
+    <url>/blog/ShenMingyu/5f8623e6/</url>
+    <content><![CDATA[<p>在今年 2 月 3 月份的时候，我通过云翼计划的学生试用，经过考试之后，免费得到了第一台云服务器（半年期，47.113.87.183 很好听的公网 ip 地址嘻嘻，可惜不能以云翼计划学生优惠的价格进行续费，已经过期了），由于当时经验不足，踩了很多坑，浪费了很多时间好不容易搭建好了环境，写好了个人网站主页，部署到服务器上，再加上各种做其他项目上的小问题，兜兜转转地时间也快到期了，于是便在阿里云云翼计划中购买了第一台云服务器，上一次没有描述整体建站流程的想法，这次就把它补起来！</p>
+<h2 id="建站流程"><a class="markdownIt-Anchor" href="#建站流程">#</a> 建站流程</h2>
+<h3 id="购买云服务器"><a class="markdownIt-Anchor" href="#购买云服务器">#</a> 购买云服务器</h3>
+<p>首先，进入<a href="https://promotion.aliyun.com/ntms/act/campus2018.html?spm=5176.12818093.0.0.845916d08qhqZi">阿里云云翼计划首页</a>，向下滑动，找到学生优惠套餐</p>
+
+<p>我购买的是第一个 “云服务器 ECS 学生专享”，然后选择地域、操作系统和购买时长，下方应当会显示价格为 114 元。</p>
+<!-- 要先进行学生认证哦 -->
+
+<p>然后根据流程进行购买，成功交易后很快服务器就开通好了。然后就可以进入云服务器进行具体的环境配置啦。</p>
+<h3 id="云服务器环境配置"><a class="markdownIt-Anchor" href="#云服务器环境配置">#</a> 云服务器环境配置</h3>
+<p>可以参考我之前的博客文章 <a href="/blog/ShenMingyu/">Ubuntu 云服务器下载安装 LAMP</a> 和 <a href="/blog/ShenMingyu/">Ubuntu 云服务器下载安装 LNMP</a> 哦！这里就不再赘述了。</p>
+<h3 id="域名购买及备案"><a class="markdownIt-Anchor" href="#域名购买及备案">#</a> 域名购买及备案</h3>
+<p>我是在 <a href="https://mi.aliyun.com">万网</a> 上购买了两个域名（ myspegale.tech 是之前买的，最近新增并使用 <a href="http://shenmingyu.com">shenmingyu.com</a> 作为主要域名），购买完成后即可在阿里云的域名备案中心进行域名的备案。一般来讲这个过程会有两周左右的时间。</p>
+<ul>
+<li>备案的条件：
+<ul>
+<li>购买了域名</li>
+<li>购买了服务器</li>
+<li>主办单位证件（个人就是身份证）</li>
+</ul>
+</li>
+</ul>
+<p>需要进行实名认证，网站名称在备案时是有要求的，部分要求如下：</p>
+
+<p>更加详细的要求可以去询问客服哦。客服小哥哥小姐姐们还是很耐心的，我之前第一次备案的时候就是因为网站名称的问题，接到了阿里云的电话，经过一番修改定夺之后才最后成功备案的。</p>
+<p>…………… 假装经过了漫长的备案时间 ……………</p>
+<p>备案完成后，需要根据备案的需求，在你的网站底部添加备案的 ICP 号，并且要在 30 天内去进行公安备案，这个详细的可以查阅阿里云的相关文档，里面有很详细的流程阐述。</p>
+<!-- 在备案过程中，你所购买的域名是可以进行 DNS 解析的，但是暂时无法进行国内的 CDN 加速服务。 -->
+<h3 id="域名的-dns-解析"><a class="markdownIt-Anchor" href="#域名的-dns-解析">#</a> 域名的 DNS 解析</h3>
+<h3 id="网站的-cdn-加速"><a class="markdownIt-Anchor" href="#网站的-cdn-加速">#</a> 网站的 CDN 加速</h3>
+]]></content>
+      <categories>
+        <category>网站搭建</category>
+      </categories>
+      <tags>
+        <tag>环境搭建</tag>
         <tag>Apache</tag>
         <tag>Nginx</tag>
       </tags>
@@ -1159,153 +1306,6 @@
       </categories>
       <tags>
         <tag>Database</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Ubuntu云服务器下载安装LAMP</title>
-    <url>/blog/ShenMingyu/69ace0a2/</url>
-    <content><![CDATA[<p>LAMP 即：Linux、Apache2、MySQL、PHP (Perl, Python)</p>
-<h2 id="更新apt包"><a class="markdownIt-Anchor" href="#更新apt包">#</a> 更新 apt 包</h2>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line"></span><br><span class="line">sudo apt upgrade</span><br></pre></td></tr></table></figure>
-<h2 id="apache2-的安装"><a class="markdownIt-Anchor" href="#apache2-的安装">#</a> Apache2 的安装</h2>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">apt install apache2 -y</span><br></pre></td></tr></table></figure>
-<p>验证安装的 Apache2 的版本</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">apache2 -v</span><br></pre></td></tr></table></figure>
-
-<p>启动 Apache2 服务</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo systemctl enable apache2</span><br><span class="line"></span><br><span class="line">sudo systemctl start apache2</span><br><span class="line"><span class="meta">#</span><span class="bash"> 我记得之前好像用的是 <span class="built_in">enable</span> httpd 和 start httpd 的命令，暂时不知道为什么命令格式和那时不同了</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 查看 Apache2 服务状态命令</span></span><br><span class="line">sudo systemctl status apache2</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 但使用 status httpd 可以显示 httpd 服务的状态，Active: inactive (dead)</span></span><br></pre></td></tr></table></figure>
-<p>安装成功后，浏览器输入 IP 地址后即可看到默认页面：</p>
-
-<p>此时，根据网页中显示的默认配置情况，可以知道文件的根目录所在是  <code>/var/www</code>  这个是可以进行自定义的，具体的自定义配置方法可以参考我的另一篇博客 <a href="blog/ShenMingyu/26ae02a2/">Ubuntu 云服务器 Apache 与 Nginx 的网页自定义配置</a>。</p>
-
-<h2 id="mysql-的安装"><a class="markdownIt-Anchor" href="#mysql-的安装">#</a> MySQL 的安装</h2>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">apt install mysql-server -y</span><br></pre></td></tr></table></figure>
-<p>期间会出现设置数据库服务器密码的界面</p>
-
-<p>验证查询安装的 MySQL 版本</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">mysql --version</span><br></pre></td></tr></table></figure>
-
-<p>安装完成后，运行以下命令来对数据库进行保护</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">mysql_secure_installation</span><br></pre></td></tr></table></figure>
-<p>然后会进行数据库安全的具体设置</p>
-
-<h2 id="php-的安装"><a class="markdownIt-Anchor" href="#php-的安装">#</a> PHP 的安装</h2>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">apt install php -y</span><br></pre></td></tr></table></figure>
-<p>验证安装的 PHP 的版本</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">php -v</span><br></pre></td></tr></table></figure>
-
-<p>接下来，我们需要告诉 Apache 首先提供 PHP 页面。</p>
-<p>打开  <code>/etc/apache2/mods-enabled/dir.conf</code>  文件并将其更改为首先列出 index.php。</p>
-
-<p>最后，我们需要重新启动 Apache Web 服务器。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">systemctl restart apache2</span><br></pre></td></tr></table></figure>
-<p>至此，LAMP 的安装工作完成。</p>
-]]></content>
-      <categories>
-        <category>网站搭建</category>
-      </categories>
-      <tags>
-        <tag>MySQL</tag>
-        <tag>PHP</tag>
-        <tag>环境搭建</tag>
-        <tag>Apache</tag>
-        <tag>Ubuntu</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Ubuntu云服务器下载安装LNMP</title>
-    <url>/blog/ShenMingyu/62f0a79f/</url>
-    <content><![CDATA[<p>LNMP 即：Linux、Nginx、MySQL、PHP (Perl, Python)</p>
-<h2 id="更新apt包"><a class="markdownIt-Anchor" href="#更新apt包">#</a> 更新 apt 包</h2>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line"></span><br><span class="line">sudo apt upgrade</span><br></pre></td></tr></table></figure>
-<h2 id="nginx-的安装"><a class="markdownIt-Anchor" href="#nginx-的安装">#</a> Nginx 的安装</h2>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo apt install nginx -y</span><br></pre></td></tr></table></figure>
-<p>如果已经安装启动了 Apache2 的服务，会报出如下错误</p>
-
-<p>这是因为端口已经被 Apache2 占用，导致 Nginx 服务无法启动。</p>
-<p>需要将 Apache2 服务关闭</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo systemctl disable httpd</span><br><span class="line"></span><br><span class="line">sudo systemctl close httpd</span><br></pre></td></tr></table></figure>
-<p>启动 Nginx</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo systemctl enable nginx</span><br><span class="line"></span><br><span class="line">sudo systemctl start nginx</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 查看nginx服务状态命令</span></span><br><span class="line">sudo systemctl status nginx</span><br></pre></td></tr></table></figure>
-<p>在浏览器中输入 IP 地址即可看到默认页面：</p>
-
-<h2 id="mysql-的安装"><a class="markdownIt-Anchor" href="#mysql-的安装">#</a> MySQL 的安装</h2>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">apt install mysql-server -y</span><br></pre></td></tr></table></figure>
-<p>期间会出现设置数据库服务器密码的界面</p>
-
-<p>验证查询安装的 MySQL 版本</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">mysql --version</span><br></pre></td></tr></table></figure>
-
-<p>安装完成后，运行以下命令来对数据库进行保护</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">mysql_secure_installation</span><br></pre></td></tr></table></figure>
-<p>然后会进行数据库安全的具体设置</p>
-
-<h2 id="php-的安装"><a class="markdownIt-Anchor" href="#php-的安装">#</a> PHP 的安装</h2>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">apt install php -y</span><br></pre></td></tr></table></figure>
-<p>验证安装的 PHP 的版本</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">php -v</span><br></pre></td></tr></table></figure>
-
-<p>接下来，我们需要告诉 Nginx 首先提供 PHP 页面。</p>
-<p>打开  <code>/etc/nginx/sites-available/default</code>  文件并将其更改为首先列出 index.php。</p>
-
-<p>测试 Nginx 配置</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo nginx -t</span><br></pre></td></tr></table></figure>
-<p>最后，我们需要重新启动 Nginx Web 服务器。</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">systemctl restart nginx</span><br></pre></td></tr></table></figure>
-<p>至此，LNMP 的安装工作完成。</p>
-]]></content>
-      <categories>
-        <category>网站搭建</category>
-      </categories>
-      <tags>
-        <tag>MySQL</tag>
-        <tag>PHP</tag>
-        <tag>环境搭建</tag>
-        <tag>Nginx</tag>
-        <tag>Ubuntu</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>云翼计划建站流程</title>
-    <url>/blog/ShenMingyu/5f8623e6/</url>
-    <content><![CDATA[<p>在今年 2 月 3 月份的时候，我通过云翼计划的学生试用，经过考试之后，免费得到了第一台云服务器（半年期，47.113.87.183 很好听的公网 ip 地址嘻嘻，可惜不能以云翼计划学生优惠的价格进行续费，已经过期了），由于当时经验不足，踩了很多坑，浪费了很多时间好不容易搭建好了环境，写好了个人网站主页，部署到服务器上，再加上各种做其他项目上的小问题，兜兜转转地时间也快到期了，于是便在阿里云云翼计划中购买了第一台云服务器，上一次没有描述整体建站流程的想法，这次就把它补起来！</p>
-<h2 id="建站流程"><a class="markdownIt-Anchor" href="#建站流程">#</a> 建站流程</h2>
-<h3 id="购买云服务器"><a class="markdownIt-Anchor" href="#购买云服务器">#</a> 购买云服务器</h3>
-<p>首先，进入<a href="https://promotion.aliyun.com/ntms/act/campus2018.html?spm=5176.12818093.0.0.845916d08qhqZi">阿里云云翼计划首页</a>，向下滑动，找到学生优惠套餐</p>
-
-<p>我购买的是第一个 “云服务器 ECS 学生专享”，然后选择地域、操作系统和购买时长，下方应当会显示价格为 114 元。</p>
-<!-- 要先进行学生认证哦 -->
-
-<p>然后根据流程进行购买，成功交易后很快服务器就开通好了。然后就可以进入云服务器进行具体的环境配置啦。</p>
-<h3 id="云服务器环境配置"><a class="markdownIt-Anchor" href="#云服务器环境配置">#</a> 云服务器环境配置</h3>
-<p>可以参考我之前的博客文章 <a href="/blog/ShenMingyu/">Ubuntu 云服务器下载安装 LAMP</a> 和 <a href="/blog/ShenMingyu/">Ubuntu 云服务器下载安装 LNMP</a> 哦！这里就不再赘述了。</p>
-<h3 id="域名购买及备案"><a class="markdownIt-Anchor" href="#域名购买及备案">#</a> 域名购买及备案</h3>
-<p>我是在 <a href="https://mi.aliyun.com">万网</a> 上购买了两个域名（ myspegale.tech 是之前买的，最近新增并使用 <a href="http://shenmingyu.com">shenmingyu.com</a> 作为主要域名），购买完成后即可在阿里云的域名备案中心进行域名的备案。一般来讲这个过程会有两周左右的时间。</p>
-<ul>
-<li>备案的条件：
-<ul>
-<li>购买了域名</li>
-<li>购买了服务器</li>
-<li>主办单位证件（个人就是身份证）</li>
-</ul>
-</li>
-</ul>
-<p>需要进行实名认证，网站名称在备案时是有要求的，部分要求如下：</p>
-
-<p>更加详细的要求可以去询问客服哦。客服小哥哥小姐姐们还是很耐心的，我之前第一次备案的时候就是因为网站名称的问题，接到了阿里云的电话，经过一番修改定夺之后才最后成功备案的。</p>
-<p>…………… 假装经过了漫长的备案时间 ……………</p>
-<p>备案完成后，需要根据备案的需求，在你的网站底部添加备案的 ICP 号，并且要在 30 天内去进行公安备案，这个详细的可以查阅阿里云的相关文档，里面有很详细的流程阐述。</p>
-<!-- 在备案过程中，你所购买的域名是可以进行 DNS 解析的，但是暂时无法进行国内的 CDN 加速服务。 -->
-<h3 id="域名的-dns-解析"><a class="markdownIt-Anchor" href="#域名的-dns-解析">#</a> 域名的 DNS 解析</h3>
-<h3 id="网站的-cdn-加速"><a class="markdownIt-Anchor" href="#网站的-cdn-加速">#</a> 网站的 CDN 加速</h3>
-]]></content>
-      <categories>
-        <category>网站搭建</category>
-      </categories>
-      <tags>
-        <tag>环境搭建</tag>
-        <tag>Apache</tag>
-        <tag>Nginx</tag>
       </tags>
   </entry>
 </search>
