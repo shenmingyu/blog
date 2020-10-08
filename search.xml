@@ -997,46 +997,115 @@
       </tags>
   </entry>
   <entry>
-    <title>云翼计划建站流程</title>
-    <url>/blog/ShenMingyu/5f8623e6/</url>
-    <content><![CDATA[<p>在今年 2 月 3 月份的时候，我通过云翼计划的学生试用，经过考试之后，免费得到了第一台云服务器（半年期，47.113.87.183 很好听的公网 ip 地址嘻嘻，可惜不能以云翼计划学生优惠的价格进行续费，已经过期了），由于当时经验不足，踩了很多坑，浪费了很多时间好不容易搭建好了环境，写好了个人网站主页，部署到服务器上，再加上各种做其他项目上的小问题，兜兜转转地时间也快到期了，于是便在阿里云云翼计划中购买了第一台云服务器，上一次没有描述整体建站流程的想法，这次就把它补起来！</p>
-<h2 id="建站流程"><a class="markdownIt-Anchor" href="#建站流程">#</a> 建站流程</h2>
-<h3 id="购买云服务器"><a class="markdownIt-Anchor" href="#购买云服务器">#</a> 购买云服务器</h3>
-<p>首先，进入<a href="https://promotion.aliyun.com/ntms/act/campus2018.html?spm=5176.12818093.0.0.845916d08qhqZi">阿里云云翼计划首页</a>，向下滑动，找到学生优惠套餐</p>
+    <title>《ES6标准入门》阅读所遇问题分析</title>
+    <url>/blog/ShenMingyu/710b8415/</url>
+    <content><![CDATA[<p>笔者于  <code>2020/10/1</code>  开始阅读本书，本文记录读书过程中所遇疑问与困惑，并尽量对这些问题进行初步解答，由于初学，所提问题可能比较奇怪甚至莫名其妙，还请多多谅解，回答谨为个人对问题的看法与观点，如有不正确指出，还请不吝赐教。</p>
+<h2 id="在使用-iife-中使用-varlet-的作用是否能与块级作用域中的-letvar-作用相同"><a class="markdownIt-Anchor" href="#在使用-iife-中使用-varlet-的作用是否能与块级作用域中的-letvar-作用相同">#</a> 在使用 IIFE 中使用 var/let 的作用是否能与块级作用域中的 let/var 作用相同？</h2>
+<p>问题为思考书 P24 后提出，由于对 javascript 的理解不深，故提出该问题，并实操进行对比。</p>
+<p>书本中提出：</p>
+<blockquote>
+<p>块级作用域的出现，实际上使得获得广泛应用的立即执行匿名函数（IIFE）不再必要了。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// IIFE 写法</span></span><br><span class="line">(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">var</span> tmp = ...;</span><br><span class="line">	...</span><br><span class="line">&#125;());</span><br><span class="line"></span><br><span class="line"><span class="comment">// 块级作用域写法</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">let</span> temp = ...;</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>根据前面所学，由于块级作用域的特性：外层作用域无法读取内层作用域的变量，而目前所理解的 IIFE 的作用为将其中的部分变量函数等与外部分隔开来，那么在块级作用域中使用 var 和 let 类型变量的效果与在 IIFE 中使用 let 和 var 类型变量是否有区别呢？</p>
+<p>编写代码：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// IIFE 写法内 var 与 let 的显示情况</span></span><br><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> IIFELet = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">var</span> IIFEVar = <span class="number">2</span>;</span><br><span class="line">  <span class="built_in">console</span>.log(IIFELet);</span><br><span class="line">  <span class="built_in">console</span>.log(IIFEVar);</span><br><span class="line">&#125;())</span><br><span class="line"><span class="comment">// console.log(IIFELet);</span></span><br><span class="line"><span class="comment">// console.log(IIFEVar);</span></span><br></pre></td></tr></table></figure>
+<p>上述代码运行后，函数内部的输出语句都正常输出，函数外部两语句分别运行也都出现报错：</p>
 
-<p>我购买的是第一个 “云服务器 ECS 学生专享”，然后选择地域、操作系统和购买时长，下方应当会显示价格为 114 元。</p>
-<!-- 要先进行学生认证哦 -->
 
-<p>然后根据流程进行购买，成功交易后很快服务器就开通好了。然后就可以进入云服务器进行具体的环境配置啦。</p>
-<h3 id="云服务器环境配置"><a class="markdownIt-Anchor" href="#云服务器环境配置">#</a> 云服务器环境配置</h3>
-<p>可以参考我之前的博客文章 <a href="/blog/ShenMingyu/">Ubuntu 云服务器下载安装 LAMP</a> 和 <a href="/blog/ShenMingyu/">Ubuntu 云服务器下载安装 LNMP</a> 哦！这里就不再赘述了。</p>
-<h3 id="域名购买及备案"><a class="markdownIt-Anchor" href="#域名购买及备案">#</a> 域名购买及备案</h3>
-<p>我是在 <a href="https://mi.aliyun.com">万网</a> 上购买了两个域名（ myspegale.tech 是之前买的，最近新增并使用 <a href="http://shenmingyu.com">shenmingyu.com</a> 作为主要域名），购买完成后即可在阿里云的域名备案中心进行域名的备案。一般来讲这个过程会有两周左右的时间。</p>
+<p>这说明立即执行匿名函数的变量作用域是被局限在了函数体作用域的内部，函数执行完毕后，变量会被释放，导致了外部无法识别内部变量。</p>
+<p>而当使用块级作用域时，出现了不同的情况：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 块级作用域写法内 var 与 let 的显示情况</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">let</span> blockLet = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">var</span> blockVar = <span class="number">2</span>;</span><br><span class="line">  <span class="built_in">console</span>.log(blockLet);</span><br><span class="line">  <span class="built_in">console</span>.log(blockVar);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// console.log(blockLet);</span></span><br><span class="line"><span class="comment">// console.log(blockVar);</span></span><br></pre></td></tr></table></figure>
+<p>在块级作用域内部的两个输出语句也正常输出，在外部使用 let 时也出现了报错现象，这也匹配了了 let 关键词的适用范围，当函数结束后会导致变量释放而导致无法识别。</p>
+
+<p>但当输出 var 类型变量时，块级作用域依旧能够正常输出变量的值。</p>
+
+<p>根据书中所描述的：</p>
+<blockquote>
+<p>ES5 只有全局作用域和函数作用域，没有块级作用域，这导致很多场景不合理</p>
 <ul>
-<li>备案的条件：
-<ul>
-<li>购买了域名</li>
-<li>购买了服务器</li>
-<li>主办单位证件（个人就是身份证）</li>
+<li>内层变量可能会覆盖外层变量</li>
+<li>用来计数的循环变量泄露为全局变量</li>
 </ul>
+</blockquote>
+<p>进行推断，个人认为块级作用域的作用即将内外层相互隔离，从而实现防止全局污染的情况，但 var 类型变量却能够成功打印，这貌似与块级作用域设计出现的初衷有所不同，也就是说块级作用域也有限制，即需要使用 let 类型变量才可以实现块级作用域的内外层隔离，所以目前个人认为在某种程度上，IIFE 的使用可能比块级作用域更加安全。</p>
+<h3 id="对比const-类型的对象在-javascript-中是无法控制对象内部的属性值的变化的那么-c-中是否也是如此"><a class="markdownIt-Anchor" href="#对比const-类型的对象在-javascript-中是无法控制对象内部的属性值的变化的那么-c-中是否也是如此">#</a> <a href="/blog/ShenMingyu/ec0db0a4/">对比：const 类型的对象在 JavaScript 中是无法控制对象内部的属性值的变化的，那么 C++ 中是否也是如此？</a></h3>
+<h1 id="在-javascript-中-function-是什么意思"><a class="markdownIt-Anchor" href="#在-javascript-中-function-是什么意思">#</a> 在 JavaScript 中 “!function (){}()” 是什么意思？</h1>
+<p>参考链接：</p>
+<p><a href="https://zhidao.baidu.com/question/1830337028432640660.html">在 JavaScript 中 “!function (){}()” 是什么意思？</a></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	...</span><br><span class="line">&#125;)()</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	...</span><br><span class="line">&#125;())</span><br></pre></td></tr></table></figure>
+<p>以上是两种 JavaScript 立即执行函数的常见写法，要理解立即执行函数，需要先理解一些函数的基本概念。</p>
+<p><strong>函数声明：</strong></p>
+<p><code>function fnName () &#123;…&#125;;</code>  使用  <code>function</code>  关键字声明一个函数，再指定一个函数名，叫函数声明。</p>
+<p><strong>函数表达式：</strong></p>
+<p><code>var fnName = function () &#123;…&#125;;</code>  使用  <code>function</code>  关键字声明一个函数，但未给函数命名，最后将匿名函数赋予一个变量，叫函数表达式，这是最常见的函数表达式语法形式。</p>
+<p><strong>匿名函数：</strong></p>
+<p><code>function () &#123;&#125;;</code>   使用  <code>function</code>  关键字声明一个函数，但未给函数命名，所以叫匿名函数，匿名函数属于函数表达式，匿名函数有很多作用，赋予一个变量则创建函数，赋予一个事件则成为事件处理程序或创建闭包等等。</p>
+<p><strong>函数声明和函数表达式不同之处在于：</strong></p>
+<ol>
+<li>
+<p>JavaScript 引擎在解析 JavaScript 代码时会 ‘函数声明提升’（Function declaration Hoisting）当前执行环境（作用域）上的函数声明。</p>
+<!-- 函数提升这一点在 ES6 中依旧予以保留，包括在块级作用域内的情况 -->
+<p>而函数表达式必须等到 JavaScript 引擎执行到它所在行时，才会从上而下一行一行地解析函数表达式。</p>
 </li>
-</ul>
-<p>需要进行实名认证，网站名称在备案时是有要求的，部分要求如下：</p>
-
-<p>更加详细的要求可以去询问客服哦。客服小哥哥小姐姐们还是很耐心的，我之前第一次备案的时候就是因为网站名称的问题，接到了阿里云的电话，经过一番修改定夺之后才最后成功备案的。</p>
-<p>…………… 假装经过了漫长的备案时间 ……………</p>
-<p>备案完成后，需要根据备案的需求，在你的网站底部添加备案的 ICP 号，并且要在 30 天内去进行公安备案，这个详细的可以查阅阿里云的相关文档，里面有很详细的流程阐述。</p>
-<!-- 在备案过程中，你所购买的域名是可以进行 DNS 解析的，但是暂时无法进行国内的 CDN 加速服务。 -->
-<h3 id="域名的-dns-解析"><a class="markdownIt-Anchor" href="#域名的-dns-解析">#</a> 域名的 DNS 解析</h3>
-<h3 id="网站的-cdn-加速"><a class="markdownIt-Anchor" href="#网站的-cdn-加速">#</a> 网站的 CDN 加速</h3>
+<li>
+<p>函数表达式后面可以加括号立即调用该函数，函数声明不可以，只能以 fnName () 形式调用。</p>
+<p>在 function 前面加！、+、 - 甚至是逗号等到都可以起到函数定义后立即执行的效果，而（）、！、+、-、= 等运算符，都将函数声明转换成函数表达式。</p>
+<p>消除了 JavaScript 引擎识别函数表达式和函数声明的歧义，告诉 JavaScript 引擎这是一个函数表达式，不是函数声明，可以在后面加括号，并立即执行函数的代码。</p>
+</li>
+</ol>
+<p>扩展资料</p>
+<p>作用：</p>
+<p>JavaScript 中没用私有作用域的概念，如果在多人开发的项目上，你在全局或局部作用域中声明了一些变量，可能会被其他人不小心用同名的变量给覆盖掉。</p>
+<p>根据 JavaScript 函数作用域链的特性，可以使用这种技术可以模仿一个私有作用域，用匿名函数作为一个 “容器”。</p>
+<p>“容器” 内部可以访问外部的变量，而外部环境不能访问 “容器” 内部的变量，所以 ( function (){…} )() 内部定义的变量不会和外部的变量发生冲突，俗称 “匿名包裹器” 或 “命名空间”。</p>
+<p>JQuery 使用的就是这种方法，将 JQuery 代码包裹在 (function (window,undefined){…jquery 代码…} (window) 中，在全局作用域中调用 JQuery 代码时，可以达到保护 JQuery 内部变量的作用。</p>
 ]]></content>
       <categories>
-        <category>网站搭建</category>
+        <category>读书笔记</category>
+        <category>技术书籍</category>
       </categories>
       <tags>
-        <tag>环境搭建</tag>
-        <tag>Apache</tag>
-        <tag>Nginx</tag>
+        <tag>读书笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>C++与JavaScript中const对象属性值分析</title>
+    <url>/blog/ShenMingyu/ec0db0a4/</url>
+    <content><![CDATA[<p>在学习 JavaScript 的过程中，书中提及到了 const 类型变量在对象的使用中出现的具体的细节：</p>
+<blockquote>
+<p>const 实际上保证的并不是变量的值不得改动，而是变量指向的那个内存地址不得改动。对于简单类型的数据（数值、字符串、布尔值）而言，值就保存在变量指向的内存地址中，因此等同于常量。但对于符合类型的数据（主要是对象和数组）而言，变量指向的内存地址保存的只是一个指针，const 只能保证这个指针是固定的，至于它指向的数据结构是不是可变的，这完全不能控制。因此，将一个对象声明为常量时必须非常小心。</p>
+</blockquote>
+<p>使用 JavaScript 声明一个常量对象：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> objectJS = &#123;&#125;;</span><br><span class="line">objectJS.name = <span class="string">&quot;Javascript&quot;</span>;</span><br><span class="line">objectJS.number = <span class="string">&quot;123456&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 再将 objectJS 指向一个空对象</span></span><br><span class="line">objectJS = &#123;&#125;;</span><br></pre></td></tr></table></figure>
+<p>此时发现，出现了报错：</p>
+
+<p>而当我们对原对象内部的属性值进行修改时：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 将 objectJS 内部属性进行更改</span></span><br><span class="line">objectJS.name = <span class="string">&quot;javascript&quot;</span>;</span><br><span class="line">objectJS.number = <span class="number">123456</span>;</span><br></pre></td></tr></table></figure>
+<p>并没有出现报错现象。</p>
+<p>由于之前在课程中学习了 C++，因此对此产生了疑问，现在就来探究一下 C++ 中是否也会出现类似的情况吧！</p>
+<p>使用 C++ 声明一个常量对象：</p>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ObjectCPP</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">string</span> name = <span class="string">&quot;C++&quot;</span>;</span><br><span class="line">    <span class="keyword">int</span> number = <span class="number">654321</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">display</span><span class="params">()</span> <span class="keyword">const</span> </span>&#123;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;name:&quot;</span> &lt;&lt; name &lt;&lt; <span class="built_in">endl</span></span><br><span class="line">             &lt;&lt; <span class="string">&quot;number:&quot;</span> &lt;&lt; number &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">const</span> ObjectCPP objectCpp;</span><br><span class="line">    objectCpp.<span class="built_in">display</span>();</span><br><span class="line">    objectCpp.name = <span class="string">&quot;CPlusPlus&quot;</span>;</span><br><span class="line">    objectCpp.number = <span class="number">123456</span>;</span><br><span class="line">    objectCpp.<span class="built_in">display</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>发现已经出现了报错：</p>
+
+<p>具体问题描述为：</p>
+
+<p>经过学习，了解到在 C++ 中，常量对象是完全不可以被修改的一个对象，包括其内部的各个属性值，对于常量对象，有两种形式：类型 const 对象名  或  const 类型 对象名，而且必须手动创建类内的构造函数来赋予该常量对象初值，否则其成员变量将永远是 “垃圾值”。</p>
+<p>这也体现出了 JavaScript 和 C++ 之间的不同之处。</p>
+<hr>
+<p>参考资料：</p>
+<p><a href="https://blog.csdn.net/u010191243/article/details/39269753?utm_source=blogxgwz5">C++ 常量及常对象、成员汇总</a></p>
+<p><a href="https://segmentfault.com/a/1190000004085259">C++ 常量对象、常量成员函数</a></p>
+<p><a href="https://blog.csdn.net/Patrick_Lyle/article/details/76032978?utm_medium=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.channel_param&amp;depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.channel_param">C++ 常量对象，成员函数，引用</a></p>
+]]></content>
+      <categories>
+        <category>计算机语言学习</category>
+        <category>语法对比</category>
+      </categories>
+      <tags>
+        <tag>C++</tag>
+        <tag>JavaScript</tag>
       </tags>
   </entry>
   <entry>
@@ -1306,6 +1375,49 @@
       </categories>
       <tags>
         <tag>Database</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>云翼计划建站流程</title>
+    <url>/blog/ShenMingyu/5f8623e6/</url>
+    <content><![CDATA[<p>在今年 2 月 3 月份的时候，我通过云翼计划的学生试用，经过考试之后，免费得到了第一台云服务器（半年期，47.113.87.183 很好听的公网 ip 地址嘻嘻，可惜不能以云翼计划学生优惠的价格进行续费，已经过期了），由于当时经验不足，踩了很多坑，浪费了很多时间好不容易搭建好了环境，写好了个人网站主页，部署到服务器上，再加上各种做其他项目上的小问题，兜兜转转地时间也快到期了，于是便在阿里云云翼计划中购买了第一台云服务器，上一次没有描述整体建站流程的想法，这次就把它补起来！</p>
+<h2 id="建站流程"><a class="markdownIt-Anchor" href="#建站流程">#</a> 建站流程</h2>
+<h3 id="购买云服务器"><a class="markdownIt-Anchor" href="#购买云服务器">#</a> 购买云服务器</h3>
+<p>首先，进入<a href="https://promotion.aliyun.com/ntms/act/campus2018.html?spm=5176.12818093.0.0.845916d08qhqZi">阿里云云翼计划首页</a>，向下滑动，找到学生优惠套餐</p>
+
+<p>我购买的是第一个 “云服务器 ECS 学生专享”，然后选择地域、操作系统和购买时长，下方应当会显示价格为 114 元。</p>
+<!-- 要先进行学生认证哦 -->
+
+<p>然后根据流程进行购买，成功交易后很快服务器就开通好了。然后就可以进入云服务器进行具体的环境配置啦。</p>
+<h3 id="云服务器环境配置"><a class="markdownIt-Anchor" href="#云服务器环境配置">#</a> 云服务器环境配置</h3>
+<p>可以参考我之前的博客文章 <a href="/blog/ShenMingyu/">Ubuntu 云服务器下载安装 LAMP</a> 和 <a href="/blog/ShenMingyu/">Ubuntu 云服务器下载安装 LNMP</a> 哦！这里就不再赘述了。</p>
+<h3 id="域名购买及备案"><a class="markdownIt-Anchor" href="#域名购买及备案">#</a> 域名购买及备案</h3>
+<p>我是在 <a href="https://mi.aliyun.com">万网</a> 上购买了两个域名（ myspegale.tech 是之前买的，最近新增并使用 <a href="http://shenmingyu.com">shenmingyu.com</a> 作为主要域名），购买完成后即可在阿里云的域名备案中心进行域名的备案。一般来讲这个过程会有两周左右的时间。</p>
+<ul>
+<li>备案的条件：
+<ul>
+<li>购买了域名</li>
+<li>购买了服务器</li>
+<li>主办单位证件（个人就是身份证）</li>
+</ul>
+</li>
+</ul>
+<p>需要进行实名认证，网站名称在备案时是有要求的，部分要求如下：</p>
+
+<p>更加详细的要求可以去询问客服哦。客服小哥哥小姐姐们还是很耐心的，我之前第一次备案的时候就是因为网站名称的问题，接到了阿里云的电话，经过一番修改定夺之后才最后成功备案的。</p>
+<p>…………… 假装经过了漫长的备案时间 ……………</p>
+<p>备案完成后，需要根据备案的需求，在你的网站底部添加备案的 ICP 号，并且要在 30 天内去进行公安备案，这个详细的可以查阅阿里云的相关文档，里面有很详细的流程阐述。</p>
+<!-- 在备案过程中，你所购买的域名是可以进行 DNS 解析的，但是暂时无法进行国内的 CDN 加速服务。 -->
+<h3 id="域名的-dns-解析"><a class="markdownIt-Anchor" href="#域名的-dns-解析">#</a> 域名的 DNS 解析</h3>
+<h3 id="网站的-cdn-加速"><a class="markdownIt-Anchor" href="#网站的-cdn-加速">#</a> 网站的 CDN 加速</h3>
+]]></content>
+      <categories>
+        <category>网站搭建</category>
+      </categories>
+      <tags>
+        <tag>环境搭建</tag>
+        <tag>Apache</tag>
+        <tag>Nginx</tag>
       </tags>
   </entry>
 </search>
