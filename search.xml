@@ -999,7 +999,7 @@
   <entry>
     <title>《ES6标准入门》阅读所遇问题分析</title>
     <url>/blog/ShenMingyu/710b8415/</url>
-    <content><![CDATA[<p>笔者于  <code>2020/10/1</code>  开始阅读本书，本文记录读书过程中所遇疑问与困惑，并尽量对这些问题进行初步解答，由于初学，所提问题可能比较奇怪甚至莫名其妙，还请多多谅解，回答谨为个人对问题的看法与观点，如有不正确指出，还请不吝赐教。</p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/blog/css/APlayer.min.css"><script src="/blog/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/blog/js/Meting.min.js"></script><p>笔者于  <code>2020/10/1</code>  开始阅读本书，本文记录读书过程中所遇疑问与困惑，并尽量对这些问题进行初步解答，由于初学，所提问题可能比较奇怪甚至莫名其妙，还请多多谅解，回答谨为个人对问题的看法与观点，如有不正确指出，还请不吝赐教。</p>
 <h2 id="在使用-iife-中使用-varlet-的作用是否能与块级作用域中的-letvar-作用相同"><a class="markdownIt-Anchor" href="#在使用-iife-中使用-varlet-的作用是否能与块级作用域中的-letvar-作用相同">#</a> 在使用 IIFE 中使用 var/let 的作用是否能与块级作用域中的 let/var 作用相同？</h2>
 <p>问题为思考书 P24 后提出，由于对 javascript 的理解不深，故提出该问题，并实操进行对比。</p>
 <p>书本中提出：</p>
@@ -1011,15 +1011,15 @@
 <p>编写代码：</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// IIFE 写法内 var 与 let 的显示情况</span></span><br><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> IIFELet = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">var</span> IIFEVar = <span class="number">2</span>;</span><br><span class="line">  <span class="built_in">console</span>.log(IIFELet);</span><br><span class="line">  <span class="built_in">console</span>.log(IIFEVar);</span><br><span class="line">&#125;())</span><br><span class="line"><span class="comment">// console.log(IIFELet);</span></span><br><span class="line"><span class="comment">// console.log(IIFEVar);</span></span><br></pre></td></tr></table></figure>
 <p>上述代码运行后，函数内部的输出语句都正常输出，函数外部两语句分别运行也都出现报错：</p>
-
-
+<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/710b8415/image-20201004212336517.png" class="" title="image-20201004212336517">
+<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/710b8415/image-20201004212407655.png" class="" title="image-20201004212407655">
 <p>这说明立即执行匿名函数的变量作用域是被局限在了函数体作用域的内部，函数执行完毕后，变量会被释放，导致了外部无法识别内部变量。</p>
 <p>而当使用块级作用域时，出现了不同的情况：</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 块级作用域写法内 var 与 let 的显示情况</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="keyword">let</span> blockLet = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">var</span> blockVar = <span class="number">2</span>;</span><br><span class="line">  <span class="built_in">console</span>.log(blockLet);</span><br><span class="line">  <span class="built_in">console</span>.log(blockVar);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// console.log(blockLet);</span></span><br><span class="line"><span class="comment">// console.log(blockVar);</span></span><br></pre></td></tr></table></figure>
 <p>在块级作用域内部的两个输出语句也正常输出，在外部使用 let 时也出现了报错现象，这也匹配了了 let 关键词的适用范围，当函数结束后会导致变量释放而导致无法识别。</p>
-
+<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/710b8415/image-20201004213050591.png" class="" title="image-20201004213050591">
 <p>但当输出 var 类型变量时，块级作用域依旧能够正常输出变量的值。</p>
-
+<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/710b8415/image-20201004213350362.png" class="" title="image-20201004213350362">
 <p>根据书中所描述的：</p>
 <blockquote>
 <p>ES5 只有全局作用域和函数作用域，没有块级作用域，这导致很多场景不合理</p>
