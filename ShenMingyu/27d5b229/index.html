@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>数据库专有名词相关概念的理解 | MYspegale博客园</title><meta name="description" content="​		这段时间学习了数据库系统概论，目前学习到关系模型，出现了很多的专有名词，书上的名词解释太过抽象，实在没能迅速理解，所以本博客通过举例以及图片事例的方式加深理解与认识。  以下表作为样例表。 表一：    编号 学号 姓名 年龄 性别 系名 年级     1 2020001 王小明 19 女 社会学 2020   2 2020002 黄大鹏 18 男 商品学 2020   3 2020003"><meta name="keywords" content="Database"><meta name="author" content="ShenMingyu"><meta name="copyright" content="ShenMingyu"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="shortcut icon" href="/blog/img/favicon.ico"><link rel="canonical" href="https://shenmingyu.gitee.io/ShenMingyu/27d5b229/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta property="og:type" content="article"><meta property="og:title" content="数据库专有名词相关概念的理解"><meta property="og:url" content="https://shenmingyu.gitee.io/ShenMingyu/27d5b229/"><meta property="og:site_name" content="MYspegale博客园"><meta property="og:description" content="​		这段时间学习了数据库系统概论，目前学习到关系模型，出现了很多的专有名词，书上的名词解释太过抽象，实在没能迅速理解，所以本博客通过举例以及图片事例的方式加深理解与认识。  以下表作为样例表。 表一：    编号 学号 姓名 年龄 性别 系名 年级     1 2020001 王小明 19 女 社会学 2020   2 2020002 黄大鹏 18 男 商品学 2020   3 2020003"><meta property="og:image" content="https://shenmingyu.gitee.io/img/db.jpg"><meta property="article:published_time" content="2020-09-14T12:57:48.000Z"><meta property="article:modified_time" content="2020-09-29T05:29:39.243Z"><meta name="twitter:card" content="summary"><link rel="stylesheet" href="/blog/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css"><script>var GLOBAL_CONFIG = { 
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>数据库专有名词相关概念的理解 | MYspegale博客园</title><meta name="description" content="​        这段时间学习了数据库系统概论，目前学习到关系模型，出现了很多的专有名词，书上的名词解释太过抽象，实在没能迅速理解，所以本博客通过举例以及图片事例的方式加深理解与认识。  以下表作为样例表。 表一：     编号 学号 姓名 年龄 性别 系名 年级     1 2020001 王小明 19 女 社会学 2020   2 2020002 黄大鹏 18 男 商品学 2020   3 2"><meta name="keywords" content="Database"><meta name="author" content="ShenMingyu"><meta name="copyright" content="ShenMingyu"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link rel="shortcut icon" href="/blog/img/favicon.ico"><link rel="canonical" href="https://shenmingyu.gitee.io/ShenMingyu/27d5b229/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta property="og:type" content="article"><meta property="og:title" content="数据库专有名词相关概念的理解"><meta property="og:url" content="https://shenmingyu.gitee.io/ShenMingyu/27d5b229/"><meta property="og:site_name" content="MYspegale博客园"><meta property="og:description" content="​        这段时间学习了数据库系统概论，目前学习到关系模型，出现了很多的专有名词，书上的名词解释太过抽象，实在没能迅速理解，所以本博客通过举例以及图片事例的方式加深理解与认识。  以下表作为样例表。 表一：     编号 学号 姓名 年龄 性别 系名 年级     1 2020001 王小明 19 女 社会学 2020   2 2020002 黄大鹏 18 男 商品学 2020   3 2"><meta property="og:image" content="https://shenmingyu.gitee.io/img/db.jpg"><meta property="article:published_time" content="2020-09-14T12:57:48.000Z"><meta property="article:modified_time" content="2020-09-29T05:29:39.243Z"><meta name="twitter:card" content="summary"><link rel="stylesheet" href="/blog/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css"><script>var GLOBAL_CONFIG = { 
   root: '/blog/',
   hexoversion: '5.2.0',
   algolia: undefined,
@@ -119,10 +119,11 @@ if (autoChangeMode === '1') {
   if (t === 'dark') activateDarkMode()
   else if (t === 'light') activateLightMode()
 }</script><link rel="stylesheet" href="https://at.alicdn.com/t/font_2111402_bay6yav3wpb.css"><link rel="stylesheet" href="APlayer.min.css"><div id="aplayer"></div><script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js" async></script><meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/blog/atom.xml" title="MYspegale博客园" type="application/atom+xml">
-</head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" data-lazy-src="/blog/img/me.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/blog/archives/"><div class="headline">文章</div><div class="length_num">19</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/blog/tags/"><div class="headline">标签</div><div class="length_num">21</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/blog/categories/"><div class="headline">分类</div><div class="length_num">16</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="//shenmingyu.gitee.io/main/"><i class="fa-fw fa fa-home"></i><span> 主世界</span></a></div><div class="menus_item"><a class="site-page" href="/blog/"><i class="fa-fw fa fa-university"></i><span> 博客园</span></a></div><div class="menus_item"><a class="site-page" href="/blog/archives/"><i class="fa-fw fa fa-archive"></i><span> 时间线</span></a></div><div class="menus_item"><a class="site-page" href="/blog/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/blog/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/blog/messageboard/"><i class="fa-fw fa fa-comments"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fa fa-coffee"></i><span> 生活</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/blog/music/"><i class="fa-fw fa fa-headphones"></i><span> 音悦台</span></a></li><li><a class="site-page" href="/blog/books/"><i class="fa-fw fa fa-graduation-cap"></i><span> 研书苑</span></a></li><li><a class="site-page" href="/blog/movies/"><i class="fa-fw fa fa-film"></i><span> 光影馆</span></a></li><li><a class="site-page" href="/blog/games/"><i class="fa-fw fa fa-gamepad"></i><span> 万游厅</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/blog/link/"><i class="fa-fw fa fa-compass"></i><span> 神界</span></a></div><div class="menus_item"><a class="site-page" href="/blog/about/"><i class="fa-fw fa fa-heartbeat"></i><span> 关于我</span></a></div></div></div></div><div id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(/blog/img/db.jpg)"><nav id="nav"><span id="blog_name"><a id="site-name" href="/blog/">MYspegale博客园</a></span><span id="menus"><div id="search_button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="//shenmingyu.gitee.io/main/"><i class="fa-fw fa fa-home"></i><span> 主世界</span></a></div><div class="menus_item"><a class="site-page" href="/blog/"><i class="fa-fw fa fa-university"></i><span> 博客园</span></a></div><div class="menus_item"><a class="site-page" href="/blog/archives/"><i class="fa-fw fa fa-archive"></i><span> 时间线</span></a></div><div class="menus_item"><a class="site-page" href="/blog/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/blog/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/blog/messageboard/"><i class="fa-fw fa fa-comments"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fa fa-coffee"></i><span> 生活</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/blog/music/"><i class="fa-fw fa fa-headphones"></i><span> 音悦台</span></a></li><li><a class="site-page" href="/blog/books/"><i class="fa-fw fa fa-graduation-cap"></i><span> 研书苑</span></a></li><li><a class="site-page" href="/blog/movies/"><i class="fa-fw fa fa-film"></i><span> 光影馆</span></a></li><li><a class="site-page" href="/blog/games/"><i class="fa-fw fa fa-gamepad"></i><span> 万游厅</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/blog/link/"><i class="fa-fw fa fa-compass"></i><span> 神界</span></a></div><div class="menus_item"><a class="site-page" href="/blog/about/"><i class="fa-fw fa fa-heartbeat"></i><span> 关于我</span></a></div></div><span class="close" id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="post-info"><div id="post-title"><div class="posttitle">数据库专有名词相关概念的理解</div></div><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-09-14T12:57:48.000Z" title="发表于 2020-09-14 20:57:48">2020-09-14</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2020-09-29T05:29:39.243Z" title="更新于 2020-09-29 13:29:39">2020-09-29</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/blog/categories/%E5%9F%BA%E7%A1%80%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0/">基础课程学习</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/blog/categories/%E5%9F%BA%E7%A1%80%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a></span></div><div class="meta-secondline"> <span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout_post" id="content-inner"><article id="post"><div class="post-content" id="article-container"><p>​		这段时间学习了数据库系统概论，目前学习到关系模型，出现了很多的专有名词，书上的名词解释太过抽象，实在没能迅速理解，所以本博客通过举例以及图片事例的方式加深理解与认识。</p>
+</head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" data-lazy-src="/blog/img/me.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/blog/archives/"><div class="headline">文章</div><div class="length_num">23</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/blog/tags/"><div class="headline">标签</div><div class="length_num">29</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/blog/categories/"><div class="headline">分类</div><div class="length_num">20</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="//shenmingyu.gitee.io/main/"><i class="fa-fw fa fa-home"></i><span> 主世界</span></a></div><div class="menus_item"><a class="site-page" href="/blog/"><i class="fa-fw fa fa-university"></i><span> 博客园</span></a></div><div class="menus_item"><a class="site-page" href="/blog/archives/"><i class="fa-fw fa fa-archive"></i><span> 时间线</span></a></div><div class="menus_item"><a class="site-page" href="/blog/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/blog/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/blog/messageboard/"><i class="fa-fw fa fa-comments"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fa fa-coffee"></i><span> 生活</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/blog/music/"><i class="fa-fw fa fa-headphones"></i><span> 音悦台</span></a></li><li><a class="site-page" href="/blog/books/"><i class="fa-fw fa fa-graduation-cap"></i><span> 研书苑</span></a></li><li><a class="site-page" href="/blog/movies/"><i class="fa-fw fa fa-film"></i><span> 光影馆</span></a></li><li><a class="site-page" href="/blog/games/"><i class="fa-fw fa fa-gamepad"></i><span> 万游厅</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/blog/link/"><i class="fa-fw fa fa-compass"></i><span> 神界</span></a></div><div class="menus_item"><a class="site-page" href="/blog/about/"><i class="fa-fw fa fa-heartbeat"></i><span> 关于我</span></a></div></div></div></div><div id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(/blog/img/db.jpg)"><nav id="nav"><span id="blog_name"><a id="site-name" href="/blog/">MYspegale博客园</a></span><span id="menus"><div id="search_button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="//shenmingyu.gitee.io/main/"><i class="fa-fw fa fa-home"></i><span> 主世界</span></a></div><div class="menus_item"><a class="site-page" href="/blog/"><i class="fa-fw fa fa-university"></i><span> 博客园</span></a></div><div class="menus_item"><a class="site-page" href="/blog/archives/"><i class="fa-fw fa fa-archive"></i><span> 时间线</span></a></div><div class="menus_item"><a class="site-page" href="/blog/tags/"><i class="fa-fw fa fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/blog/categories/"><i class="fa-fw fa fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/blog/messageboard/"><i class="fa-fw fa fa-comments"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><i class="fa-fw fa fa-coffee"></i><span> 生活</span><i class="fas fa-chevron-down expand hide"></i></a><ul class="menus_item_child"><li><a class="site-page" href="/blog/music/"><i class="fa-fw fa fa-headphones"></i><span> 音悦台</span></a></li><li><a class="site-page" href="/blog/books/"><i class="fa-fw fa fa-graduation-cap"></i><span> 研书苑</span></a></li><li><a class="site-page" href="/blog/movies/"><i class="fa-fw fa fa-film"></i><span> 光影馆</span></a></li><li><a class="site-page" href="/blog/games/"><i class="fa-fw fa fa-gamepad"></i><span> 万游厅</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/blog/link/"><i class="fa-fw fa fa-compass"></i><span> 神界</span></a></div><div class="menus_item"><a class="site-page" href="/blog/about/"><i class="fa-fw fa fa-heartbeat"></i><span> 关于我</span></a></div></div><span class="close" id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="post-info"><div id="post-title"><div class="posttitle">数据库专有名词相关概念的理解</div></div><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-09-14T12:57:48.000Z" title="发表于 2020-09-14 20:57:48">2020-09-14</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2020-09-29T05:29:39.243Z" title="更新于 2020-09-29 13:29:39">2020-09-29</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/blog/categories/%E5%9F%BA%E7%A1%80%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0/">基础课程学习</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/blog/categories/%E5%9F%BA%E7%A1%80%E8%AF%BE%E7%A8%8B%E5%AD%A6%E4%B9%A0/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a></span></div><div class="meta-secondline"> <span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout_post" id="content-inner"><article id="post"><div class="post-content" id="article-container"><p>​        这段时间学习了数据库系统概论，目前学习到关系模型，出现了很多的专有名词，书上的名词解释太过抽象，实在没能迅速理解，所以本博客通过举例以及图片事例的方式加深理解与认识。</p>
 <hr>
 <p>以下表作为样例表。</p>
 <p>表一：</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -174,7 +175,9 @@ if (autoChangeMode === '1') {
 </tr>
 </tbody>
 </table>
+</div>
 <p>表二：</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -201,164 +204,130 @@ if (autoChangeMode === '1') {
 </tr>
 </tbody>
 </table>
+</div>
 <p>注：以上两个表格的内容纯属虚构。</p>
 <ol>
-<li>
-<p><strong>关系（relation）</strong></p>
+<li><p><strong>关系（relation）</strong></p>
 <ul>
-<li>
-<p>抽象定义：</p>
+<li><p>抽象定义：</p>
 <p>一个关系对应通常说的一张表。</p>
 </li>
-<li>
-<p>例子：</p>
-
+<li><p>例子：</p>
+<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/27d5b229/image-20200914222630066.png" class="" title="image-20200914222630066">
 </li>
 </ul>
 </li>
-<li>
-<p><strong>元组（tuple）</strong></p>
+<li><p><strong>元组（tuple）</strong></p>
 <ul>
-<li>
-<p>抽象定义：</p>
+<li><p>抽象定义：</p>
 <p>表中的一行即为一个元组</p>
 </li>
-<li>
-<p>例子：</p>
-
+<li><p>例子：</p>
+<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/27d5b229/image-20200914222920112.png" class="" title="image-20200914222920112">
 </li>
 </ul>
 </li>
-<li>
-<p><strong>属性（attribute）</strong></p>
+<li><p><strong>属性（attribute）</strong></p>
 <ul>
-<li>
-<p>抽象定义：</p>
+<li><p>抽象定义：</p>
 <p>表中的一列即为一个属性，给每一个属性起一个名称即属性名。</p>
 </li>
-<li>
-<p>例子：</p>
-
+<li><p>例子：</p>
+<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/27d5b229/image-20200914225129070.png" class="" title="image-20200914225129070">
 </li>
 </ul>
 </li>
-<li>
-<p><strong>码 / 码键（key）</strong></p>
+<li><p><strong>码 / 码键（key）</strong></p>
 <ul>
-<li>
-<p>抽象定义：</p>
+<li><p>抽象定义：</p>
 <p>表中的某个属性组，可以唯一确定一个元组。</p>
 </li>
-<li>
-<p>例子：</p>
-
+<li><p>例子：</p>
+<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/27d5b229/image-20200914225624167.png" class="" title="image-20200914225624167">
 <!-- 这里需要注意的是码不是唯一的 -->
 </li>
-<li>
-<p><strong>候选码（candidate key）</strong></p>
+<li><p><strong>候选码（candidate key）</strong></p>
 <ul>
-<li>
-<p>抽象定义：</p>
-<p>若关系中的某一属性组的值能唯一的标识一个元组，而其子集不能，则称其为<mark>候选码</mark></p>
+<li><p>抽象定义：</p>
+<p>若关系中的某一属性组的值能唯一的标识一个元组，而其子集不能，则称其为==候选码==</p>
 </li>
-<li>
-<p>例子：</p>
-
+<li><p>例子：</p>
+<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/27d5b229/image-20200914230342041.png" class="" title="image-20200914230342041">
 </li>
 </ul>
 </li>
-<li>
-<p><strong>主码（primary key）</strong></p>
+<li><p><strong>主码（primary key）</strong></p>
 <ul>
-<li>
-<p>抽象定义：</p>
-<p>若一个关系有多个候选码，则选定其中一个作为<mark>主码</mark></p>
+<li><p>抽象定义：</p>
+<p>若一个关系有多个候选码，则选定其中一个作为==主码==</p>
 </li>
-<li>
-<p>例子：</p>
-
+<li><p>例子：</p>
+<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/27d5b229/image-20200914230610323.png" class="" title="image-20200914230610323">
 <!-- 候选码可以有多个，但主码只能有一个 -->
 </li>
 </ul>
 </li>
-<li>
-<p><strong>全码（all-key）</strong></p>
+<li><p><strong>全码（all-key）</strong></p>
 <ul>
-<li>
-<p>抽象定义：</p>
-<p>当关系模式的所有属性是这个关系模式的候选码时，称为<mark>全码</mark></p>
+<li><p>抽象定义：</p>
+<p>当关系模式的所有属性是这个关系模式的候选码时，称为==全码==</p>
 </li>
-<li>
-<p>例子：</p>
+<li><p>例子：</p>
 <p>即该表中的每一个属性都没办法完全代表一个元组，只有当所有的属性组成的集合才能代表一个元组时，即为全码</p>
 </li>
 </ul>
 </li>
 </ul>
 </li>
-<li>
-<p><strong>域（domain）</strong></p>
+<li><p><strong>域（domain）</strong></p>
 <ul>
-<li>
-<p>抽象定义：</p>
+<li><p>抽象定义：</p>
 <p>一组具有相同数据类型的值的集合</p>
 </li>
-<li>
-<p>例子：</p>
-
+<li><p>例子：</p>
+<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/27d5b229/image-20200914231530376.png" class="" title="image-20200914231530376">
 </li>
 </ul>
 </li>
-<li>
-<p><strong>笛卡尔积（cardinal product）</strong></p>
+<li><p><strong>笛卡尔积（cardinal product）</strong></p>
 <ul>
-<li>
-<p>抽象定义：</p>
+<li><p>抽象定义：</p>
 <p>笛卡尔积是域上的一种集合运算</p>
 <!-- 通过笛卡尔积叉乘出来所得到的是全表 -->
 <!-- 需要将这里的笛卡尔积与后续章节关系运算中的笛卡尔积进行区分 -->
 </li>
-<li>
-<p>例子：</p>
+<li><p>例子：</p>
 <p>表一✖️表二：</p>
-
+<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/27d5b229/image-20200918104115884.png" class="" title="image-20200918104115884">
 <!-- 注意 表一✖️表二 和 表二✖️表一 是不同的结果 -->
 </li>
 </ul>
 </li>
-<li>
-<p><strong>分量（component）</strong></p>
+<li><p><strong>分量（component）</strong></p>
 <ul>
-<li>
-<p>抽象定义：</p>
+<li><p>抽象定义：</p>
 <p>元组中的一个属性值</p>
 </li>
-<li>
-<p>例子：</p>
-
+<li><p>例子：</p>
+<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/27d5b229/image-20200914231306972.png" class="" title="image-20200914231306972">
 </li>
 </ul>
 </li>
-<li>
-<p><strong>基数（cardinal number）</strong></p>
+<li><p><strong>基数（cardinal number）</strong></p>
 <ul>
-<li>
-<p>抽象定义：</p>
+<li><p>抽象定义：</p>
 <p>一个域允许的不同取值个数称为这个域的基数</p>
 </li>
-<li>
-<p>例子：</p>
+<li><p>例子：</p>
 <p>表一和表二的基数即：</p>
-<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn><mo stretchy="false">(</mo><mtext>编号</mtext><mo stretchy="false">)</mo><mo>∗</mo><mn>3</mn><mo stretchy="false">(</mo><mtext>学号</mtext><mo stretchy="false">)</mo><mo>∗</mo><mn>3</mn><mo stretchy="false">(</mo><mtext>姓名</mtext><mo stretchy="false">)</mo><mo>∗</mo><mn>3</mn><mo stretchy="false">(</mo><mtext>年龄</mtext><mo stretchy="false">)</mo><mo>∗</mo><mn>2</mn><mo stretchy="false">(</mo><mtext>性别</mtext><mo stretchy="false">)</mo><mo>∗</mo><mn>3</mn><mo stretchy="false">(</mo><mtext>系名</mtext><mo stretchy="false">)</mo><mo>∗</mo><mn>1</mn><mo stretchy="false">(</mo><mtext>年级</mtext><mo stretchy="false">)</mo><mo>∗</mo><mn>3</mn><mo stretchy="false">(</mo><mtext>课程编号</mtext><mo stretchy="false">)</mo><mo>∗</mo><mn>3</mn><mo stretchy="false">(</mo><mtext>授课老师</mtext><mo stretchy="false">)</mo><mo>=</mo><mn>4374</mn></mrow><annotation encoding="application/x-tex">3(编号)*3(学号)*3(姓名)*3(年龄)*2(性别)*3(系名)*1(年级)*3(课程编号)*3(授课老师) = 4374
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">3</span><span class="mopen">(</span><span class="mord cjk_fallback">编</span><span class="mord cjk_fallback">号</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">3</span><span class="mopen">(</span><span class="mord cjk_fallback">学</span><span class="mord cjk_fallback">号</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">3</span><span class="mopen">(</span><span class="mord cjk_fallback">姓</span><span class="mord cjk_fallback">名</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">3</span><span class="mopen">(</span><span class="mord cjk_fallback">年</span><span class="mord cjk_fallback">龄</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">2</span><span class="mopen">(</span><span class="mord cjk_fallback">性</span><span class="mord cjk_fallback">别</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">3</span><span class="mopen">(</span><span class="mord cjk_fallback">系</span><span class="mord cjk_fallback">名</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mopen">(</span><span class="mord cjk_fallback">年</span><span class="mord cjk_fallback">级</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">3</span><span class="mopen">(</span><span class="mord cjk_fallback">课</span><span class="mord cjk_fallback">程</span><span class="mord cjk_fallback">编</span><span class="mord cjk_fallback">号</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">3</span><span class="mopen">(</span><span class="mord cjk_fallback">授</span><span class="mord cjk_fallback">课</span><span class="mord cjk_fallback">老</span><span class="mord cjk_fallback">师</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">4</span><span class="mord">3</span><span class="mord">7</span><span class="mord">4</span></span></span></span></span></p>
-</li>
+<script type="math/tex; mode=display">
+3(编号)*3(学号)*3(姓名)*3(年龄)*2(性别)*3(系名)*1(年级)*3(课程编号)*3(授课老师) = 4374</script></li>
 </ul>
 </li>
 </ol>
 <p><strong>关系的三种类型：</strong></p>
 <ol>
-<li>
-<p>基本关系（通常又称为基本表或基表）</p>
+<li><p>基本关系（通常又称为基本表或基表）</p>
 <p>性质：</p>
 <ol>
 <li>列是同质的，即每一列中的分量是同一类型的数据，来自同一个域</li>
@@ -369,11 +338,9 @@ if (autoChangeMode === '1') {
 <li>分量必须取原子值，即每一个分量都必须是不可分的数据项</li>
 </ol>
 </li>
-<li>
-<p>查询表</p>
+<li><p>查询表</p>
 </li>
-<li>
-<p>视图表</p>
+<li><p>视图表</p>
 </li>
 </ol>
 </div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">ShenMingyu</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://shenmingyu.gitee.io/ShenMingyu/27d5b229/">https://shenmingyu.gitee.io/ShenMingyu/27d5b229/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://shenmingyu.gitee.io" target="_blank">MYspegale博客园</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/blog/tags/Database/">Database</a></div><div class="post_share"><div class="social-share" data-image="/blog/img/db.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/blog/ShenMingyu/d8b86ef0/"><img class="prev-cover" data-lazy-src="/blog/img/react.jpg" onerror="onerror=null;src='/blog/img/404.jpg'"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">React基本概念</div></div></a></div><div class="next-post pull-right"><a href="/blog/ShenMingyu/55d182ea/"><img class="next-cover" data-lazy-src="/blog/img/php.jpg" onerror="onerror=null;src='/blog/img/404.jpg'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">PHP学习笔记</div></div></a></div></nav></article></main><footer id="footer" style="background-image: url(/blog/img/db.jpg)" data-type="photo"><div id="footer-wrap"><div class="copyright">&copy;2020 By ShenMingyu</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="icp"><a target="_blank" rel="noopener" href="http://www.beian.miit.gov.cn/"><img class="icp-icon" src="/blog/img/icp.png"/><span>粤ICP备20018158号</span></a></div></div></footer></div><section id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></section><div class="search-dialog" id="local-search"><div class="search-dialog__title" id="local-search-title">本地搜索</div><div id="local-input-panel"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div></div><hr/><div id="local-search-results"><div id="local-hits"></div><div id="local-stats"><div class="local-search-stats__hr" id="hr"><span>由</span> <a target="_blank" rel="noopener" href="https://github.com/wzpan/hexo-generator-search" style="color:#49B1F5;">hexo-generator-search</a>

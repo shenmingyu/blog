@@ -1508,7 +1508,8 @@ blockquote footer cite:before {
   transition: all 0.5s;
 }
 #aside_content .card-info img:hover {
-  transform: rotate(360deg);
+  transform: scale(1.1);
+  box-shadow: 0 0 5px 5px rgba(7,17,27,0.15);
 }
 #aside_content .card-info .author-info__name {
   font-weight: 500;
@@ -1542,10 +1543,11 @@ blockquote footer cite:before {
   margin: 0 0.5rem;
   color: var(--font-color);
   font-size: 1.4em;
+  transition: all 0.3s;
   cursor: pointer;
 }
 #aside_content .card-info .card-info-social-icons i {
-  transition: all 0.3s;
+  font-size: 1.4em;
 }
 #aside_content .card-info .card-info-social-icons i:hover {
   transform: rotate(540deg);
@@ -2303,21 +2305,23 @@ _:future,
 #loading-box .spinner-box .configure-border-1 {
   position: absolute;
   padding: 3px;
-  width: 115px;
-  height: 115px;
-  background: #ffab91;
-  -webkit-animation: configure-clockwise 3s ease-in-out 0s infinite alternate;
-  animation: configure-clockwise 3s ease-in-out 0s infinite alternate;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: linear-gradient(45deg, #ffab91, #ffab91, #ffab91);
+  -webkit-animation: configure-clockwise 3s linear 0s infinite;
+  animation: configure-clockwise 3s linear 0s infinite;
 }
 #loading-box .spinner-box .configure-border-2 {
-  left: -115px;
+  left: -100px;
   padding: 3px;
-  width: 115px;
-  height: 115px;
-  background: #3ff9dc;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: linear-gradient(45deg, #3ff9dc, #3ff9dc, #3ff9dc);
   transform: rotate(45deg);
-  -webkit-animation: configure-xclockwise 3s ease-in-out 0s infinite alternate;
-  animation: configure-xclockwise 3s ease-in-out 0s infinite alternate;
+  -webkit-animation: configure-xclockwise 3s linear 0s infinite;
+  animation: configure-xclockwise 3s linear 0s infinite;
 }
 #loading-box .spinner-box .loading-word {
   position: absolute;
@@ -2327,6 +2331,7 @@ _:future,
 #loading-box .spinner-box .configure-core {
   width: 100%;
   height: 100%;
+  border-radius: 42%;
   background-color: var(--preloader-bg);
 }
 #loading-box.loaded .loading-left-bg {
@@ -2341,69 +2346,41 @@ _:future,
 @-webkit-keyframes configure-clockwise {
   0% {
     transform: rotate(0);
-  }
-  25% {
-    transform: rotate(90deg);
-  }
-  50% {
-    transform: rotate(180deg);
-  }
-  75% {
-    transform: rotate(270deg);
+    filter: hue-rotate(0deg);
   }
   100% {
     transform: rotate(360deg);
+    filter: hue-rotate(360deg);
   }
 }
 @keyframes configure-clockwise {
   0% {
     transform: rotate(0);
-  }
-  25% {
-    transform: rotate(90deg);
-  }
-  50% {
-    transform: rotate(180deg);
-  }
-  75% {
-    transform: rotate(270deg);
+    filter: hue-rotate(0deg);
   }
   100% {
     transform: rotate(360deg);
+    filter: hue-rotate(360deg);
   }
 }
 @-webkit-keyframes configure-xclockwise {
   0% {
     transform: rotate(45deg);
-  }
-  25% {
-    transform: rotate(-45deg);
-  }
-  50% {
-    transform: rotate(-135deg);
-  }
-  75% {
-    transform: rotate(-225deg);
+    filter: hue-rotate(0deg);
   }
   100% {
     transform: rotate(-315deg);
+    filter: hue-rotate(360deg);
   }
 }
 @keyframes configure-xclockwise {
   0% {
     transform: rotate(45deg);
-  }
-  25% {
-    transform: rotate(-45deg);
-  }
-  50% {
-    transform: rotate(-135deg);
-  }
-  75% {
-    transform: rotate(-225deg);
+    filter: hue-rotate(0deg);
   }
   100% {
     transform: rotate(-315deg);
+    filter: hue-rotate(360deg);
   }
 }
 #mobile-sidebar #menu_mask {
