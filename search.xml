@@ -1273,37 +1273,42 @@
     <title>论坛项目TP5开发相关问题</title>
     <url>/blog/ShenMingyu/a959b92a/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/blog/css/APlayer.min.css"><script src="/blog/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/blog/js/Meting.min.js"></script><p>这段时间一直忙着搞项目，期间遇到了不少问题，但是没有及时记录下来，最近略有闲暇，就把之前开发期间遇到的问题详细记录一下。</p>
-<h1 id="页面错误！请稍后重试～"><a href="#页面错误！请稍后重试～" class="headerlink" title="页面错误！请稍后重试～"></a>页面错误！请稍后重试～</h1><!-- 这大概也不算事正式问题，仅仅是模式调整问题 -->
+<h1 id="页面错误请稍后重试~"><a class="markdownIt-Anchor" href="#页面错误请稍后重试~">#</a> 页面错误！请稍后重试～</h1>
+<!-- 这大概也不算事正式问题，仅仅是模式调整问题 -->
 <p><strong>具体问题如下图：</strong></p>
-<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/1/image-20201027231832643.png" class="" title="image-20201027231832643">
+<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/a959b92a/image-20201027231832643.png" class="" title="image-20201027231832643">
 <p><strong>问题解析：</strong></p>
-<p>在 <code>config.php</code> 文件中，没有将 <code>‘app_debug’</code> 调整为 <code>true</code>，由于我当前是开发模式，因此打开开发模式后，TP5就可以将详细的报错内容以下方其他问题的出现页面格式来呈现。</p>
-<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/1/image-20201027232721665.png" class="" title="image-20201027232721665">
-<h1 id="模块不存在：……"><a href="#模块不存在：……" class="headerlink" title="模块不存在：……"></a>模块不存在：……</h1><p><strong>具体问题如下图：</strong></p>
-<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/1/image-20201027231650460.png" class="" title="image-20201027231650460">
+<p>在  <code>config.php</code>  文件中，没有将  <code>‘app_debug’</code>  调整为  <code>true</code> ，由于我当前是开发模式，因此打开开发模式后，TP5 就可以将详细的报错内容以下方其他问题的出现页面格式来呈现。</p>
+<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/a959b92a/image-20201027232721665.png" class="" title="image-20201027232721665">
+<h1 id="模块不存在"><a class="markdownIt-Anchor" href="#模块不存在">#</a> 模块不存在：……</h1>
+<p><strong>具体问题如下图：</strong></p>
+<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/a959b92a/image-20201027231650460.png" class="" title="image-20201027231650460">
 <p><strong>问题解析：</strong></p>
 <p>出现这个问题有几种可能，都是方法调用的问题（可以简单理解为路径问题），问题中的 “login” 也可能会是一长串路径，都是类似问题，因此一起解析了。</p>
-<p>我在 <code>application</code> 目录下创建一个文件夹命名为 <code>admin</code>，在 <code>application/admin</code> 目录下创建一个 PHP class 命名为 <code>Admin.php</code>，在其中仅仅定义方法 <code>login</code>，代码如下。</p>
-<p>此时如果我访问 <code>localhost:8080/……/……/admin/admin/login</code>，会调用这个文件夹下Admin文件内的同名函数，此时如果我输入的网址是</p>
-<p><code>localhost:8080/……/……/admin/user/login</code> 或 <code>localhost:8080/……/……/user/admin/login</code> 或 <code>localhost:8080/……/……/admin/admin/signin</code></p>
-<p>之类，就会出现类似这种问题，这里必须要搞清楚的是在 <code>Controller</code> 层、<code>Model</code> 层以及 <code>View</code> 层的调用关系。</p>
+<p>我在  <code>application</code>  目录下创建一个文件夹命名为  <code>admin</code> ，在  <code>application/admin</code>  目录下创建一个 PHP class 命名为  <code>Admin.php</code> ，在其中仅仅定义方法  <code>login</code> ，代码如下。</p>
+<p>此时如果我访问  <code>localhost:8080/……/……/admin/admin/login</code> ，会调用这个文件夹下 Admin 文件内的同名函数，此时如果我输入的网址是</p>
+<p><code>localhost:8080/……/……/admin/user/login</code>  或  <code>localhost:8080/……/……/user/admin/login</code>  或  <code>localhost:8080/……/……/admin/admin/signin</code></p>
+<p>之类，就会出现类似这种问题，这里必须要搞清楚的是在  <code>Controller</code>  层、 <code>Model</code>  层以及  <code>View</code>  层的调用关系。</p>
 <figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 定义 Admin 类</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> \think\Response</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Admin</span> <span class="keyword">extends</span> <span class="title">Controller</span> </span>&#123;</span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * login函数，$this-&gt;fetch()会在 view 层中获取 &quot;文件夹名/控制器名/login.html&quot; 并显示</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">  <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">login</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;fetch();</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 此时如果我将下面函数去除注释并运行，即会出现类似上述问题。</span></span><br><span class="line"><span class="comment">   *</span></span><br><span class="line"><span class="comment">   * public function signin() &#123;</span></span><br><span class="line"><span class="comment">   *   return $this-&gt;fetch();</span></span><br><span class="line"><span class="comment">   * &#125;</span></span><br><span class="line"><span class="comment">   *</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h1 id="类的属性不存在：…路径…-gt-…属性名…"><a href="#类的属性不存在：…路径…-gt-…属性名…" class="headerlink" title="类的属性不存在：…路径…-&gt;…属性名…"></a>类的属性不存在：…路径…-&gt;…属性名…</h1><p><strong>具体问题如下图：</strong></p>
-<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/1/image-20201027231639127.png" class="" title="image-20201027231639127">
+<h1 id="类的属性不存在路径-属性名"><a class="markdownIt-Anchor" href="#类的属性不存在路径-属性名">#</a> 类的属性不存在：… 路径…-&gt;… 属性名…</h1>
+<p><strong>具体问题如下图：</strong></p>
+<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/a959b92a/image-20201027231639127.png" class="" title="image-20201027231639127">
 <p><strong>问题解析：</strong></p>
-<p>一般来讲连接数据库时会使用类似这样的代码来通过 <code>model</code> 层连接数据库获取信息：</p>
+<p>一般来讲连接数据库时会使用类似这样的代码来通过  <code>model</code>  层连接数据库获取信息：</p>
 <figure class="highlight php"><table><tr><td class="code"><pre><span class="line">$model = model(<span class="string">&#x27;数据表名&#x27;</span>)-&gt;where(…限制条件…)-&gt;select();</span><br><span class="line"><span class="comment">//当然也有很多其他方法比如 db() 方法，获取时的 find() 、paginate()方法等</span></span><br></pre></td></tr></table></figure>
-<p>所以在 <code>$model</code> 变量中，保存了数据表中符合限制条件的数据，会以对象的方式保存，所以首先就要考虑到在数据表中是否定义了这一个属性，如果定义了仍会报错，那么一定是在调用使用时对属性的名称填写错误，在编写代码时这些小细节一定要注意：</p>
+<p>所以在  <code>$model</code>  变量中，保存了数据表中符合限制条件的数据，会以对象的方式保存，所以首先就要考虑到在数据表中是否定义了这一个属性，如果定义了仍会报错，那么一定是在调用使用时对属性的名称填写错误，在编写代码时这些小细节一定要注意：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#123;&#123;&#x2F;* 这里用reactjsx语法来写了(主要是为了markdown中代码格式不变还能注释好看，便于区分哈哈) *&#x2F;&#125;&#125;</span><br><span class="line">&#123;&#123;&#x2F;* 假设 object 中获取了 Admin.php 中 login() 方法链接数据库所得的数据，其中没有 nick_name 这一属性但有 nickname 属性 *&#x2F;&#125;&#125;</span><br><span class="line">&#123;&#123;volist name&#x3D;&quot;values&quot; id&#x3D;&quot;object&quot;&#125;&#125;</span><br><span class="line">&lt;h2&gt;&#123;&#123;$object.nick_name&#125;&#125;&lt;&#x2F;h2&gt;  &#123;&#123;&#x2F;* 这一句会出现上述报错 *&#x2F;&#125;&#125;</span><br><span class="line">&lt;h2&gt;&#123;&#123;$object.nickname&#125;&#125;&lt;&#x2F;h2&gt;  &#123;&#123;&#x2F;* 这一句可以找到数据并正常进行渲染 *&#x2F;&#125;&#125;</span><br></pre></td></tr></table></figure>
-<h1 id="致命错误：Object-of-class……could-not-be-convert-to-string"><a href="#致命错误：Object-of-class……could-not-be-convert-to-string" class="headerlink" title="致命错误：Object of class……could not be convert to string"></a>致命错误：Object of class……could not be convert to string</h1><p><strong>具体问题如下图：</strong></p>
-<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/1/image-20201027231626286.png" class="" title="image-20201027231626286">
+<h1 id="致命错误object-of-classcould-not-be-convert-to-string"><a class="markdownIt-Anchor" href="#致命错误object-of-classcould-not-be-convert-to-string">#</a> 致命错误：Object of class……could not be convert to string</h1>
+<p><strong>具体问题如下图：</strong></p>
+<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/a959b92a/image-20201027231626286.png" class="" title="image-20201027231626286">
 <p><strong>问题解析：</strong></p>
 <p>这种 “致命错误” 的问题，我遇到的大部分都是类型转换的问题，我这里就是典型使用函数错误导致的类的对象无法转换为字符串，这种操作是危险的，以后要避免出现。</p>
-<h1 id="unserialize-……"><a href="#unserialize-……" class="headerlink" title="unserialize():……"></a>unserialize():……</h1><p><strong>具体问题如下图：</strong></p>
-<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/1/image-20201027231620060.png" class="" title="image-20201027231620060">
+<h1 id="unserialize"><a class="markdownIt-Anchor" href="#unserialize">#</a> unserialize():……</h1>
+<p><strong>具体问题如下图：</strong></p>
+<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/a959b92a/image-20201027231620060.png" class="" title="image-20201027231620060">
 <p><strong>问题解析：</strong></p>
-<p>这个问题是近期遇到的，印象很深，因为没有找到完美的解决方案（没有理解问题的根本），我的解决方法是将 PHP类中的 index() 函数进行改名，改名之后就不会报出这个错误了，但是目前为止还没有完全理解，网上有很多说是编码格式的问题，但我经过排查发现不是这个原因，其中找到一篇有关 phpstorm 更改命名后出现问题的博文，我发现我的问题可能和这个比较类似，但还是没有解决，不过这篇博文提供了针对这个问题比较全面的解析，这里记录转载一下:</p>
-<p><a href="https://www.cnblogs.com/Renyi-Fan/p/10652715.html">thinkphp中出现unserialize(): Error at offset 533 of 1857 bytes如何解决</a></p>
+<p>这个问题是近期遇到的，印象很深，因为没有找到完美的解决方案（没有理解问题的根本），我的解决方法是将 PHP 类中的 index () 函数进行改名，改名之后就不会报出这个错误了，但是目前为止还没有完全理解，网上有很多说是编码格式的问题，但我经过排查发现不是这个原因，其中找到一篇有关 phpstorm 更改命名后出现问题的博文，我发现我的问题可能和这个比较类似，但还是没有解决，不过这篇博文提供了针对这个问题比较全面的解析，这里记录转载一下:</p>
+<p><a href="https://www.cnblogs.com/Renyi-Fan/p/10652715.html">thinkphp 中出现 unserialize (): Error at offset 533 of 1857 bytes 如何解决</a></p>
 ]]></content>
       <categories>
         <category>项目开发</category>
@@ -1402,6 +1407,49 @@
       </categories>
       <tags>
         <tag>javascript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>CSS实现水平、垂直、水平垂直居中</title>
+    <url>/blog/ShenMingyu/a8229322/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/blog/css/APlayer.min.css"><script src="/blog/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/blog/js/Meting.min.js"></script><p>本文仅用于个人学习复习操作，其中样式完全个人完成，希望可以和大家共同进步！</p>
+<p>本文件用于记录样式，方便查找。</p>
+<p>[TOC]</p>
+<h2 id="css实现水平垂直水平垂直居中"><a class="markdownIt-Anchor" href="#css实现水平垂直水平垂直居中">#</a> CSS 实现水平 / 垂直 / 水平垂直居中</h2>
+<blockquote>
+<p>这里不考虑通过具体的元素宽高来进行计算后得到的居中位置，仅为使用固有的 css 属性来进行居中操作</p>
+</blockquote>
+<p>下文中的 HTML 结构：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">body</span> <span class="attr">style</span>=<span class="string">&quot;background-color: #242424;width: 100vw;height: 100vh;&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;mediate&quot;</span> <span class="attr">style</span>=<span class="string">&quot;width: 100px;height: 100px;background-color: #00FFCC;&quot;</span>&gt;</span>请把我居中<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="水平居中"><a class="markdownIt-Anchor" href="#水平居中">#</a> 水平居中</h3>
+<h4 id="margin"><a class="markdownIt-Anchor" href="#margin">#</a>  <code>margin</code></h4>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">  <span class="attribute">position</span>: relative;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.mediate</span> &#123;</span><br><span class="line">  <span class="attribute">margin</span>: <span class="number">0</span> auto;</span><br><span class="line">  <span class="attribute">line-height</span>: <span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">text-align</span>: center;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="lefttransformtranslatex"><a class="markdownIt-Anchor" href="#lefttransformtranslatex">#</a>  <code>left</code> + <code>transform:translateX</code></h4>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">  <span class="attribute">position</span>: relative;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.mediate</span> &#123;</span><br><span class="line">  <span class="attribute">position</span>: absolute;</span><br><span class="line">  <span class="attribute">left</span>: <span class="number">50%</span>;</span><br><span class="line">  <span class="attribute">transform</span>: <span class="built_in">translateX</span>(-<span class="number">50%</span>);</span><br><span class="line">  <span class="attribute">line-height</span>: <span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">text-align</span>: center;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="垂直居中"><a class="markdownIt-Anchor" href="#垂直居中">#</a> 垂直居中</h3>
+<h4 id="toptransformtranslatey"><a class="markdownIt-Anchor" href="#toptransformtranslatey">#</a>  <code>top</code> + <code>transform:translateY</code></h4>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">  <span class="attribute">position</span>: relative;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.mediate</span> &#123;</span><br><span class="line">  <span class="attribute">position</span>: absolute;</span><br><span class="line">  <span class="attribute">top</span>: <span class="number">50%</span>;</span><br><span class="line">  <span class="attribute">transform</span>: <span class="built_in">translateY</span>(-<span class="number">50%</span>);</span><br><span class="line">  <span class="attribute">line-height</span>: <span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">text-align</span>: center;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="table-celltext-alignvertical-align"><a class="markdownIt-Anchor" href="#table-celltext-alignvertical-align">#</a>  <code>table-cell</code> + <code>text-align</code> + <code>vertical-align</code></h4>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line"><span class="attribute">display</span>: table-cell;</span><br><span class="line"><span class="attribute">vertical-align</span>: middle;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.mediate</span> &#123;</span><br><span class="line"><span class="attribute">line-height</span>: <span class="number">100px</span>;</span><br><span class="line"><span class="attribute">text-align</span>: center;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="水平垂直居中"><a class="markdownIt-Anchor" href="#水平垂直居中">#</a> 水平垂直居中</h3>
+<h4 id="flexjustify-contentalign-items"><a class="markdownIt-Anchor" href="#flexjustify-contentalign-items">#</a>  <code>flex</code> + <code>justify-content</code> + <code>align-items</code></h4>
+<p>使用  <code>flex</code>  布局居中块元素以及内文本</p>
+<p><code>flex</code>  中的  <code>justify-content</code>  和  <code>align-items</code></p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: flex;</span><br><span class="line">  <span class="attribute">justify-content</span>: center;</span><br><span class="line">  <span class="attribute">align-items</span>: center;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.mediate</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: flex;</span><br><span class="line">  <span class="attribute">justify-content</span>: center;</span><br><span class="line">  <span class="attribute">align-items</span>: center;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="gridjustify-selfalign-self"><a class="markdownIt-Anchor" href="#gridjustify-selfalign-self">#</a>  <code>grid</code> + <code>justify-self</code> + <code>align-self</code></h4>
+<p>使用  <code>grid</code>  布局居中块元素以及内文本</p>
+<p><code>grid</code>  中的  <code>justify-self</code>  和  <code>align-self</code></p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: grid;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.mediate</span> &#123;</span><br><span class="line">  <span class="attribute">justify-self</span>: center;</span><br><span class="line">  <span class="attribute">align-self</span>: center;</span><br><span class="line">  <span class="attribute">line-height</span>: <span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">text-align</span>: center;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="toplefttransformtranslate"><a class="markdownIt-Anchor" href="#toplefttransformtranslate">#</a>  <code>top</code> + <code>left</code> + <code>transform:translate</code></h4>
+<p>使用  <code>inlilne</code>  布局居中块元素以及内文本</p>
+<p><code>top</code>  和  <code>left</code>  以及  <code>transform: translate()</code></p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">  <span class="attribute">position</span>: relative;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.mediate</span> &#123;</span><br><span class="line">  <span class="attribute">position</span>: absolute;</span><br><span class="line">  <span class="attribute">left</span>: <span class="number">50%</span>;</span><br><span class="line">  <span class="attribute">top</span>: <span class="number">50%</span>;</span><br><span class="line">  <span class="attribute">transform</span>: <span class="built_in">translate</span>(-<span class="number">50%</span>, -<span class="number">50%</span>);</span><br><span class="line">  <span class="attribute">line-height</span>: <span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">text-align</span>: center;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>计算机语言学习</category>
+      </categories>
+      <tags>
+        <tag>CSS</tag>
       </tags>
   </entry>
 </search>
