@@ -249,6 +249,13 @@
   </url>
   
   <url>
+    <loc>https://shenmingyu.gitee.io/tags/CSS/</loc>
+    <lastmod>2020-11-06</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://shenmingyu.gitee.io/tags/browser/</loc>
     <lastmod>2020-11-06</lastmod>
     <changefreq>daily</changefreq>
@@ -263,13 +270,6 @@
   </url>
   
   <url>
-    <loc>https://shenmingyu.gitee.io/tags/MySQL/</loc>
-    <lastmod>2020-11-06</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://shenmingyu.gitee.io/tags/Hexo/</loc>
     <lastmod>2020-11-06</lastmod>
     <changefreq>daily</changefreq>
@@ -278,6 +278,27 @@
   
   <url>
     <loc>https://shenmingyu.gitee.io/tags/GitHub/</loc>
+    <lastmod>2020-11-06</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://shenmingyu.gitee.io/tags/javascript/</loc>
+    <lastmod>2020-11-06</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://shenmingyu.gitee.io/tags/%E9%97%AD%E5%8C%85/</loc>
+    <lastmod>2020-11-06</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://shenmingyu.gitee.io/tags/MySQL/</loc>
     <lastmod>2020-11-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -403,13 +424,6 @@
   </url>
   
   <url>
-    <loc>https://shenmingyu.gitee.io/tags/CSS/</loc>
-    <lastmod>2020-11-06</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://shenmingyu.gitee.io/tags/Sass/</loc>
     <lastmod>2020-11-06</lastmod>
     <changefreq>daily</changefreq>
@@ -425,20 +439,6 @@
   
   <url>
     <loc>https://shenmingyu.gitee.io/tags/Stylus/</loc>
-    <lastmod>2020-11-06</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://shenmingyu.gitee.io/tags/javascript/</loc>
-    <lastmod>2020-11-06</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://shenmingyu.gitee.io/tags/%E9%97%AD%E5%8C%85/</loc>
     <lastmod>2020-11-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -468,14 +468,28 @@
   </url>
   
   <url>
-    <loc>https://shenmingyu.gitee.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0/PHP/</loc>
+    <loc>https://shenmingyu.gitee.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0/JavaScript/</loc>
     <lastmod>2020-11-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://shenmingyu.gitee.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0/Python/</loc>
+    <loc>https://shenmingyu.gitee.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0/CSS/</loc>
+    <lastmod>2020-11-06</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://shenmingyu.gitee.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0/MySQL/</loc>
+    <lastmod>2020-11-06</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://shenmingyu.gitee.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0/PHP/</loc>
     <lastmod>2020-11-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -489,14 +503,14 @@
   </url>
   
   <url>
-    <loc>https://shenmingyu.gitee.io/categories/Web%E5%89%8D%E7%AB%AF/</loc>
+    <loc>https://shenmingyu.gitee.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0/Python/</loc>
     <lastmod>2020-11-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://shenmingyu.gitee.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0/MySQL/</loc>
+    <loc>https://shenmingyu.gitee.io/categories/Web%E5%89%8D%E7%AB%AF/</loc>
     <lastmod>2020-11-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -545,13 +559,6 @@
   </url>
   
   <url>
-    <loc>https://shenmingyu.gitee.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0/JavaScript/</loc>
-    <lastmod>2020-11-06</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://shenmingyu.gitee.io/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/%E6%8A%80%E6%9C%AF%E4%B9%A6%E7%B1%8D/</loc>
     <lastmod>2020-11-06</lastmod>
     <changefreq>daily</changefreq>
@@ -581,13 +588,6 @@
   
   <url>
     <loc>https://shenmingyu.gitee.io/categories/Web%E5%89%8D%E7%AB%AF/%E6%A1%86%E6%9E%B6/React/</loc>
-    <lastmod>2020-11-06</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://shenmingyu.gitee.io/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%AF%AD%E8%A8%80%E5%AD%A6%E4%B9%A0/CSS/</loc>
     <lastmod>2020-11-06</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
