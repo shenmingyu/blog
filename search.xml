@@ -1022,11 +1022,10 @@
   <entry>
     <title>数据库专有名词相关概念的理解</title>
     <url>/blog/ShenMingyu/27d5b229/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/blog/css/APlayer.min.css"><script src="/blog/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/blog/js/Meting.min.js"></script><p>​        这段时间学习了数据库系统概论，目前学习到关系模型，出现了很多的专有名词，书上的名词解释太过抽象，实在没能迅速理解，所以本博客通过举例以及图片事例的方式加深理解与认识。</p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/blog/css/APlayer.min.css"><script src="/blog/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/blog/js/Meting.min.js"></script><p>​		这段时间学习了数据库系统概论，目前学习到关系模型，出现了很多的专有名词，书上的名词解释太过抽象，实在没能迅速理解，所以本博客通过举例以及图片事例的方式加深理解与认识。</p>
 <hr>
 <p>以下表作为样例表。</p>
 <p>表一：</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -1078,9 +1077,7 @@
 </tr>
 </tbody>
 </table>
-</div>
 <p>表二：</p>
-<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -1107,130 +1104,164 @@
 </tr>
 </tbody>
 </table>
-</div>
 <p>注：以上两个表格的内容纯属虚构。</p>
 <ol>
-<li><p><strong>关系（relation）</strong></p>
+<li>
+<p><strong>关系（relation）</strong></p>
 <ul>
-<li><p>抽象定义：</p>
+<li>
+<p>抽象定义：</p>
 <p>一个关系对应通常说的一张表。</p>
 </li>
-<li><p>例子：</p>
+<li>
+<p>例子：</p>
 <img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/27d5b229/image-20200914222630066.png" class="" title="image-20200914222630066">
 </li>
 </ul>
 </li>
-<li><p><strong>元组（tuple）</strong></p>
+<li>
+<p><strong>元组（tuple）</strong></p>
 <ul>
-<li><p>抽象定义：</p>
+<li>
+<p>抽象定义：</p>
 <p>表中的一行即为一个元组</p>
 </li>
-<li><p>例子：</p>
+<li>
+<p>例子：</p>
 <img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/27d5b229/image-20200914222920112.png" class="" title="image-20200914222920112">
 </li>
 </ul>
 </li>
-<li><p><strong>属性（attribute）</strong></p>
+<li>
+<p><strong>属性（attribute）</strong></p>
 <ul>
-<li><p>抽象定义：</p>
+<li>
+<p>抽象定义：</p>
 <p>表中的一列即为一个属性，给每一个属性起一个名称即属性名。</p>
 </li>
-<li><p>例子：</p>
+<li>
+<p>例子：</p>
 <img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/27d5b229/image-20200914225129070.png" class="" title="image-20200914225129070">
 </li>
 </ul>
 </li>
-<li><p><strong>码 / 码键（key）</strong></p>
+<li>
+<p><strong>码 / 码键（key）</strong></p>
 <ul>
-<li><p>抽象定义：</p>
+<li>
+<p>抽象定义：</p>
 <p>表中的某个属性组，可以唯一确定一个元组。</p>
 </li>
-<li><p>例子：</p>
+<li>
+<p>例子：</p>
 <img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/27d5b229/image-20200914225624167.png" class="" title="image-20200914225624167">
 <!-- 这里需要注意的是码不是唯一的 -->
 </li>
-<li><p><strong>候选码（candidate key）</strong></p>
+<li>
+<p><strong>候选码（candidate key）</strong></p>
 <ul>
-<li><p>抽象定义：</p>
-<p>若关系中的某一属性组的值能唯一的标识一个元组，而其子集不能，则称其为==候选码==</p>
+<li>
+<p>抽象定义：</p>
+<p>若关系中的某一属性组的值能唯一的标识一个元组，而其子集不能，则称其为<mark>候选码</mark></p>
 </li>
-<li><p>例子：</p>
+<li>
+<p>例子：</p>
 <img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/27d5b229/image-20200914230342041.png" class="" title="image-20200914230342041">
 </li>
 </ul>
 </li>
-<li><p><strong>主码（primary key）</strong></p>
+<li>
+<p><strong>主码（primary key）</strong></p>
 <ul>
-<li><p>抽象定义：</p>
-<p>若一个关系有多个候选码，则选定其中一个作为==主码==</p>
+<li>
+<p>抽象定义：</p>
+<p>若一个关系有多个候选码，则选定其中一个作为<mark>主码</mark></p>
 </li>
-<li><p>例子：</p>
+<li>
+<p>例子：</p>
 <img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/27d5b229/image-20200914230610323.png" class="" title="image-20200914230610323">
 <!-- 候选码可以有多个，但主码只能有一个 -->
 </li>
 </ul>
 </li>
-<li><p><strong>全码（all-key）</strong></p>
+<li>
+<p><strong>全码（all-key）</strong></p>
 <ul>
-<li><p>抽象定义：</p>
-<p>当关系模式的所有属性是这个关系模式的候选码时，称为==全码==</p>
+<li>
+<p>抽象定义：</p>
+<p>当关系模式的所有属性是这个关系模式的候选码时，称为<mark>全码</mark></p>
 </li>
-<li><p>例子：</p>
+<li>
+<p>例子：</p>
 <p>即该表中的每一个属性都没办法完全代表一个元组，只有当所有的属性组成的集合才能代表一个元组时，即为全码</p>
 </li>
 </ul>
 </li>
 </ul>
 </li>
-<li><p><strong>域（domain）</strong></p>
+<li>
+<p><strong>域（domain）</strong></p>
 <ul>
-<li><p>抽象定义：</p>
+<li>
+<p>抽象定义：</p>
 <p>一组具有相同数据类型的值的集合</p>
 </li>
-<li><p>例子：</p>
+<li>
+<p>例子：</p>
 <img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/27d5b229/image-20200914231530376.png" class="" title="image-20200914231530376">
 </li>
 </ul>
 </li>
-<li><p><strong>笛卡尔积（cardinal product）</strong></p>
+<li>
+<p><strong>笛卡尔积（cardinal product）</strong></p>
 <ul>
-<li><p>抽象定义：</p>
+<li>
+<p>抽象定义：</p>
 <p>笛卡尔积是域上的一种集合运算</p>
 <!-- 通过笛卡尔积叉乘出来所得到的是全表 -->
 <!-- 需要将这里的笛卡尔积与后续章节关系运算中的笛卡尔积进行区分 -->
 </li>
-<li><p>例子：</p>
+<li>
+<p>例子：</p>
 <p>表一✖️表二：</p>
 <img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/27d5b229/image-20200918104115884.png" class="" title="image-20200918104115884">
 <!-- 注意 表一✖️表二 和 表二✖️表一 是不同的结果 -->
 </li>
 </ul>
 </li>
-<li><p><strong>分量（component）</strong></p>
+<li>
+<p><strong>分量（component）</strong></p>
 <ul>
-<li><p>抽象定义：</p>
+<li>
+<p>抽象定义：</p>
 <p>元组中的一个属性值</p>
 </li>
-<li><p>例子：</p>
+<li>
+<p>例子：</p>
 <img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/27d5b229/image-20200914231306972.png" class="" title="image-20200914231306972">
 </li>
 </ul>
 </li>
-<li><p><strong>基数（cardinal number）</strong></p>
+<li>
+<p><strong>基数（cardinal number）</strong></p>
 <ul>
-<li><p>抽象定义：</p>
+<li>
+<p>抽象定义：</p>
 <p>一个域允许的不同取值个数称为这个域的基数</p>
 </li>
-<li><p>例子：</p>
+<li>
+<p>例子：</p>
 <p>表一和表二的基数即：</p>
-<script type="math/tex; mode=display">
-3(编号)*3(学号)*3(姓名)*3(年龄)*2(性别)*3(系名)*1(年级)*3(课程编号)*3(授课老师) = 4374</script></li>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>3</mn><mo stretchy="false">(</mo><mtext>编号</mtext><mo stretchy="false">)</mo><mo>∗</mo><mn>3</mn><mo stretchy="false">(</mo><mtext>学号</mtext><mo stretchy="false">)</mo><mo>∗</mo><mn>3</mn><mo stretchy="false">(</mo><mtext>姓名</mtext><mo stretchy="false">)</mo><mo>∗</mo><mn>3</mn><mo stretchy="false">(</mo><mtext>年龄</mtext><mo stretchy="false">)</mo><mo>∗</mo><mn>2</mn><mo stretchy="false">(</mo><mtext>性别</mtext><mo stretchy="false">)</mo><mo>∗</mo><mn>3</mn><mo stretchy="false">(</mo><mtext>系名</mtext><mo stretchy="false">)</mo><mo>∗</mo><mn>1</mn><mo stretchy="false">(</mo><mtext>年级</mtext><mo stretchy="false">)</mo><mo>∗</mo><mn>3</mn><mo stretchy="false">(</mo><mtext>课程编号</mtext><mo stretchy="false">)</mo><mo>∗</mo><mn>3</mn><mo stretchy="false">(</mo><mtext>授课老师</mtext><mo stretchy="false">)</mo><mo>=</mo><mn>4374</mn></mrow><annotation encoding="application/x-tex">3(编号)*3(学号)*3(姓名)*3(年龄)*2(性别)*3(系名)*1(年级)*3(课程编号)*3(授课老师) = 4374
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">3</span><span class="mopen">(</span><span class="mord cjk_fallback">编</span><span class="mord cjk_fallback">号</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">3</span><span class="mopen">(</span><span class="mord cjk_fallback">学</span><span class="mord cjk_fallback">号</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">3</span><span class="mopen">(</span><span class="mord cjk_fallback">姓</span><span class="mord cjk_fallback">名</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">3</span><span class="mopen">(</span><span class="mord cjk_fallback">年</span><span class="mord cjk_fallback">龄</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">2</span><span class="mopen">(</span><span class="mord cjk_fallback">性</span><span class="mord cjk_fallback">别</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">3</span><span class="mopen">(</span><span class="mord cjk_fallback">系</span><span class="mord cjk_fallback">名</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mopen">(</span><span class="mord cjk_fallback">年</span><span class="mord cjk_fallback">级</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">3</span><span class="mopen">(</span><span class="mord cjk_fallback">课</span><span class="mord cjk_fallback">程</span><span class="mord cjk_fallback">编</span><span class="mord cjk_fallback">号</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">3</span><span class="mopen">(</span><span class="mord cjk_fallback">授</span><span class="mord cjk_fallback">课</span><span class="mord cjk_fallback">老</span><span class="mord cjk_fallback">师</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">4</span><span class="mord">3</span><span class="mord">7</span><span class="mord">4</span></span></span></span></span></p>
+</li>
 </ul>
 </li>
 </ol>
 <p><strong>关系的三种类型：</strong></p>
 <ol>
-<li><p>基本关系（通常又称为基本表或基表）</p>
+<li>
+<p>基本关系（通常又称为基本表或基表）</p>
 <p>性质：</p>
 <ol>
 <li>列是同质的，即每一列中的分量是同一类型的数据，来自同一个域</li>
@@ -1241,11 +1272,15 @@
 <li>分量必须取原子值，即每一个分量都必须是不可分的数据项</li>
 </ol>
 </li>
-<li><p>查询表</p>
+<li>
+<p>查询表</p>
 </li>
-<li><p>视图表</p>
+<li>
+<p>视图表</p>
 </li>
 </ol>
+<p>数据库关系代数符号：</p>
+<p>∪ ∩ × ≥ ≤ ≠ ∧ ∨ ¬ ⋈ ÷</p>
 ]]></content>
       <categories>
         <category>基础课程学习</category>
@@ -1447,9 +1482,111 @@
 ]]></content>
       <categories>
         <category>计算机语言学习</category>
+        <category>CSS</category>
       </categories>
       <tags>
         <tag>CSS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JavaScript中变量类型的转换</title>
+    <url>/blog/ShenMingyu/a45d0102/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/blog/css/APlayer.min.css"><script src="/blog/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/blog/js/Meting.min.js"></script><p>在编写 javascript 时，有时会遇到需要将变量类型与  <code>String</code>  类型相互转换的情况，下面记录有关  <code>String</code>  类型转换的各种方法：这里仅举出简单的函数作用例子，这些函数的使用是有坑的。</p>
+<h2 id="string-number"><a class="markdownIt-Anchor" href="#string-number">#</a> String &gt;&gt; Number</h2>
+<h3 id="parseint-函数"><a class="markdownIt-Anchor" href="#parseint-函数">#</a>  <code>parseInt()</code>  函数</h3>
+<p>parseInt () 函数可以传入两个参数，第一个参数是要转换的变量，第二个参数确定转换进制</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">&quot;52.1.2&quot;</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> <span class="built_in">parseInt</span>(str));</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">parseInt</span>(str));</span><br></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/a45d0102/image-20201031000059713.png" class="" title="image-20201031000059713">
+<h3 id="parsefloat-函数"><a class="markdownIt-Anchor" href="#parsefloat-函数">#</a>  <code>parseFloat()</code>  函数</h3>
+<p>与 parseInt () 函数类似，将变量转换为浮点数类型数值</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">&quot;52.1.2&quot;</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> <span class="built_in">parseFloat</span>(str));</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">parseFloat</span>(str));</span><br></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/a45d0102/image-20201031000230821.png" class="" title="image-20201031000230821">
+<h3 id="number-函数"><a class="markdownIt-Anchor" href="#number-函数">#</a>  <code>Number()</code>  函数</h3>
+<blockquote>
+<p>Number () 函数的运行效率是 JsPerf 中最慢的之一，因此不常用</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">&quot;52.1.2&quot;</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> <span class="built_in">Number</span>(str));</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">Number</span>(str));</span><br></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/a45d0102/image-20201031000303117.png" class="" title="image-20201031000303117">
+<h3 id="隐式转换一元运算符"><a class="markdownIt-Anchor" href="#隐式转换一元运算符">#</a> 隐式转换，一元运算符</h3>
+<blockquote>
+<p>网上有人说这实际上是钻了弱类型语言的空子，从而达到类型转换的目的</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">&quot;5212&quot;</span>;</span><br><span class="line"><span class="keyword">let</span> num = str / <span class="number">2</span>;						<span class="comment">// 注意这里不仅仅是 “/” 可以，“*”、“-” 都可以达到类型转换的目的</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> num);			<span class="comment">// number</span></span><br><span class="line"><span class="built_in">console</span>.log(num);							<span class="comment">// 2606</span></span><br></pre></td></tr></table></figure>
+<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/a45d0102/image-20201031000632725.png" class="" title="image-20201031000632725">
+<h2 id="number-string"><a class="markdownIt-Anchor" href="#number-string">#</a> Number &gt;&gt; String</h2>
+<h3 id="tostring-函数"><a class="markdownIt-Anchor" href="#tostring-函数">#</a>  <code>toString()</code>  函数</h3>
+<p><code>Number</code>  作为一个基本类，可以使用内部类  <code>toString()</code>  方法</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> num = <span class="number">5212</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> num.toString());</span><br><span class="line"><span class="built_in">console</span>.log(num.toString());</span><br></pre></td></tr></table></figure>
+<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/a45d0102/image-20201031001057358.png" class="" title="image-20201031001057358">
+<h3 id="string-函数"><a class="markdownIt-Anchor" href="#string-函数">#</a>  <code>String()</code>  函数</h3>
+<p><code>String()</code>  函数把对象的值转换为字符串，必须传入一个  <code>object</code>  参数类型</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> num = <span class="number">5212</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> <span class="built_in">String</span>(num));</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">String</span>(num));</span><br><span class="line"><span class="keyword">let</span> object = &#123;&#125;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> <span class="built_in">String</span>(object));</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">String</span>(object));</span><br></pre></td></tr></table></figure>
+<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/a45d0102/image-20201031001828474.png" class="" title="image-20201031001828474">
+<h3 id="tofixed-函数"><a class="markdownIt-Anchor" href="#tofixed-函数">#</a>  <code>toFixed()</code>  函数</h3>
+<p><code>Number</code>  作为一个基本类，可以使用内部类  <code>toFixed()</code>  方法</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> num = <span class="number">52.12</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> num.toFixed());				<span class="comment">// toFixed() 函数可以传入参数来控制小数点位数</span></span><br><span class="line"><span class="comment">// console.log(num.toFixed(-1));					// 传入参数非负数，否则会报错</span></span><br><span class="line"><span class="built_in">console</span>.log(num.toFixed(<span class="number">0</span>));</span><br><span class="line"><span class="built_in">console</span>.log(num.toFixed(<span class="number">1</span>));</span><br><span class="line"><span class="built_in">console</span>.log(num.toFixed(<span class="number">2</span>));</span><br></pre></td></tr></table></figure>
+<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/a45d0102/image-20201031002242478.png" class="" title="image-20201031002242478">
+<h3 id="toexponential-函数"><a class="markdownIt-Anchor" href="#toexponential-函数">#</a>  <code>toExponential()</code>  函数</h3>
+<p><code>Number</code>  作为一个基本类，可以使用内部类  <code>toExponential()</code>  方法</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> num = <span class="number">52.12</span>;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="keyword">typeof</span> num.toExponential());	<span class="comment">// num.toExponential() 函数可以传入参数来控制有效数字位数</span></span><br><span class="line"><span class="comment">// console.log(num.toExponential(-1));		// 传入参数非负数，否则会报错</span></span><br><span class="line"><span class="built_in">console</span>.log(num.toExponential(<span class="number">0</span>));</span><br><span class="line"><span class="built_in">console</span>.log(num.toExponential(<span class="number">4</span>));</span><br><span class="line"><span class="built_in">console</span>.log(num.toExponential(<span class="number">10</span>));</span><br></pre></td></tr></table></figure>
+<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/a45d0102/image-20201031002938496.png" class="" title="image-20201031002938496">
+]]></content>
+      <categories>
+        <category>计算机语言学习</category>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>javascript</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JavaScript理解闭包</title>
+    <url>/blog/ShenMingyu/4df27279/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/blog/css/APlayer.min.css"><script src="/blog/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/blog/js/Meting.min.js"></script><p>学习 JavaScript 的过程中，常会遇到有关闭包的问题，面试题中也常常出现与闭包相关的问题，经过学习查阅资料发现闭包本身是 JavaScript 语言中的一个难点，而且闭包始终存在于我们的程序代码当中，因此写一篇博客来记录学习的过程。</p>
+<h2 id="闭包是什么"><a class="markdownIt-Anchor" href="#闭包是什么">#</a> 闭包是什么</h2>
+<blockquote>
+<p>闭包是指有权访问另外一个函数作用域中的变量的函数。——《JavaScript 高级程序设计》</p>
+</blockquote>
+<p>之前在学习过程中理解了作用域的概念，在函数体外部是无法访问到函数体内部的变量的，即局部变量无法从外部读取。使用 let 类型变量会自动生成一个块级作用域（&gt;ES6），而函数本身即为函数作用域。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> outerValue = <span class="string">&quot;外部变量&quot;</span>;</span><br><span class="line">(<span class="function"><span class="keyword">function</span> <span class="title">out</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">let</span> innerValue = <span class="string">&quot;内部变量&quot;</span>;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">&quot;内部-&quot;</span> + innerValue);				<span class="comment">// 可以读取并输出</span></span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">&quot;内部-&quot;</span> + outerValue);				<span class="comment">// 可以读取并输出</span></span><br><span class="line">&#125;)();</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&quot;外部-&quot;</span> + outerValue);					<span class="comment">// 可以读取并输出</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&quot;外部-&quot;</span> + innerValue);					<span class="comment">// 无法读取，会报错</span></span><br></pre></td></tr></table></figure>
+<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/4df27279/image-20201031175056987.png" class="" title="image-20201031175056987">
+<h2 id="闭包的特点及其用途"><a class="markdownIt-Anchor" href="#闭包的特点及其用途">#</a> 闭包的特点及其用途</h2>
+<h3 id="1-从外部读取内部局部变量"><a class="markdownIt-Anchor" href="#1-从外部读取内部局部变量">#</a> 1. 从外部读取内部局部变量</h3>
+<p>在很多情况下，我们是需要在外部访问到内部的变量的，而且这里有一个情况：</p>
+<ul>
+<li>我们需要获取的并不是这个局部变量（比如上例中的 innerValue）的值，而是直接根据这个局部变量的地址进行更改（比如在调用函数的时候，让这个变量始终存在且增长）</li>
+</ul>
+<p>这时显然是无法使用  <code>return</code>  关键词来实现，也无法直接在全局定义变量来实现，因此诞生一种想法：使用一个内部函数来读取函数的内部变量，并通过外部函数返回内部函数，从而实现直接调用内部函数来使用外部函数的内部变量。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">out</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">let</span> innerValue = <span class="string">&quot;内部变量&quot;</span>;</span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">inn</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&quot;内部函数访问外部函数innerValue：&quot;</span> + innerValue);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 将 inn() 函数作为返回值</span></span><br><span class="line">  <span class="keyword">return</span> inn;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 返回的 inn() 函数</span></span><br><span class="line"><span class="keyword">let</span> inner = out();</span><br><span class="line">inner(); <span class="comment">// 相当于执行 inn() 函数</span></span><br></pre></td></tr></table></figure>
+<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/4df27279/image-20201031222221638.png" class="" title="image-20201031222221638">
+<h3 id="2-保证变量始终保存在内存中"><a class="markdownIt-Anchor" href="#2-保证变量始终保存在内存中">#</a> 2. 保证变量始终保存在内存中</h3>
+<p>使用闭包可以保证变量始终存在于内存当中而不会因为函数的结束而导致变量被释放</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">out</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">	<span class="keyword">let</span> innerValue = <span class="number">5212</span>;</span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">inn</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">		innerValue += <span class="number">8</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(innerValue);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> inn;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> inner = out();</span><br><span class="line">inner();</span><br><span class="line">inner();</span><br><span class="line">inner();</span><br></pre></td></tr></table></figure>
+<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/4df27279/image-20201031232414549.png" class="" title="image-20201031232414549">
+<h2 id="闭包的问题"><a class="markdownIt-Anchor" href="#闭包的问题">#</a> 闭包的问题</h2>
+<h3 id="1-内存消耗大内存泄漏"><a class="markdownIt-Anchor" href="#1-内存消耗大内存泄漏">#</a> 1. 内存消耗大，内存泄漏</h3>
+<p>由上述的 [保证变量始终保存在内存中](# 2. 保证变量始终保存在内存中)，这样做的问题也很明显，即变量会一直保存在内存当中，导致内存的消耗很大，这是因为即便表面上看外部函数已经结束引用了，但实际上内部的  <code>inn()</code>  函数始终保持着对  <code>out()</code>  函数的引用，所以其整体占用的内存始终无法被释放，因此在使用闭包的时候，必须要注意不能滥用，这可能会导致内存泄漏的问题。</p>
+<h4 id="解决方法"><a class="markdownIt-Anchor" href="#解决方法">#</a> 解决方法</h4>
+<p>在推出函数前，先将不再继续使用的局部变量进行删除操作，释放内存空间。</p>
+<h3 id="2-从外部改变内部的值"><a class="markdownIt-Anchor" href="#2-从外部改变内部的值">#</a> 2. 从外部改变内部的值</h3>
+<p>由于闭包的特点，我们可以从函数体的外部直接对函数体内部的局部变量进行修改，因此当我们把外层函数作为一个对象（  <code>object</code>  ）使用的时候，会把这整个闭包作为该对象的 <mark>公有方法</mark>（  <code>public</code>  ），而把内部的局部变量作为其 <mark>私有属性</mark>（  <code>private</code>  ），因此需要特别注意不要随便修改外层函数（外层对象）内部变量的值。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 注意这里定义 outValue 时注意使用 var 而不是 let，这是有关作用域的细节问题，会在另一篇博客中详细讨论</span></span><br><span class="line"><span class="keyword">var</span> outValue = <span class="string">&quot;函数外部变量&quot;</span>;</span><br><span class="line"><span class="comment">// 定义一个对象</span></span><br><span class="line"><span class="keyword">var</span> object = &#123;</span><br><span class="line">	outValue: <span class="string">&quot;对象内部变量&quot;</span>,</span><br><span class="line">	getValueFunction: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 这里设置一个打印 this 是为了将这里的 this 属性与 return 的 function 内 return 的 this 作区分</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">this</span>);			</span><br><span class="line">		<span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="built_in">this</span>);</span><br><span class="line">      <span class="keyword">return</span> <span class="built_in">this</span>.outValue;</span><br><span class="line">    &#125;;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">console</span>.log(object.getValueFunction()());		<span class="comment">// 但这里会输出外部变量 outValue 的值&quot;函数外部变量&quot;</span></span><br></pre></td></tr></table></figure>
+<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/4df27279/image-20201101022637048.png" class="" title="image-20201101022637048">
+<p>从这里可以看到在对象  <code>object</code>  内的属性  <code>getValueFunction</code>  中的  <code>this</code>  值指向的是  <code>object</code>  对象，而在 return 的匿名函数中的  <code>this</code>  并没有如我们原本期望的那样指向  <code>object</code>  对象，而是指向了  <code>Window</code>  对象，这即形成了一个闭包：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line">getValueFunction: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;			</span><br><span class="line">	<span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="built_in">this</span>.outValue;</span><br><span class="line">	&#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>下面的例子可以很好的说明闭包的第二个问题所在，而且也可以体现出闭包内变量始终不会被释放的情况。当作了一个公有的方法，名为  <code>getValueFunction()</code> ，并将内部私有属性  <code>outNumber</code>  从函数外部直接进行调用修改，显然这样做是不安全的因此在使用的时候一定要特别注意闭包对外部函数的局部变量（外部对象的私有属性）的修改情况。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 注意这里定义 outValue 时注意使用 var 而不是 let，这是有关作用域的细节问题，会在另一篇博客中详细讨论</span></span><br><span class="line"><span class="keyword">var</span> outValue = <span class="string">&quot;函数外部变量&quot;</span>;</span><br><span class="line"><span class="comment">// 定义一个对象</span></span><br><span class="line"><span class="keyword">var</span> object = &#123;</span><br><span class="line">	outValue: <span class="string">&quot;对象内部变量&quot;</span>,</span><br><span class="line">	outNumber: <span class="number">1</span>,</span><br><span class="line">	getValueFunction: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 这里设置一个打印 this 是为了将这里的 this 属性与 return 的 function 内 return 的 this 作区分</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">this</span>);</span><br><span class="line">    <span class="keyword">var</span> that = <span class="built_in">this</span>;			</span><br><span class="line">		<span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    	that.outNumber++;</span><br><span class="line">      <span class="keyword">return</span> that.outNumber;</span><br><span class="line">    &#125;;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="built_in">console</span>.log(object.getValueFunction()());		<span class="comment">// 但这里会输出外部变量 outValue 的值&quot;函数外部变量&quot;</span></span><br></pre></td></tr></table></figure>
+<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/4df27279/image-20201101194659472.png" class="" title="image-20201101194659472">]]></content>
+      <categories>
+        <category>计算机语言学习</category>
+        <category>JavaScript</category>
+      </categories>
+      <tags>
+        <tag>javascript</tag>
+        <tag>闭包</tag>
       </tags>
   </entry>
 </search>
