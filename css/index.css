@@ -1537,20 +1537,37 @@ blockquote footer cite:before {
   font-size: 1.4em;
 }
 #aside_content .card-info .card-info-social-icons {
+  display: -ms-flexbox;
+  display: box;
+  display: flex;
+  -o-box-pack: center;
+  justify-content: center;
+  -o-box-align: center;
+  align-items: center;
   margin: 0.3rem 0 -0.3rem;
 }
 #aside_content .card-info .card-info-social-icons .social-icon {
+  display: -ms-flexbox;
+  display: box;
+  display: flex;
+  -o-box-pack: center;
+  justify-content: center;
+  -o-box-align: center;
+  align-items: center;
   margin: 0 0.5rem;
   color: var(--font-color);
   font-size: 1.4em;
-  transition: all 0.3s;
+  transition: all 0.3s ease-in-out;
   cursor: pointer;
+}
+#aside_content .card-info .card-info-social-icons .social-icon:hover {
+  transform: rotate(360deg) scale(1.2);
+}
+#aside_content .card-info .card-info-social-icons .social-icon:hover>i {
+  background-color: #fff;
 }
 #aside_content .card-info .card-info-social-icons i {
   font-size: 1.4em;
-}
-#aside_content .card-info .card-info-social-icons i:hover {
-  transform: rotate(540deg);
 }
 #aside_content .card-info #card-info-btn {
   display: block;
