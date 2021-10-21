@@ -98,6 +98,80 @@
       </tags>
   </entry>
   <entry>
+    <title>CSS隐藏元素</title>
+    <url>/blog/ShenMingyu/2c14192d/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/blog/css/APlayer.min.css"><script src="/blog/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/blog/js/Meting.min.js"></script><p>面试的时候被问到了  <code>CSS</code>  有哪些隐藏元素的方法，回答的时候只想到了基本元素的隐藏，没有想到文字等元素也是可以隐藏的，也暴露出对一些元素的理解不够深入的问题，写这篇博客来巩固一下。</p>
+<p>首先上一波 sample html、css 代码以及默认展示情况：（两个白色的是参考块，青色的是需要隐藏的）</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">title</span>&gt;</span>隐藏元素<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;ref&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;toBeHidden&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;ref&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">* &#123;</span><br><span class="line">  <span class="attribute">margin</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">box-sizing</span>: border-box;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: flex;</span><br><span class="line">  <span class="attribute">justify-content</span>: center;</span><br><span class="line">  <span class="attribute">align-items</span>: center;</span><br><span class="line">  <span class="attribute">flex-direction</span>: column;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">100vh</span>;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="number">#242424</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.toBeHidden</span> &#123;</span><br><span class="line">  <span class="attribute">text-align</span>: center;</span><br><span class="line">  <span class="attribute">line-height</span>: <span class="number">200px</span>;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">40px</span>;</span><br><span class="line">  <span class="attribute">color</span>: <span class="number">#ffffff</span>;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">300px</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">200px</span>;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="number">#009999</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.ref</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">400px</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">margin</span>: <span class="number">50px</span>;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="number">#fff</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/2c14192d/image-20201126103440972.png" class="" title="image-20201126103440972">
+<h2 id="一-width-0-height-0"><a class="markdownIt-Anchor" href="#一-width-0-height-0">#</a> 一、 <code>width: 0; height: 0;</code></h2>
+<p>最普通、最直观也最容易被忽略的一种方法，看过很多类似的博客，都没有提到这种方法</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.toBeHidden</span> &#123;</span><br><span class="line">	<span class="attribute">width</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/2c14192d/image-20201126104401427.png" class="" title="image-20201126104401427">
+<h2 id="二-displaynone"><a class="markdownIt-Anchor" href="#二-displaynone">#</a> 二、 <code>display:none;</code></h2>
+<p><code>display:none;</code>  属性会将设置元素的文档流占位直接去除，因此，在网页中不会显示这个元素，比较推荐这个方式。</p>
+<p>⚠️ <mark>注意：当使用该元素时，如果该元素有  <code>transition</code>  属性，会直接忽略过渡时间和动画，直接消失</mark></p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.toBeHidden</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: none;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/2c14192d/image-20201126104401427.png" class="" title="image-20201126104401427">
+<h2 id="三-opacity0"><a class="markdownIt-Anchor" href="#三-opacity0">#</a> 三、 <code>opacity:0;</code></h2>
+<p><code>opacity:0;</code>  属性是将当前元素的设置为全透明，包括其中的背景颜色、字体颜色等等。当我们需要渐隐效果来进行动画过渡的时候可以选择使用这个方法。但是显然这个方法 <mark>不能</mark> 去除元素块的占位</p>
+<p>⚠️ <mark>注意：当使用该元素时，如果该元素有  <code>transition</code>  属性，会根据过渡时间以及过渡动画逐渐消失</mark></p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.toBeHidden</span> &#123;</span><br><span class="line">  <span class="attribute">opacity</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/2c14192d/image-20201126103521477.png" class="" title="image-20201126103521477">
+<h2 id="四-visibilityhidden"><a class="markdownIt-Anchor" href="#四-visibilityhidden">#</a> 四、 <code>visibility:hidden;</code></h2>
+<p><code>visibility:hidden;</code>  属性可以将当前元素的可见性设置为隐藏，与 <code>display:none;</code>  相比，他没有去除元素的文档流占位，与  <code>opacity:0;</code>  相比，他不是一个连续的隐藏属性，因此无法设置动画。我个人的简单理解就是为了中和上面两者的部分特点，方便一些特殊情况时的使用。</p>
+<p>⚠️ <mark>注意：当使用该元素时，如果该元素有  <code>transition</code>  属性，会直接忽略过渡持续动画，当到达过渡结束时间时，直接消失</mark></p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.toBeHidden</span> &#123;</span><br><span class="line">  <span class="attribute">visibility</span>: hidden;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/2c14192d/image-20201126103521477.png" class="" title="image-20201126103521477">
+<h2 id="五-overflowhidden"><a class="markdownIt-Anchor" href="#五-overflowhidden">#</a> 五、 <code>overflow:hidden;</code></h2>
+<p><code>overflow:hidden;</code>  属性可以将溢出元素大小的内容直接进行隐藏，因此该属性不是对属性自身进行隐藏，而是对其子元素进行隐藏，设置这个属性时，可以添加一个父级元素，并将其高度设置为 0。</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;father&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;toBeHidden&quot;</span>&gt;</span>把我隐藏<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.father</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: auto;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">0px</span>;</span><br><span class="line">  <span class="attribute">overflow</span>: hidden;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/2c14192d/image-20201126104401427.png" class="" title="image-20201126104401427">
+<!-- 当我们仅仅需要对元素内文字进行隐藏的时候也可以使用 overflow:hidden; 属性的方法。 -->
+<h2 id="六-z-index"><a class="markdownIt-Anchor" href="#六-z-index">#</a> 六、 <code>z-index:;</code></h2>
+<p>这个属性的设置需要配合  <code>position</code>  属性同时设置，可以将当前元素的层级设置为负数，如果确认不显示，则越小越好，这样就不会影响到可能同样设置为负数的其他元素，当  <code>position</code>  为  <code>absolute</code>  时，会失去占位，当  <code>position</code>  为  <code>relative</code>  时，会保持占位。</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.toBeHidden</span> &#123;</span><br><span class="line">  <span class="attribute">position</span>: absolute;</span><br><span class="line">  <span class="attribute">z-index</span>: -<span class="number">999</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/2c14192d/image-20201126104401427.png" class="" title="image-20201126104401427">
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.toBeHidden</span> &#123;</span><br><span class="line">  <span class="attribute">position</span>: relative;</span><br><span class="line">  <span class="attribute">z-index</span>: -<span class="number">999</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/2c14192d/image-20201126103521477.png" class="" title="image-20201126103521477">
+<h2 id="七-positionabsolute"><a class="markdownIt-Anchor" href="#七-positionabsolute">#</a> 七、 <code>position:absolute;</code></h2>
+<p>有时候我们希望做到元素从其他看不到的地方通过动画进行显示，这是我们还可以使用  <code>position:absolute;</code>  属性进行设置</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.toBeHidden</span> &#123;</span><br><span class="line">  <span class="attribute">position</span>: absolute;</span><br><span class="line">  <span class="comment">/* 这里为了方便展示，所以只左移200px方便观察 */</span></span><br><span class="line">  <span class="attribute">left</span>: -<span class="number">200px</span>;</span><br><span class="line">  <span class="comment">/* 搭配以下属性，即可随意移动该元素的位置，并且不会导致页面出现横向滚动条</span></span><br><span class="line"><span class="comment">  top:;	 left:;	 bottom:;	 right:;</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/2c14192d/image-20201126104933411.png" class="" title="image-20201126104933411">
+<h2 id="八-clip-path-polygon0"><a class="markdownIt-Anchor" href="#八-clip-path-polygon0">#</a> 八、 <code>clip-path: polygon(0)</code></h2>
+<p><code>clip-path</code>  属性经常用在切割出多边形的情况下，可以设定切割位置来实现全部隐藏的效果</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.toBeHidden</span> &#123;</span><br><span class="line">  <span class="attribute">clip-path</span>: <span class="built_in">polygon</span>(<span class="number">0px</span> <span class="number">0px</span>, <span class="number">0px</span> <span class="number">0px</span>, <span class="number">0px</span> <span class="number">0px</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/2c14192d/image-20201126103521477.png" class="" title="image-20201126103521477">
+<h2 id="九-transform-scale0"><a class="markdownIt-Anchor" href="#九-transform-scale0">#</a> 九、 <code>transform: scale(0);</code></h2>
+<p><code>transform</code>  属性常用在过渡动画效果设置当中，我们同样可以设置当前块的规模比例为 0，即  <code>transform: scale(0);</code></p>
+<p>需要注意的是： <code>transform: scale(0);</code>  并不会使元素脱离文档流，因此其占位仍然存在，可以理解为改变的仅仅是元素块的显示大小而没有改变占位大小。</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.toBeHidden</span> &#123;</span><br><span class="line">  <span class="attribute">transform</span>: <span class="built_in">scale</span>(<span class="number">0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/2c14192d/image-20201126103521477.png" class="" title="image-20201126103521477">
+<h2 id="十-background-color-transparent"><a class="markdownIt-Anchor" href="#十-background-color-transparent">#</a> 十、 <code>background-color: transparent</code></h2>
+<p>有时我们仅仅需要调整背景颜色来进行背景的隐藏，那么只需要使用  <code>background-color: transparent</code>  属性就可以完成。这样的弊端显然是不能控制元素块内的文字的显示情况的。</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.toBeHidden</span> &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: transparent;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/2c14192d/image-20201126110747091.png" class="" title="image-20201126110747091">
+<h2 id="十一-font-size0"><a class="markdownIt-Anchor" href="#十一-font-size0">#</a> 十一、 <code>font-size:0;</code></h2>
+<p>当我们只需要对元素内文字进行隐藏时，可以将文字的大小直接设置为 0。</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.toBeHidden</span> &#123;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/2c14192d/image-20201126105912948.png" class="" title="image-20201126105912948">
+<p>显然这样是仅仅隐藏了文字的方法。</p>
+<h2 id="十二-color-transparent"><a class="markdownIt-Anchor" href="#十二-color-transparent">#</a> 十二、 <code>color: transparent;</code></h2>
+<p>仅仅对文字进行隐藏的时候还可以把文字的颜色设置为透明色，这样单从视觉效果上看，文字是隐藏起来的。</p>
+<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/2c14192d/image-20201126105912948.png" class="" title="image-20201126105912948">
+]]></content>
+      <categories>
+        <category>计算机语言学习</category>
+        <category>CSS</category>
+      </categories>
+      <tags>
+        <tag>CSS</tag>
+        <tag>面经</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>HSTS安全信息重置问题解决方法</title>
     <url>/blog/ShenMingyu/ac3979a/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/blog/css/APlayer.min.css"><script src="/blog/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/blog/js/Meting.min.js"></script><h3 id="问题描述"><a class="markdownIt-Anchor" href="#问题描述">#</a> 问题描述：</h3>
@@ -137,80 +211,6 @@
       <tags>
         <tag>browser</tag>
         <tag>safty</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>CSS隐藏元素</title>
-    <url>/blog/ShenMingyu/2c14192d/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/blog/css/APlayer.min.css"><script src="/blog/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/blog/js/Meting.min.js"></script><p>面试的时候被问到了  <code>CSS</code>  有哪些隐藏元素的方法，回答的时候只想到了基本元素的隐藏，没有想到文字等元素也是可以隐藏的，也暴露出对一些元素的理解不够深入的问题，写这篇博客来巩固一下。</p>
-<p>首先上一波 sample html、css 代码以及默认展示情况：（两个白色的是参考块，青色的是需要隐藏的）</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">title</span>&gt;</span>隐藏元素<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;ref&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;toBeHidden&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;ref&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">* &#123;</span><br><span class="line">  <span class="attribute">margin</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">box-sizing</span>: border-box;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: flex;</span><br><span class="line">  <span class="attribute">justify-content</span>: center;</span><br><span class="line">  <span class="attribute">align-items</span>: center;</span><br><span class="line">  <span class="attribute">flex-direction</span>: column;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">100vh</span>;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="number">#242424</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.toBeHidden</span> &#123;</span><br><span class="line">  <span class="attribute">text-align</span>: center;</span><br><span class="line">  <span class="attribute">line-height</span>: <span class="number">200px</span>;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">40px</span>;</span><br><span class="line">  <span class="attribute">color</span>: <span class="number">#ffffff</span>;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">300px</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">200px</span>;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="number">#009999</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.ref</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">400px</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">margin</span>: <span class="number">50px</span>;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="number">#fff</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/2/image-20201126103440972.png" class="" title="image-20201126103440972">
-<h2 id="一-width-0-height-0"><a class="markdownIt-Anchor" href="#一-width-0-height-0">#</a> 一、 <code>width: 0; height: 0;</code></h2>
-<p>最普通、最直观也最容易被忽略的一种方法，看过很多类似的博客，都没有提到这种方法</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.toBeHidden</span> &#123;</span><br><span class="line">	<span class="attribute">width</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/2/image-20201126104401427.png" class="" title="image-20201126104401427">
-<h2 id="二-displaynone"><a class="markdownIt-Anchor" href="#二-displaynone">#</a> 二、 <code>display:none;</code></h2>
-<p><code>display:none;</code>  属性会将设置元素的文档流占位直接去除，因此，在网页中不会显示这个元素，比较推荐这个方式。</p>
-<p>⚠️ <mark>注意：当使用该元素时，如果该元素有  <code>transition</code>  属性，会直接忽略过渡时间和动画，直接消失</mark></p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.toBeHidden</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: none;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/2/image-20201126104401427.png" class="" title="image-20201126104401427">
-<h2 id="三-opacity0"><a class="markdownIt-Anchor" href="#三-opacity0">#</a> 三、 <code>opacity:0;</code></h2>
-<p><code>opacity:0;</code>  属性是将当前元素的设置为全透明，包括其中的背景颜色、字体颜色等等。当我们需要渐隐效果来进行动画过渡的时候可以选择使用这个方法。但是显然这个方法 <mark>不能</mark> 去除元素块的占位</p>
-<p>⚠️ <mark>注意：当使用该元素时，如果该元素有  <code>transition</code>  属性，会根据过渡时间以及过渡动画逐渐消失</mark></p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.toBeHidden</span> &#123;</span><br><span class="line">  <span class="attribute">opacity</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/2/image-20201126103521477.png" class="" title="image-20201126103521477">
-<h2 id="四-visibilityhidden"><a class="markdownIt-Anchor" href="#四-visibilityhidden">#</a> 四、 <code>visibility:hidden;</code></h2>
-<p><code>visibility:hidden;</code>  属性可以将当前元素的可见性设置为隐藏，与 <code>display:none;</code>  相比，他没有去除元素的文档流占位，与  <code>opacity:0;</code>  相比，他不是一个连续的隐藏属性，因此无法设置动画。我个人的简单理解就是为了中和上面两者的部分特点，方便一些特殊情况时的使用。</p>
-<p>⚠️ <mark>注意：当使用该元素时，如果该元素有  <code>transition</code>  属性，会直接忽略过渡持续动画，当到达过渡结束时间时，直接消失</mark></p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.toBeHidden</span> &#123;</span><br><span class="line">  <span class="attribute">visibility</span>: hidden;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/2/image-20201126103521477.png" class="" title="image-20201126103521477">
-<h2 id="五-overflowhidden"><a class="markdownIt-Anchor" href="#五-overflowhidden">#</a> 五、 <code>overflow:hidden;</code></h2>
-<p><code>overflow:hidden;</code>  属性可以将溢出元素大小的内容直接进行隐藏，因此该属性不是对属性自身进行隐藏，而是对其子元素进行隐藏，设置这个属性时，可以添加一个父级元素，并将其高度设置为 0。</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;father&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;toBeHidden&quot;</span>&gt;</span>把我隐藏<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.father</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: auto;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">0px</span>;</span><br><span class="line">  <span class="attribute">overflow</span>: hidden;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/2/image-20201126104401427.png" class="" title="image-20201126104401427">
-<!-- 当我们仅仅需要对元素内文字进行隐藏的时候也可以使用 overflow:hidden; 属性的方法。 -->
-<h2 id="六-z-index"><a class="markdownIt-Anchor" href="#六-z-index">#</a> 六、 <code>z-index:;</code></h2>
-<p>这个属性的设置需要配合  <code>position</code>  属性同时设置，可以将当前元素的层级设置为负数，如果确认不显示，则越小越好，这样就不会影响到可能同样设置为负数的其他元素，当  <code>position</code>  为  <code>absolute</code>  时，会失去占位，当  <code>position</code>  为  <code>relative</code>  时，会保持占位。</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.toBeHidden</span> &#123;</span><br><span class="line">  <span class="attribute">position</span>: absolute;</span><br><span class="line">  <span class="attribute">z-index</span>: -<span class="number">999</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/2/image-20201126104401427.png" class="" title="image-20201126104401427">
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.toBeHidden</span> &#123;</span><br><span class="line">  <span class="attribute">position</span>: relative;</span><br><span class="line">  <span class="attribute">z-index</span>: -<span class="number">999</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/2/image-20201126103521477.png" class="" title="image-20201126103521477">
-<h2 id="七-positionabsolute"><a class="markdownIt-Anchor" href="#七-positionabsolute">#</a> 七、 <code>position:absolute;</code></h2>
-<p>有时候我们希望做到元素从其他看不到的地方通过动画进行显示，这是我们还可以使用  <code>position:absolute;</code>  属性进行设置</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.toBeHidden</span> &#123;</span><br><span class="line">  <span class="attribute">position</span>: absolute;</span><br><span class="line">  <span class="comment">/* 这里为了方便展示，所以只左移200px方便观察 */</span></span><br><span class="line">  <span class="attribute">left</span>: -<span class="number">200px</span>;</span><br><span class="line">  <span class="comment">/* 搭配以下属性，即可随意移动该元素的位置，并且不会导致页面出现横向滚动条</span></span><br><span class="line"><span class="comment">  top:;	 left:;	 bottom:;	 right:;</span></span><br><span class="line"><span class="comment">  */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/2/image-20201126104933411.png" class="" title="image-20201126104933411">
-<h2 id="八-clip-path-polygon0"><a class="markdownIt-Anchor" href="#八-clip-path-polygon0">#</a> 八、 <code>clip-path: polygon(0)</code></h2>
-<p><code>clip-path</code>  属性经常用在切割出多边形的情况下，可以设定切割位置来实现全部隐藏的效果</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.toBeHidden</span> &#123;</span><br><span class="line">  <span class="attribute">clip-path</span>: <span class="built_in">polygon</span>(<span class="number">0px</span> <span class="number">0px</span>, <span class="number">0px</span> <span class="number">0px</span>, <span class="number">0px</span> <span class="number">0px</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/2/image-20201126103521477.png" class="" title="image-20201126103521477">
-<h2 id="九-transform-scale0"><a class="markdownIt-Anchor" href="#九-transform-scale0">#</a> 九、 <code>transform: scale(0);</code></h2>
-<p><code>transform</code>  属性常用在过渡动画效果设置当中，我们同样可以设置当前块的规模比例为 0，即  <code>transform: scale(0);</code></p>
-<p>需要注意的是： <code>transform: scale(0);</code>  并不会使元素脱离文档流，因此其占位仍然存在，可以理解为改变的仅仅是元素块的显示大小而没有改变占位大小。</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.toBeHidden</span> &#123;</span><br><span class="line">  <span class="attribute">transform</span>: <span class="built_in">scale</span>(<span class="number">0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/2/image-20201126103521477.png" class="" title="image-20201126103521477">
-<h2 id="十-background-color-transparent"><a class="markdownIt-Anchor" href="#十-background-color-transparent">#</a> 十、 <code>background-color: transparent</code></h2>
-<p>有时我们仅仅需要调整背景颜色来进行背景的隐藏，那么只需要使用  <code>background-color: transparent</code>  属性就可以完成。这样的弊端显然是不能控制元素块内的文字的显示情况的。</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.toBeHidden</span> &#123;</span><br><span class="line">  <span class="attribute">background-color</span>: transparent;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/2/image-20201126110747091.png" class="" title="image-20201126110747091">
-<h2 id="十一-font-size0"><a class="markdownIt-Anchor" href="#十一-font-size0">#</a> 十一、 <code>font-size:0;</code></h2>
-<p>当我们只需要对元素内文字进行隐藏时，可以将文字的大小直接设置为 0。</p>
-<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-class">.toBeHidden</span> &#123;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/2/image-20201126105912948.png" class="" title="image-20201126105912948">
-<p>显然这样是仅仅隐藏了文字的方法。</p>
-<h2 id="十二-color-transparent"><a class="markdownIt-Anchor" href="#十二-color-transparent">#</a> 十二、 <code>color: transparent;</code></h2>
-<p>仅仅对文字进行隐藏的时候还可以把文字的颜色设置为透明色，这样单从视觉效果上看，文字是隐藏起来的。</p>
-<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/2/image-20201126105912948.png" class="" title="image-20201126105912948">
-]]></content>
-      <categories>
-        <category>计算机语言学习</category>
-        <category>CSS</category>
-      </categories>
-      <tags>
-        <tag>CSS</tag>
-        <tag>面经</tag>
       </tags>
   </entry>
   <entry>
@@ -417,7 +417,7 @@
 <p>由于  <code>JavaScript</code>  是单线程执行语言，即一次只执行一个任务，对于执行上下文，执行时使用到了栈  <code>Stack</code>  的执行顺序，比方说有如下代码：</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  b();</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">b</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    c();</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">c</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">&quot;我是c函数&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>函数执行的过程模拟如下图：</p>
-<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/3/image-20201111210825556.png" class="" title="image-20201111210825556">
+<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/334185e7/image-20201111210825556.png" class="" title="image-20201111210825556">
 <p>简单理解 <mark>执行上下文</mark> ，就是当前层级下的语句上下文。而当出现当前执行上下文中没有某一变量对象的定义时，根据 <mark>作用域链</mark> 的概念，当前的执行上下文实际包含了上层所有的执行上下文</p>
 <h3 id="作用域链"><a class="markdownIt-Anchor" href="#作用域链">#</a> 作用域链</h3>
 <p>如上所述，比如有代码：</p>
@@ -439,7 +439,7 @@
 </ul>
 <p>代码执行的优先级如上面的排列，<mark>主队列 &gt; 微队列 &gt; 宏队列</mark>，比如：</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="string">&quot;主队列任务1&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;宏队列任务1&#x27;</span>);</span><br><span class="line">&#125;, <span class="number">0</span>);</span><br><span class="line"><span class="built_in">setTimeout</span>(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;宏队列任务2&#x27;</span>);</span><br><span class="line">&#125;, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line"><span class="built_in">Promise</span>.resolve(<span class="number">1</span>).then(<span class="function"><span class="params">value</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;微队列任务1&#x27;</span>, value);</span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">Promise</span>.resolve(<span class="number">2</span>).then(<span class="function"><span class="params">value</span> =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">&#x27;微队列任务2&#x27;</span>, value);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&quot;主队列任务2&quot;</span>);</span><br></pre></td></tr></table></figure>
-<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/3/image-20201111213855601.png" class="" title="image-20201111213855601">
+<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/334185e7/image-20201111213855601.png" class="" title="image-20201111213855601">
 <p>显然在使用  <code>Promise</code>  的时候，会将  <code>Promise</code>  的任务立即放入微任务队列中，而且跟女执行结果，微任务队列的执行优先级是高于宏任务队列，即  <code>setTimeout()</code>  的内部任务的。</p>
 <p>讲了这么多，但是却感觉始终没有说到点上，这是因为上面的这些实际上是词法作用域的重要规则，在作用域链的例子当中，体现的是词法作用域的查找规则，而这个规则是闭包的非常重要的一部分而已。</p>
 ]]></content>
@@ -460,7 +460,7 @@
 <ol>
 <li>确定实验目录，大概是这样子的，用来检测是否能获取到 <mark>内联</mark>、<mark>内嵌</mark>、<mark>外部</mark> 样式中的样式属性值。</li>
 </ol>
-<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/4/image-20201128163015513.png" class="" title="image-20201128163015513">
+<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/84297598/image-20201128163015513.png" class="" title="image-20201128163015513">
 <ol start="2">
 <li>然后确定整体  <code>HTML</code>  结构</li>
 </ol>
@@ -474,7 +474,7 @@
 <p>返回值是一个 <a href="https://developer.mozilla.org/zh-US/docs/DOM/CSSStyleDeclaration"> <code>CSSStyleDeclaration</code> </a> 对象。</p>
 <h3 id="兼容性"><a class="markdownIt-Anchor" href="#兼容性">#</a> 兼容性</h3>
 <p><code>Element.style.*</code>  方法是目前我最常用的一种获取元素样式属性的方法，这个方法的兼容性自然不用多说，直接上图：</p>
-<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/4/image-20201128171027071.png" class="" title="image-20201128171027071">
+<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/84297598/image-20201128171027071.png" class="" title="image-20201128171027071">
 <p>这个方法的权限是可读可写的，而且写入的样式的优先级相当于直接在元素中内联的  <code>style</code>  的优先级，属于最高优先级，而我这次使用的时候忽略掉了该方法的一个使用限制，在 <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/HTMLElement/style">MDN</a> 上是这样说明这个限制的：</p>
 <blockquote>
 <p>通常，要了解元素样式的信息，仅仅使用  <code>style</code>  属性是不够的，这是因为它只包含了在元素内嵌 style 属性（attribute）上声明的的 CSS 属性，而不包括来自其他地方声明的样式，如 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/head"> <code>&lt;head&gt;</code> </a> 部分的内嵌样式表，或外部样式表。要获取一个元素的所有 CSS 属性，你应该使用 <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Window/getComputedStyle"> <code>window.getComputedStyle()</code> </a>。</p>
@@ -482,16 +482,16 @@
 <h3 id="用法"><a class="markdownIt-Anchor" href="#用法">#</a> 用法</h3>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> testInline = <span class="built_in">document</span>.getElementById(<span class="string">&quot;testInline&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 当需要将样式更换为背景白色，其他样式去除，则使用如下方法：</span></span><br><span class="line">testInline.style.cssText = <span class="string">&quot;background-color: #FFFFFF;&quot;</span>; </span><br></pre></td></tr></table></figure>
 <p>结果是这样的：</p>
-<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/4/image-20201128173204316.png" class="" title="image-20201128173204316">
+<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/84297598/image-20201128173204316.png" class="" title="image-20201128173204316">
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 当需要仅仅将样式的背景颜色都更换为白色时，</span></span><br><span class="line">testInline.style.backgroundColor = <span class="string">&quot;#FFFFFF&quot;</span>;</span><br></pre></td></tr></table></figure>
 <p>结果是这样的：</p>
-<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/4/image-20201128173232354.png" class="" title="image-20201128173232354">
+<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/84297598/image-20201128173232354.png" class="" title="image-20201128173232354">
 <h2 id="二-windowgetcomputedstyle"><a class="markdownIt-Anchor" href="#二-windowgetcomputedstyle">#</a> 二、 <code>window.getComputedStyle()</code></h2>
 <p>该方法与  <code>element.style.*</code>  不同，他的权限是只读，因此只能读出样式而不能修改样式。</p>
 <p>返回的  <code>style</code>  是一个实时的 <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/CSSStyleDeclaration"> <code>CSSStyleDeclaration</code> </a> 对象，当元素的样式更改时，它会自动更新本身。</p>
 <h3 id="兼容性-2"><a class="markdownIt-Anchor" href="#兼容性-2">#</a> 兼容性</h3>
 <p>这个方法是属于  <code>window</code>  对象的，兼容性如下：</p>
-<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/4/image-20201128170445992.png" class="" title="image-20201128170445992">
+<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/84297598/image-20201128170445992.png" class="" title="image-20201128170445992">
 <p>这个函数可以传入两个参数： <code>window.getComputedStyle(element, [pseudoElt])</code></p>
 <ul>
 <li>第一个参数为 <mark>必传参数</mark> ，是需要获取样式的元素名</li>
@@ -499,7 +499,7 @@
 </ul>
 <h3 id="用法-2"><a class="markdownIt-Anchor" href="#用法-2">#</a> 用法</h3>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> testInline = <span class="built_in">document</span>.getElementById(<span class="string">&quot;testInline&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> backgroundColor = <span class="built_in">window</span>.getComputedStyle(testInline, <span class="literal">null</span>).color;</span><br><span class="line">testInline.innerHTML = backgroundColor;</span><br></pre></td></tr></table></figure>
-<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/4/image-20201128173731803.png" class="" title="image-20201128173731803">
+<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/84297598/image-20201128173731803.png" class="" title="image-20201128173731803">
 <h2 id="三-elementcurrentstyle"><a class="markdownIt-Anchor" href="#三-elementcurrentstyle">#</a> 三、 <code>Element.currentStyle</code></h2>
 <blockquote>
 <p><code>Element.currentStyle</code>  是一个与 <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Window/getComputedStyle"> <code>window.getComputedStyle</code> </a> 方法功能相同的属性。这个属性实现在旧版本的 IE 浏览器中。</p>
@@ -507,7 +507,7 @@
 该特性是非标准的，请尽量不要在生产环境中使用它！</p>
 </blockquote>
 <h3 id="兼容性-3"><a class="markdownIt-Anchor" href="#兼容性-3">#</a> 兼容性</h3>
-<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/4/image-20201128221248373.png" class="" title="image-20201128221248373">
+<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/84297598/image-20201128221248373.png" class="" title="image-20201128221248373">
 <h3 id="用法-3"><a class="markdownIt-Anchor" href="#用法-3">#</a> 用法</h3>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> testInline = <span class="built_in">document</span>.getElementById(<span class="string">&quot;testInline&quot;</span>);</span><br><span class="line">testInline.currentStyle.backgroundColor = <span class="string">&quot;#FFFFFF&quot;</span>;</span><br></pre></td></tr></table></figure>
 <h2 id="四-elementgetattributesetattribute"><a class="markdownIt-Anchor" href="#四-elementgetattributesetattribute">#</a> 四、 <code>Element.getAttribute()/setAttribute()</code></h2>
@@ -523,13 +523,13 @@
 <li>第三个参数  <code>value</code> ，是需要更改的样式值</li>
 </ul>
 <h3 id="兼容性-4"><a class="markdownIt-Anchor" href="#兼容性-4">#</a> 兼容性</h3>
-<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/4/image-20201128222857586.png" class="" title="image-20201128222857586">
+<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/84297598/image-20201128222857586.png" class="" title="image-20201128222857586">
 <h3 id="用法-4"><a class="markdownIt-Anchor" href="#用法-4">#</a> 用法</h3>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> testInline = <span class="built_in">document</span>.getElementById(<span class="string">&quot;testInline&quot;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 注意这个设置方法会导致style中只剩下设置的样式，甚至会将块内原本的 HTML 内容删除，因此需要一次性全部进行设置，类似Element.style.cssText 方法，</span></span><br><span class="line">testInline.setAttribute(<span class="string">&quot;style&quot;</span>, <span class="string">&quot;width: 500px;height: 100px;background-color: #FFFFFF;color: #ffffff;font-size: 30px;line-height: 100px;text-align: center;&quot;</span>);</span><br><span class="line">testInline.innerHTML = testInline.getAttribute(<span class="string">&quot;backgroundColor&quot;</span>);</span><br></pre></td></tr></table></figure>
 <h2 id="五-elementgetpropertyvalue"><a class="markdownIt-Anchor" href="#五-elementgetpropertyvalue">#</a> 五、 <code>Element.getPropertyValue()</code></h2>
 <p><code>Element.getPropertyValue()</code>  和  <code>Element.getAttribute()</code>  很类似，最主要的区别就在于选取元素的时候的命名格式的不同：前者的格式是使用原生属性名，而后者则使用驼峰的命名格式来进行属性选取。</p>
 <h3 id="兼容性-5"><a class="markdownIt-Anchor" href="#兼容性-5">#</a> 兼容性</h3>
-<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/4/image-20201130190750238.png" class="" title="image-20201130190750238">
+<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/84297598/image-20201130190750238.png" class="" title="image-20201130190750238">
 <h3 id="用法-5"><a class="markdownIt-Anchor" href="#用法-5">#</a> 用法</h3>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> testInline = <span class="built_in">document</span>.getElementById(<span class="string">&quot;testInline&quot;</span>);</span><br><span class="line">testInline.innerHTML = testInline.getPropertyValue(<span class="string">&quot;background-color&quot;</span>);</span><br></pre></td></tr></table></figure>
 <h2 id="实验验证"><a class="markdownIt-Anchor" href="#实验验证">#</a> 实验验证</h2>
@@ -542,7 +542,7 @@
 <p>外部  <code>style.css</code>  文件的样式仅仅控制  <code>&lt;div id=&quot;testExternal&quot;&gt;&lt;/div&gt;</code>  的样式：</p>
 <figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-id">#testExternal</span> &#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">500px</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="number">#999900</span>;</span><br><span class="line">  <span class="attribute">color</span>: <span class="number">#ffffff</span>;</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">30px</span>;</span><br><span class="line">  <span class="attribute">line-height</span>: <span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">text-align</span>: center;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>显示的效果是这样的：</p>
-<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/4/image-20201128165522232.png" class="" title="image-20201128165522232">
+<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/84297598/image-20201128165522232.png" class="" title="image-20201128165522232">
 <p>这时编写  <code>js</code>  代码来进行样式的获取</p>
 ]]></content>
       <categories>
@@ -1810,6 +1810,168 @@
       </tags>
   </entry>
   <entry>
+    <title>时政</title>
+    <url>/blog/ShenMingyu/c97cfe6b/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/blog/css/APlayer.min.css"><script src="/blog/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/blog/js/Meting.min.js"></script><h1 id="时政"><a class="markdownIt-Anchor" href="#时政">#</a> 时政</h1>
+<h2 id="党务知识-二三四五六"><a class="markdownIt-Anchor" href="#党务知识-二三四五六">#</a> 党务知识 “二三四五六”</h2>
+<h3 id="和党有关的-二"><a class="markdownIt-Anchor" href="#和党有关的-二">#</a> 和党有关的 “二”</h3>
+<h4 id="1-两个维护"><a class="markdownIt-Anchor" href="#1-两个维护">#</a> 1. 两个维护</h4>
+<p>2018 年 8 月 26 日中共中央在新修订的《中国共产党纪律处分条例》中增写：</p>
+<blockquote>
+<p>坚决维护习近平总书记党中央的核心、全党的核心地位</p>
+<p>坚决维护党中央权威和集中统一领导。</p>
+</blockquote>
+<h4 id="2-两个巩固"><a class="markdownIt-Anchor" href="#2-两个巩固">#</a> 2. 两个巩固</h4>
+<p>2013 年 8 月 19 日习近平总书记在全国宣传思想工作会议上提出：</p>
+<blockquote>
+<p>巩固马克思主义思想在意识形态领域的指导地位</p>
+<p>巩固全党全国人民团结奋斗的共同思想基础</p>
+</blockquote>
+<h4 id="3-两学一做"><a class="markdownIt-Anchor" href="#3-两学一做">#</a> 3. 两学一做</h4>
+<p>2016 年 2 月中共中央办公厅印发《关于在全体党员中开展 “学党章党规、学系列讲话，做合格党员” 学习教育方案》中提出：</p>
+<blockquote>
+<p>学党章党规</p>
+<p>学系列讲话</p>
+<p>做合格党员</p>
+</blockquote>
+<h3 id="和党有关的-三"><a class="markdownIt-Anchor" href="#和党有关的-三">#</a> 和党有关的 “三”</h3>
+<h4 id="1-党的三大作风"><a class="markdownIt-Anchor" href="#1-党的三大作风">#</a> 1. 党的三大作风</h4>
+<p>毛泽东同志在党的七大所作的《论联合政府》的报告中提出：</p>
+<blockquote>
+<p>理论联系实际</p>
+<p>密切联系群众</p>
+<p>批评与自我批评</p>
+</blockquote>
+<h4 id="2-党的三大法宝"><a class="markdownIt-Anchor" href="#2-党的三大法宝">#</a> 2. 党的三大法宝</h4>
+<p>1939 年 10 月毛泽东同志在《〈共产党人〉发刊词》中提出：</p>
+<blockquote>
+<p>统一战线</p>
+<p>武装斗争</p>
+<p>党的建设</p>
+</blockquote>
+<h4 id="3-三会一课"><a class="markdownIt-Anchor" href="#3-三会一课">#</a> 3. “三会一课”</h4>
+<p>十三届三中全会上提出：</p>
+<blockquote>
+<p>定期召开支部党员大会、支部委员会、党小组会</p>
+<p>按时上好党课</p>
+</blockquote>
+<h3 id="和党有关的-四"><a class="markdownIt-Anchor" href="#和党有关的-四">#</a> 和党有关的 “四”</h3>
+<h4 id="1-四个自信"><a class="markdownIt-Anchor" href="#1-四个自信">#</a> 1. 四个自信</h4>
+<p>2016 年 7 月 1 日习近平总书记在庆祝中国共产党成立 95 周年大会上的讲话提出：</p>
+<blockquote>
+<p>道路自信</p>
+<p>理论自信</p>
+<p>制度自信</p>
+<p>文化自信</p>
+</blockquote>
+<h4 id="2-四个意识"><a class="markdownIt-Anchor" href="#2-四个意识">#</a> 2. 四个意识</h4>
+<p>2016 年 1 月 29 日中共中央政治局会议提出：</p>
+<blockquote>
+<p>政治意识</p>
+<p>大局意识</p>
+<p>核心意识</p>
+<p>看齐意识</p>
+</blockquote>
+<h4 id="3-党员的四个合格"><a class="markdownIt-Anchor" href="#3-党员的四个合格">#</a> 3. 党员的四个合格</h4>
+<p>2017 年 3 月底中共中央办公厅在《关于推进 [“两学一做”](# 3. 两学一做) 学习教育常态化制度化的意见》中提出：</p>
+<blockquote>
+<p>政治合格</p>
+<p>品德合格</p>
+<p>执纪合格</p>
+<p>发挥作用合格</p>
+</blockquote>
+<h4 id="4-四讲四有"><a class="markdownIt-Anchor" href="#4-四讲四有">#</a> 4. 四讲四有</h4>
+<p>[“两学一做”](# 3. 两学一做) 学习教育中提出：</p>
+<blockquote>
+<p>讲政治 有信念</p>
+<p>讲规矩 有纪律</p>
+<p>讲道德 有品行</p>
+<p>讲奉献 有作为</p>
+</blockquote>
+<h4 id="5-四个服从"><a class="markdownIt-Anchor" href="#5-四个服从">#</a> 5. 四个服从</h4>
+<p>六届六中全会上首先提出：</p>
+<blockquote>
+<p>个人服从组织</p>
+<p>少数服从多数</p>
+<p>下级服从上级</p>
+<p>全党服从中央</p>
+</blockquote>
+<h4 id="6-党面临的-四大危险"><a class="markdownIt-Anchor" href="#6-党面临的-四大危险">#</a> 6. 党面临的 “四大危险”</h4>
+<p>胡锦涛同志继 2011 年 “七一” 讲话之后再次向全党发出警示，并且首次写入党代会报告：</p>
+<blockquote>
+<p>精神懈怠的危险</p>
+<p>能力不足的危险</p>
+<p>脱离群众的危险</p>
+<p>消极腐败的危险</p>
+</blockquote>
+<h4 id="7-党面临的-四种考验"><a class="markdownIt-Anchor" href="#7-党面临的-四种考验">#</a> 7. 党面临的 “四种考验”</h4>
+<p>党的十七届四中全会明确提出：</p>
+<blockquote>
+<p>长期执政考验</p>
+<p>改革开放考验</p>
+<p>市场经济考验</p>
+<p>外部环境考验</p>
+</blockquote>
+<h4 id="8-党的-四自-能力"><a class="markdownIt-Anchor" href="#8-党的-四自-能力">#</a> 8. 党的 “四自” 能力</h4>
+<p>十八大中提出：</p>
+<blockquote>
+<p>自我净化</p>
+<p>自我完善</p>
+<p>自我革新</p>
+<p>自我提高</p>
+</blockquote>
+<h4 id="9-党内政治生活-四性"><a class="markdownIt-Anchor" href="#9-党内政治生活-四性">#</a> 9.  党内政治生活 “四性”</h4>
+<p>2016 年 7 月 1 日习近平总书记在庆祝中国共产党成立 95 周年大会上的重要讲话中提出：</p>
+<blockquote>
+<p>政治性</p>
+<p>时代性</p>
+<p>原则性</p>
+<p>战斗性</p>
+</blockquote>
+<h3 id="和党有关的-五"><a class="markdownIt-Anchor" href="#和党有关的-五">#</a> 和党有关的 “五”</h3>
+<h4 id="1-五位一体-总体布局"><a class="markdownIt-Anchor" href="#1-五位一体-总体布局">#</a> 1. “五位一体” 总体布局</h4>
+<p>十八大中提出：</p>
+<blockquote>
+<p>经济建设</p>
+<p>政治建设</p>
+<p>文化建设</p>
+<p>社会建设</p>
+<p>生态文明建设</p>
+</blockquote>
+<h4 id="2-党的五种纪律处分"><a class="markdownIt-Anchor" href="#2-党的五种纪律处分">#</a> 2. 党的五种纪律处分</h4>
+<p>《中国共产党纪律处分条例》中提出：</p>
+<blockquote>
+<p>警告</p>
+<p>严重警告</p>
+<p>撤销党内职务</p>
+<p>留党察看</p>
+<p>开除党籍</p>
+</blockquote>
+<h3 id="和党有关的-六"><a class="markdownIt-Anchor" href="#和党有关的-六">#</a> 和党有关的 “六”</h3>
+<h4 id="1-党的六大纪律"><a class="markdownIt-Anchor" href="#1-党的六大纪律">#</a> 1. 党的六大纪律</h4>
+<p>十八届五中全会前最后一次政治局会议上提出：</p>
+<blockquote>
+<p>政治纪律</p>
+<p>组织纪律</p>
+<p>廉洁纪律</p>
+<p>群众纪律</p>
+<p>工作纪律</p>
+<p>生活纪律</p>
+</blockquote>
+<h4 id="2-六有-政治局面"><a class="markdownIt-Anchor" href="#2-六有-政治局面">#</a> 2. “六有” 政治局面</h4>
+<p>1957 年 7 月毛泽东同志提出：</p>
+<blockquote>
+<p>有集中又有民主、有纪律又有自由、有统一的意志又有个人心情舒畅生动活泼的政治局面</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>时政</category>
+      </categories>
+      <tags>
+        <tag>时政</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>算法学习之迷宫算法</title>
     <url>/blog/ShenMingyu/c6b06df5/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/blog/css/APlayer.min.css"><script src="/blog/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/blog/js/Meting.min.js"></script>]]></content>
@@ -1882,7 +2044,7 @@
 <p>下图中：</p>
 <p>总经理的管理幅度为 A 产品经理和 B 产品经理，即管理幅度为 2。</p>
 <p>组织的管理层次为总经理到研究人员、生产人员和质量控制人员，即管理层次为 4。</p>
-<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/5/image-20211020185041680.png" class="" title="image-20211020185041680">
+<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/b872665d/image-20211020185041680.png" class="" title="image-20211020185041680">
 </li>
 <li>
 <h5 id="组织设计的重要原则"><a class="markdownIt-Anchor" href="#组织设计的重要原则">#</a> 组织设计的重要原则</h5>
@@ -1906,37 +2068,37 @@
 <ol>
 <li>
 <h5 id="直线制"><a class="markdownIt-Anchor" href="#直线制">#</a> 直线制</h5>
-<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/5/image-20211020185501915.png" class="" title="image-20211020185501915">
+<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/b872665d/image-20211020185501915.png" class="" title="image-20211020185501915">
 <p>组织领导关系按垂直系统建立，实行最基础的简单的一元化管理。</p>
 <p>** 适用范围：** 规模较小、人员较少或发展初期的组织。</p>
 </li>
 <li>
 <h5 id="职能制"><a class="markdownIt-Anchor" href="#职能制">#</a> 职能制</h5>
-<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/5/image-20211020190710156.png" class="" title="image-20211020190710156">
+<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/b872665d/image-20211020190710156.png" class="" title="image-20211020190710156">
 <p>在组织内设置若干职能部门，职能部门在职责范围内有权向夏季发布命令和指示。</p>
 <p>** 适用范围：** 中小型的、产品品种比较单一的企业或组织。</p>
 </li>
 <li>
 <h5 id="直线职能制"><a class="markdownIt-Anchor" href="#直线职能制">#</a> 直线职能制</h5>
-<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/5/image-20211020191006021.png" class="" title="image-20211020191006021">
+<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/b872665d/image-20211020191006021.png" class="" title="image-20211020191006021">
 <p>管理者对下级进行命令，而职能部门对下级只起到业务指导的作用。</p>
 <p>** 适用范围：** 大部分组织。</p>
 </li>
 <li>
 <h5 id="事业部制"><a class="markdownIt-Anchor" href="#事业部制">#</a> 事业部制</h5>
-<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/5/image-20211020191104056.png" class="" title="image-20211020191104056">
+<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/b872665d/image-20211020191104056.png" class="" title="image-20211020191104056">
 <p>组织按照地区或经营的各种产品来划分事业部，遵循 “集中决策、分散经营” 的原则，各事业部独立核算、自负盈亏，总部只保留认识决策、预算控制和监督权等权力。</p>
 <p>** 适用范围：** 产品、业务多元化经营的组织或企业，如腾讯、阿里等。</p>
 </li>
 <li>
 <h5 id="模拟分权制"><a class="markdownIt-Anchor" href="#模拟分权制">#</a> 模拟分权制</h5>
-<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/5/image-20211020191141518.png" class="" title="image-20211020191141518">
+<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/b872665d/image-20211020191141518.png" class="" title="image-20211020191141518">
 <p>将组织划分为若干个单位，实行模拟独立经营、单独核算的组织形式。模拟分权制是介于直线职能制和事业部制之间的一种组织形式。</p>
 <p>** 适用范围：** 连续生产的大型组织或企业。</p>
 </li>
 <li>
 <h5 id="矩阵制"><a class="markdownIt-Anchor" href="#矩阵制">#</a> 矩阵制</h5>
-<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/5/image-20211020191148623.png" class="" title="image-20211020191148623">
+<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/b872665d/image-20211020191148623.png" class="" title="image-20211020191148623">
 <p>矩阵制是由纵向职能部门和横向项目结合而成的组织形式。</p>
 <p>** 适用范围：** 临时性的重大项目以及科研、设计等创新型较强的组织。</p>
 </li>
