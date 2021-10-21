@@ -9,13 +9,6 @@
   </url>
   
   <url>
-    <loc>https://shenmingyu.gitee.io/ShenMingyu/90576cc9/</loc>
-    
-    <lastmod>2021-10-21</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://shenmingyu.gitee.io/ShenMingyu/b872665d/</loc>
     
     <lastmod>2021-10-20</lastmod>
@@ -390,13 +383,6 @@
   
   <url>
     <loc>https://shenmingyu.gitee.io/tags/React/</loc>
-    <lastmod>2021-10-21</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://shenmingyu.gitee.io/tags/JSX/</loc>
     <lastmod>2021-10-21</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>

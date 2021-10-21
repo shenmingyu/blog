@@ -793,155 +793,6 @@
       </tags>
   </entry>
   <entry>
-    <title>ReactJSX基础</title>
-    <url>/blog/ShenMingyu/90576cc9/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/blog/css/APlayer.min.css"><script src="/blog/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/blog/js/Meting.min.js"></script><h2 id="react-jsx-语法基础"><a class="markdownIt-Anchor" href="#react-jsx-语法基础">#</a> React JSX 语法基础</h2>
-<p>在 react 框架中，使用的是非常相似于 JavaScript + XML 结合的格式，实际也是 JavaScript 的一种语法扩展。</p>
-<p><strong>优点：</strong></p>
-<ol>
-<li>执行效率更快</li>
-<li>类型安装，编译的过程中能及时发现错误</li>
-<li>在使用 jsx 的时候编写模板会更加简单快速</li>
-</ol>
-<h3 id="注释"><a class="markdownIt-Anchor" href="#注释">#</a> 注释：</h3>
-<p>jsx 使用的是一种全新的语法格式，故不能用旧的 js 的注释方法或者 html 的注释方法。</p>
-<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 如果使用旧的方法：</span></span><br><span class="line">&lt;script type=<span class="string">&quot;text/babel&quot;</span>&gt;</span><br><span class="line">    <span class="comment">// 注释方式：</span></span><br><span class="line">    <span class="keyword">let</span> jsxText =</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">        <span class="comment">// 注释-1</span></span><br><span class="line">        <span class="comment">/*  注释-2  */</span></span><br><span class="line">      &lt;!-- 注释<span class="number">-3</span> --&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  	ReactDOM.render(multiLines, <span class="built_in">document</span>.getElementById(<span class="string">&#x27;example&#x27;</span>))</span><br><span class="line">  &lt;/script&gt;</span><br></pre></td></tr></table></figure>
-<p>出现了报错：</p>
-<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/90576cc9/image-20200927214210397.png" class="" title="image-20200927214210397">
-<p>需要使用新的语法格式：</p>
-<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line">&lt;script type=<span class="string">&quot;text/babel&quot;</span>&gt;</span><br><span class="line">   <span class="comment">// 注释方式：</span></span><br><span class="line">   <span class="keyword">let</span> jsxText =</span><br><span class="line">     &lt;div&gt;</span><br><span class="line">       &#123;<span class="comment">/* 我是注释 */</span>&#125;</span><br><span class="line">   &lt;/div&gt;</span><br><span class="line"> 	ReactDOM.render(multiLines, <span class="built_in">document</span>.getElementById(<span class="string">&#x27;example&#x27;</span>))</span><br><span class="line"> &lt;/script&gt;</span><br></pre></td></tr></table></figure>
-<p>此时检查元素，即可发现注释成功：</p>
-<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/90576cc9/image-20200927214404958.png" class="" title="image-20200927214404958">
-<h3 id="多行标签"><a class="markdownIt-Anchor" href="#多行标签">#</a> 多行标签：</h3>
-<p>jsx 语法中，如果使用多行标签，不能在同一级编写，<mark>必须</mark>使用一个父级标签包裹多级标签，否则会编译报错：</p>
-<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line">&lt;script type=<span class="string">&quot;text/babel&quot;</span>&gt;</span><br><span class="line">    <span class="comment">// 多行标签</span></span><br><span class="line">    <span class="keyword">let</span> multiLines =</span><br><span class="line">      (<span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">div</span>&gt;</span>我是第一行<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml">        <span class="tag">&lt;<span class="name">div</span>&gt;</span>我是第二行<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml">      <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>)</span><br><span class="line">    ReactDOM.render(multiLines, <span class="built_in">document</span>.getElementById(<span class="string">&#x27;example&#x27;</span>))</span><br><span class="line">  &lt;/script&gt;</span><br></pre></td></tr></table></figure>
-<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/90576cc9/image-20200927215129887.png" class="" title="image-20200927215129887">
-<h3 id="内联表达式"><a class="markdownIt-Anchor" href="#内联表达式">#</a> 内联表达式：</h3>
-<p>jsx 中，使用 花 / 大括号  <code>&#123;&#125;</code>  来对表达式进行相关渲染：</p>
-<p>在大括号中<mark>可以</mark>直接写入运算表达式、字符串的拼接、调用带有返回值的函数等，同样推荐使用 ES6 语法中的模板语法</p>
-<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line">&lt;script type=<span class="string">&quot;text/babel&quot;</span>&gt;</span><br><span class="line">  <span class="keyword">let</span> text = <span class="string">&quot;Hello&quot;</span>;</span><br><span class="line">  <span class="keyword">let</span> num = <span class="number">1234</span>;</span><br><span class="line">  <span class="keyword">let</span> date = <span class="string">&quot;今天&quot;</span>;</span><br><span class="line">  <span class="keyword">let</span> word = &#123;</span><br><span class="line">    hello: <span class="string">&quot;Hello! &quot;</span>,</span><br><span class="line">    hi: <span class="string">&quot;Hi! &quot;</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">let</span> sentence = (</span><br><span class="line">    &lt;div&gt;</span><br><span class="line">      &lt;h1&gt;&#123;text&#125;&lt;/h1&gt;</span><br><span class="line">      &lt;h2&gt;&#123;num&#125;&lt;/h2&gt;</span><br><span class="line">      &lt;h3&gt;&#123;(num - <span class="number">10</span> + <span class="number">20</span>) / <span class="number">30</span> * <span class="number">40</span> % <span class="number">8</span>&#125;&lt;/h3&gt;</span><br><span class="line">      &lt;h4&gt;&#123;stringInteger(word, <span class="number">1</span>)&#125;&lt;/h4&gt;</span><br><span class="line">      &lt;h4&gt;&#123;stringInteger(word, <span class="number">2</span>)&#125;&lt;/h4&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">  )</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">stringInteger</span>(<span class="params">obj, $a</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> ($a == <span class="number">1</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> obj.hello + <span class="string">&quot;我&quot;</span> + date + <span class="string">&quot;学习了JSX&quot;</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span> ($a == <span class="number">2</span>) &#123;</span><br><span class="line">      <span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;obj.hi&#125;</span>我觉得<span class="subst">$&#123;date&#125;</span>是个学习的好日子!`</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  ReactDOM.render(</span><br><span class="line">    sentence,</span><br><span class="line">    <span class="built_in">document</span>.getElementById(<span class="string">&quot;example&quot;</span>)</span><br><span class="line">  );</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/90576cc9/image-20200927221454503.png" class="" title="image-20200927221454503">
-<hr>
-<p>还可以直接动态规定标签内的属性：</p>
-<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> link = <span class="string">&quot;https://www.baidu.com&quot;</span>;</span><br><span class="line">ReactDOM.render(</span><br><span class="line">	&lt;a href=&#123;link&#125;&gt;百度一下&lt;/a&gt;,</span><br><span class="line">  <span class="built_in">document</span>.getElementById(<span class="string">&quot;example&quot;</span>)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/90576cc9/image-20200927223201326.png" class="" title="image-20200927223201326">
-<hr>
-<p>当对标签的样式和类、id 进行更改时，需要注意：</p>
-<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line">&#123;<span class="comment">/* 在css的style里，应是backgound-size，但在jsx语法中需要将 “-” 去除，把后一个单词首字母大写 */</span>&#125;</span><br><span class="line">&#123;<span class="comment">/* 在html中class是关键词，故不能直接设置，需要将 class 改为className进行动态设置 */</span>&#125;</span><br><span class="line"><span class="keyword">let</span> domStyle = &#123; <span class="attr">color</span>: <span class="string">&quot;red&quot;</span>, <span class="attr">backgroundColor</span>: <span class="string">&quot;#00FFEE&quot;</span> &#125;;</span><br><span class="line">ReactDOM.render(</span><br><span class="line">  &lt;div style=&#123;domStyle&#125; className=<span class="string">&quot;container&quot;</span>&gt;标签内类与样式的动态设置&lt;/div&gt;,</span><br><span class="line">  <span class="built_in">document</span>.getElementById(<span class="string">&quot;example&quot;</span>)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
-<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/90576cc9/image-20200927224911577.png" class="" title="image-20200927224911577">
-<h3 id="使用独立-js-文件引用-jsx-格式文件"><a class="markdownIt-Anchor" href="#使用独立-js-文件引用-jsx-格式文件">#</a> 使用独立 js 文件引用 jsx 格式文件</h3>
-<p>不需要担心文件格式的问题</p>
-<ul>
-<li>可以直接将 jsx 格式的代码内容直接放入 .js 文件当中，在引用的 .html 文件中，需要使用如下  <code>script</code>  标签</li>
-</ul>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 注意必须使用 type=&quot;text/babel&quot; 关键字段 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;./single.js&quot;</span> <span class="attr">type</span>=<span class="string">&quot;text/babel&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>当然也可以直接创建 jsx 格式文件，并在 .html 文件中引用，同样需要使用如下  <code>script</code>  标签</li>
-</ul>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 注意同样必须使用 type=&quot;text/babel&quot; 关键字段 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;./single.jsx&quot;</span> <span class="attr">type</span>=<span class="string">&quot;text/babel&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>Web前端</category>
-        <category>框架</category>
-        <category>React</category>
-      </categories>
-      <tags>
-        <tag>React</tag>
-        <tag>JSX</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>React环境搭建</title>
-    <url>/blog/ShenMingyu/28a0bfec/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/blog/css/APlayer.min.css"><script src="/blog/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/blog/js/Meting.min.js"></script><h1 id="react-环境搭建"><a class="markdownIt-Anchor" href="#react-环境搭建">#</a> React 环境搭建</h1>
-<p><strong>安装环境前提：</strong></p>
-<ul>
-<li>npm/cnpm</li>
-</ul>
-<p><strong>React 开发环境的搭建：</strong></p>
-<ol>
-<li>react.js 核心文件</li>
-<li>react-dom.js 渲染页面中的 DOM，该文件依赖于 react 核心文件</li>
-<li>babel.js ES6 转换成 ES5  JSX 愈发转换成 javascript  现今浏览器进行代码的兼容</li>
-</ol>
-<h2 id="npm安装方式"><a class="markdownIt-Anchor" href="#npm安装方式">#</a> npm 安装方式</h2>
-<p><strong>安装命令：</strong></p>
-<p>首先切换到项目目录下，然后执行以下命令：</p>
-<p>（也可以使用 cnpm 来进行下载安装）</p>
-<p>cnpm 安装详见：<a href="">中国 npm 镜像资源 cnpm 安装步骤</a></p>
-<p>先初始化 npm</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm init -y</span><br></pre></td></tr></table></figure>
-<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/28a0bfec/image-20200927155702449.png" class="" title="image-20200927155702449">
-<p>react.js</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install react --save</span><br></pre></td></tr></table></figure>
-<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/28a0bfec/image-20200927162738626.png" class="" title="image-20200927162738626">
-<p>react-dom.js</p>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install react-dom --save</span><br></pre></td></tr></table></figure>
-<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/28a0bfec/image-20200927162849199.png" class="" title="image-20200927162849199">
-<p>babel</p>
-<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">npm install babel-standalone --save</span><br></pre></td></tr></table></figure>
-<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/28a0bfec/image-20200927162912305.png" class="" title="image-20200927162912305">
-<p>至此，React 依赖包安装完毕。</p>
-<p>若出现如下问题：（  <code>WARN</code>  其实可以忽略，并非报错，不会影响正常使用）</p>
-<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/28a0bfec/image-20200927155748259.png" class="" title="image-20200927155748259">
-<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/28a0bfec/image-20200927155906877.png" class="" title="image-20200927155906877">
-<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/28a0bfec/image-20200927155926062.png" class="" title="image-20200927155926062">
-<p>消除  <code>npm WARN</code>  的方法详见 <a href="/blog/ShenMingyu/fa16b3db/">React 环境搭建问题及解决方案</a></p>
-<h2 id="使用-create-react-app-方式"><a class="markdownIt-Anchor" href="#使用-create-react-app-方式">#</a> 使用 create-react-app 方式</h2>
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo npm install -g create-react-app</span><br></pre></td></tr></table></figure>
-<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/28a0bfec/image-20200927203023390.png" class="" title="image-20200927203023390">
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">create-react-app my-app</span><br></pre></td></tr></table></figure>
-<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/28a0bfec/image-20200927203657135.png" class="" title="image-20200927203657135">
-<p>这时已经可以在当前目录下发现已经生成的 React 项目文件：</p>
-<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/28a0bfec/image-20200927203956320.png" class="" title="image-20200927203956320">
-<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 切换目录</span></span><br><span class="line">cd my-app/</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 启动服务</span></span><br><span class="line">npm start</span><br></pre></td></tr></table></figure>
-<p>然后就会自动在 3000 端口生成 React 页面了</p>
-<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/28a0bfec/image-20200927204315283.png" class="" title="image-20200927204315283">
-]]></content>
-      <categories>
-        <category>Web前端</category>
-        <category>框架</category>
-        <category>React</category>
-      </categories>
-      <tags>
-        <tag>React</tag>
-        <tag>环境搭建</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>React基础</title>
-    <url>/blog/ShenMingyu/e0d98019/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/blog/css/APlayer.min.css"><script src="/blog/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/blog/js/Meting.min.js"></script><p>前面已经搭建好使用 React 的环境了，现在可以在 React 目录下创建 html 文件开始学习了。</p>
-<p>创建  <code>helloReact.html</code>  文件，一定要引入以下三个文件</p>
-<p>react.development.js</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;./node_modules/react/umd/react.development.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>react-dom.development.js</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;./node_modules/react-dom/umd/react-dom.development.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>babel.min.js</p>
-<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;./node_modules/babel-standalone/babel.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>在文件内创建一个根结点， <code>id=&quot;rootReact&quot;</code> ，作为 React 的根结点</p>
-<ul>
-<li>
-<p><strong>根结点：</strong></p>
-<blockquote>
-<p>一个页面当中需要又一个根结点，这个根结点下面的内容会被 react 管理</p>
-</blockquote>
-</li>
-</ul>
-<p>在该  <code>div</code>  块下方使用  <code>script</code>  块， <code>type=&quot;babel&quot;</code></p>
-<p>在这个  <code>script</code>  块中，语法一定要使用 <mark>jsx</mark> 的语法。</p>
-<p>jsx 详见<a href="/blog/ShenMingyu/90576cc9/"> React JSX 基础</a></p>
-<p>引用上面的本地文件时，出现了无法渲染的问题，具体问题描述见 <a href="/blog/ShenMingyu/a0d6d312/">React 资源引用问题及解决方案</a></p>
-]]></content>
-      <categories>
-        <category>Web前端</category>
-        <category>框架</category>
-        <category>React</category>
-      </categories>
-      <tags>
-        <tag>React</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>React基本概念</title>
     <url>/blog/ShenMingyu/d8b86ef0/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/blog/css/APlayer.min.css"><script src="/blog/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/blog/js/Meting.min.js"></script><blockquote>
@@ -1024,6 +875,98 @@
       </categories>
       <tags>
         <tag>React</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>React基础</title>
+    <url>/blog/ShenMingyu/e0d98019/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/blog/css/APlayer.min.css"><script src="/blog/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/blog/js/Meting.min.js"></script><p>前面已经搭建好使用 React 的环境了，现在可以在 React 目录下创建 html 文件开始学习了。</p>
+<p>创建  <code>helloReact.html</code>  文件，一定要引入以下三个文件</p>
+<p>react.development.js</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;./node_modules/react/umd/react.development.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>react-dom.development.js</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;./node_modules/react-dom/umd/react-dom.development.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>babel.min.js</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;./node_modules/babel-standalone/babel.min.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>在文件内创建一个根结点， <code>id=&quot;rootReact&quot;</code> ，作为 React 的根结点</p>
+<ul>
+<li>
+<p><strong>根结点：</strong></p>
+<blockquote>
+<p>一个页面当中需要又一个根结点，这个根结点下面的内容会被 react 管理</p>
+</blockquote>
+</li>
+</ul>
+<p>在该  <code>div</code>  块下方使用  <code>script</code>  块， <code>type=&quot;babel&quot;</code></p>
+<p>在这个  <code>script</code>  块中，语法一定要使用 <mark>jsx</mark> 的语法。</p>
+<p>jsx 详见<a href="/blog/ShenMingyu/90576cc9/"> React JSX 基础</a></p>
+<p>引用上面的本地文件时，出现了无法渲染的问题，具体问题描述见 <a href="/blog/ShenMingyu/a0d6d312/">React 资源引用问题及解决方案</a></p>
+]]></content>
+      <categories>
+        <category>Web前端</category>
+        <category>框架</category>
+        <category>React</category>
+      </categories>
+      <tags>
+        <tag>React</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>React环境搭建</title>
+    <url>/blog/ShenMingyu/28a0bfec/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="/blog/css/APlayer.min.css"><script src="/blog/js/APlayer.min.js" class="aplayer-secondary-script-marker"></script><script class="meting-secondary-script-marker" src="/blog/js/Meting.min.js"></script><h1 id="react-环境搭建"><a class="markdownIt-Anchor" href="#react-环境搭建">#</a> React 环境搭建</h1>
+<p><strong>安装环境前提：</strong></p>
+<ul>
+<li>npm/cnpm</li>
+</ul>
+<p><strong>React 开发环境的搭建：</strong></p>
+<ol>
+<li>react.js 核心文件</li>
+<li>react-dom.js 渲染页面中的 DOM，该文件依赖于 react 核心文件</li>
+<li>babel.js ES6 转换成 ES5  JSX 愈发转换成 javascript  现今浏览器进行代码的兼容</li>
+</ol>
+<h2 id="npm安装方式"><a class="markdownIt-Anchor" href="#npm安装方式">#</a> npm 安装方式</h2>
+<p><strong>安装命令：</strong></p>
+<p>首先切换到项目目录下，然后执行以下命令：</p>
+<p>（也可以使用 cnpm 来进行下载安装）</p>
+<p>cnpm 安装详见：<a href="">中国 npm 镜像资源 cnpm 安装步骤</a></p>
+<p>先初始化 npm</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm init -y</span><br></pre></td></tr></table></figure>
+<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/28a0bfec/image-20200927155702449.png" class="" title="image-20200927155702449">
+<p>react.js</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install react --save</span><br></pre></td></tr></table></figure>
+<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/28a0bfec/image-20200927162738626.png" class="" title="image-20200927162738626">
+<p>react-dom.js</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">npm install react-dom --save</span><br></pre></td></tr></table></figure>
+<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/28a0bfec/image-20200927162849199.png" class="" title="image-20200927162849199">
+<p>babel</p>
+<figure class="highlight sh"><table><tr><td class="code"><pre><span class="line">npm install babel-standalone --save</span><br></pre></td></tr></table></figure>
+<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/28a0bfec/image-20200927162912305.png" class="" title="image-20200927162912305">
+<p>至此，React 依赖包安装完毕。</p>
+<p>若出现如下问题：（  <code>WARN</code>  其实可以忽略，并非报错，不会影响正常使用）</p>
+<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/28a0bfec/image-20200927155748259.png" class="" title="image-20200927155748259">
+<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/28a0bfec/image-20200927155906877.png" class="" title="image-20200927155906877">
+<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/28a0bfec/image-20200927155926062.png" class="" title="image-20200927155926062">
+<p>消除  <code>npm WARN</code>  的方法详见 <a href="/blog/ShenMingyu/fa16b3db/">React 环境搭建问题及解决方案</a></p>
+<h2 id="使用-create-react-app-方式"><a class="markdownIt-Anchor" href="#使用-create-react-app-方式">#</a> 使用 create-react-app 方式</h2>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">sudo npm install -g create-react-app</span><br></pre></td></tr></table></figure>
+<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/28a0bfec/image-20200927203023390.png" class="" title="image-20200927203023390">
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">create-react-app my-app</span><br></pre></td></tr></table></figure>
+<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/28a0bfec/image-20200927203657135.png" class="" title="image-20200927203657135">
+<p>这时已经可以在当前目录下发现已经生成的 React 项目文件：</p>
+<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/28a0bfec/image-20200927203956320.png" class="" title="image-20200927203956320">
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 切换目录</span></span><br><span class="line">cd my-app/</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"> 启动服务</span></span><br><span class="line">npm start</span><br></pre></td></tr></table></figure>
+<p>然后就会自动在 3000 端口生成 React 页面了</p>
+<img src= "/blog/img/loading.gif" data-lazy-src="/blog/ShenMingyu/28a0bfec/image-20200927204315283.png" class="" title="image-20200927204315283">
+]]></content>
+      <categories>
+        <category>Web前端</category>
+        <category>框架</category>
+        <category>React</category>
+      </categories>
+      <tags>
+        <tag>React</tag>
+        <tag>环境搭建</tag>
       </tags>
   </entry>
   <entry>
